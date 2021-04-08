@@ -33,7 +33,10 @@ export default {
   css: ['normalize.css/normalize.css', '@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/click-outside.js'],
+  plugins: [
+    '~/plugins/click-outside.js',
+    { src: '@/plugins/vue-awesome-swiper.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -72,6 +75,7 @@ export default {
   },
   generate: {
     crawler: false,
+    fallback: true,
     // routes: dynamicRoutes,
   },
 }

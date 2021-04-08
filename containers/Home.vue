@@ -37,15 +37,123 @@
     </section>
     <section class="tasks">
       <h3 class="h3 text-center">Задачи которые мы решаем</h3>
+      <client-only>
+        <div class="carousel-wrap">
+          <Carrousel>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/comment.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Сбор обратной связи</h5>
+              <p class="text">
+                Узнайте, что людям нравится в вашем бизнесе, а что напротив,
+                отталкивает. Определите свои конкурентные преимущества и
+                используйте их в рекламных активностях.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/research.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Поиск слабых мест бизнеса</h5>
+              <p class="text">
+                Почему люди не приходят к вам повторно? Какая смена приносит
+                меньшую прибыль? Почему конкурент зарабатывает больше?
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/clock.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">
+                Ускорение тестирования новых продуктов
+              </h5>
+              <p class="text">
+                Уведомите клиента о поступлении нового товара и предложите его
+                опробовать на взаимовыгодных условиях.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/hand.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Создание адвокатов бренда</h5>
+              <p class="text">
+                Соберите группу людей, которые смогут не только рекомендовать
+                ваш бизнес, но и бороться с негативом в его сторону.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/community.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Коммуникация с клиентом</h5>
+              <p class="text">
+                Ведите переписку, отвечайте на вопросы, получайте заказы,
+                напоминайте о себе, уведомляйте о специальных предложениях.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/comment.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Сбор обратной связи</h5>
+              <p class="text">
+                Узнайте, что людям нравится в вашем бизнесе, а что напротив,
+                отталкивает. Определите свои конкурентные преимущества и
+                используйте их в рекламных активностях.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/cycle.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Продление жизненного цикла клиента</h5>
+              <p class="text">
+                Удержите клиента и сделайте его постоянным. Дешевле сохранить
+                существующего покупателя, чем привести нового.
+              </p>
+            </Slide>
+            <Slide>
+              <div class="img-wrap text-center">
+                <img src="~@/assets/images/tasks/speakers.svg" alt="" />
+              </div>
+              <h5 class="h5 slide-title">Стимулирование сарафанного радио</h5>
+              <p class="text">
+                Заставьте постоянного клиента привести своих друзей. Сделайте их
+                постоянными покупателями и повторите всё ещё раз.
+              </p>
+            </Slide>
+          </Carrousel>
+        </div>
+      </client-only>
+    </section>
+    <section class="products">
+      <h3 class="h3 text-center">Наши продукты</h3>
+      <div class="products-sub-logo">
+        <img src="~@/assets/images/products/ut.svg" alt="ut" />
+      </div>
+      <div class="products-container text-center" style="margin: auto">
+        <ProductImage
+          :image="require('~/assets/images/products/celebration.jpg')"
+        />
+      </div>
     </section>
   </main>
 </template>
 
 <script>
-import NavLink from '../components/NavLink'
+import Carrousel from '@/components/carousel/Swiper'
+import Slide from '@/components/carousel/Slide'
+import NavLink from '@/components/NavLink'
+import ProductImage from '@/components/products/ProductImage'
+
 export default {
   components: {
     NavLink,
+    Carrousel,
+    Slide,
+    ProductImage,
   },
 }
 </script>
@@ -53,7 +161,16 @@ export default {
 <style scoped>
 .first-screen {
   position: relative;
-  min-height: 100vh;
+  min-height: 1000px;
+}
+.first-screen::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 0;
+  left: 0;
+  min-height: 1500px;
+  width: 100%;
   background: linear-gradient(
     180deg,
     #e5efff 9.72%,
@@ -198,5 +315,52 @@ export default {
 
 .tasks {
   position: relative;
+}
+.img-wrap {
+  height: 208px;
+}
+.img-wrap img {
+  max-height: 208px;
+}
+.slide-title {
+  line-height: 46px;
+  margin: 20px 0 10px;
+}
+.carousel-wrap {
+  padding: 30px 0 50px;
+}
+.products {
+  position: relative;
+  overflow: hidden;
+}
+.products-container {
+  background: #e5efff;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+}
+.products-container::before,
+.products-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 130%;
+  height: 420px;
+  border-radius: 50%;
+  background-color: #fafbfe;
+  transform: translate(-50%, -64%);
+}
+.products-container::after {
+  top: 100%;
+  transform: translate(-50%, -34%);
+}
+.products-sub-logo {
+  position: absolute;
+  right: 15%;
+  top: 0;
+  width: 236px;
+  height: 385px;
+  z-index: 1;
 }
 </style>
