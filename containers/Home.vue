@@ -139,6 +139,9 @@
         />
       </div>
     </section>
+    <section class="stories">
+      <h3 class="h3 text-center">Истории успеха</h3>
+    </section>
   </main>
 </template>
 
@@ -362,5 +365,9 @@ export default {
   width: 236px;
   height: 385px;
   z-index: 1;
+}
+
+.stories {
+  padding: 50px 0 300px;
 }
 </style>

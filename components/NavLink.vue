@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="localePath(href)" :class="['small-text', classname]">
+  <NuxtLink :to="localePath(href)" :class="['link-btn small-text', classname]">
     <slot></slot>
   </NuxtLink>
 </template>
@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+.link-btn {
+  white-space: nowrap;
+}
 .btn {
   background-color: #eaf1fe;
   border: 1px solid #fea151;
