@@ -39,7 +39,7 @@
       <h3 class="h3 text-center">Задачи которые мы решаем</h3>
       <client-only>
         <div class="carousel-wrap">
-          <Carrousel>
+          <Slider>
             <Slide>
               <div class="img-wrap text-center">
                 <img src="~@/assets/images/tasks/comment.svg" alt="" />
@@ -124,7 +124,7 @@
                 постоянными покупателями и повторите всё ещё раз.
               </p>
             </Slide>
-          </Carrousel>
+          </Slider>
         </div>
       </client-only>
     </section>
@@ -133,30 +133,255 @@
       <div class="products-sub-logo">
         <img src="~@/assets/images/products/ut.svg" alt="ut" />
       </div>
-      <div class="products-container text-center" style="margin: auto">
-        <ProductImage
-          :image="require('~/assets/images/products/celebration.jpg')"
-        />
+      <div class="products-container">
+        <ul class="product-list">
+          <li class="product-item review">
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="small-circle" />
+              <span class="dots" />
+              <ProductImage
+                :image="require('~/assets/images/products/happy-couple.jpg')"
+              />
+            </div>
+            <div class="description">
+              <h4 class="h4 product-title">Отзывы и показатель лояльности</h4>
+              <div class="product-content">
+                Насколько клиенты удовлетворены обслуживанием? Получите оценку
+                от 1 до 10 и прочтите развёрнутый комментарий.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+          </li>
+          <li class="product-item content-right bonus">
+            <div class="description">
+              <h4 class="h4 product-title">Кэшбэк и бонусы</h4>
+              <div class="product-content">
+                Начисление бонусных баллов при совершении покупки. Участники
+                программы лояльности смогут использовать баллы на частичную
+                оплату повторных покупок.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="small-circle" />
+              <span class="dots horisontal" />
+              <ProductImage
+                :image="require('~/assets/images/products/portrait-happy.jpg')"
+              />
+            </div>
+          </li>
+          <li class="product-item gifts">
+            <div class="product-image">
+              <span class="big-circle" />
+              <ProductImage
+                :image="require('~/assets/images/products/celebration.jpg')"
+              />
+            </div>
+            <div class="description">
+              <h4 class="h4 product-title">Подарки и скидки</h4>
+              <div class="product-content">
+                Создавайте QR-коды и назначайте на них любые действия, либо
+                дарите клиентам подарки через панель администратора.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+          </li>
+          <li class="product-item content-right referal">
+            <div class="description">
+              <h4 class="h4 product-title">Реферальная система</h4>
+              <div class="product-content">
+                Ваши клиенты могут приглашать друзей в систему лояльности, тем
+                самым приводя к вам новых клиентов.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="dots horisontal" />
+              <ProductImage
+                :image="require('~/assets/images/products/girls-star.jpg')"
+              />
+            </div>
+          </li>
+          <li class="product-item analitics">
+            <div class="product-image">
+              <span class="small-circle" />
+              <span class="dots" />
+              <ProductImage
+                :image="require('~/assets/images/products/analitics.jpg')"
+              />
+            </div>
+            <div class="description">
+              <h4 class="h4 product-title">Аналитика</h4>
+              <div class="product-content">
+                Все показатели бизнеса собраны в одном месте. Анализ и
+                оптимизация ещё никогда не были настолько удобными.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+          </li>
+          <li class="product-item content-right game">
+            <div class="description">
+              <h4 class="h4 product-title">Геймификация</h4>
+              <div class="product-content">
+                Превратите шопинг в игру. Создайте сценарий покупок и дарите
+                вознаграждение тем, кто ему следует.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="dots" />
+              <ProductImage
+                :image="require('~/assets/images/products/excited-happy.jpg')"
+              />
+            </div>
+          </li>
+          <li class="product-item crm">
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="dots horisontal" />
+              <ProductImage
+                :image="require('~/assets/images/products/business.jpg')"
+              />
+            </div>
+            <div class="description">
+              <h4 class="h4 product-title">CRM-система</h4>
+              <div class="product-content">
+                Ведите учёт клиентов, собирайте данные и обрабатывайте заявки.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+          </li>
+          <li class="product-item content-right rules">
+            <div class="description">
+              <h4 class="h4 product-title">Свои правила</h4>
+              <div class="product-content">
+                Автоматизируй бизнесс процессы. Создавай свои правила для
+                поздравле- ний клиентов, напоминаний, свои условия для бонусной
+                программы, собирай информацию с пользователей и использовать её
+                в работе (дарить купон на любимую еду).
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+            <div class="product-image">
+              <span class="big-circle" />
+              <span class="dots horisontal" />
+              <ProductImage
+                :image="require('~/assets/images/products/notebook.jpg')"
+              />
+            </div>
+          </li>
+          <li class="product-item qr-code">
+            <div class="product-image">
+              <span class="big-circle" />
+              <ProductImage
+                :image="require('~/assets/images/products/qr-code.jpg')"
+              />
+            </div>
+            <div class="description">
+              <h4 class="h4 product-title">QR-коды</h4>
+              <div class="product-content">
+                Открывай меню, приглашай в лояльность, дари подарки. Вешай любое
+                действие.
+              </div>
+              <div class="product-button">
+                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
+    <div class="container company-logos">
+      <div class="company-logo">
+        <img src="~@/assets/images/companies/compact.png" alt="" />
+      </div>
+      <div class="company-logo">
+        <img src="~@/assets/images/companies/company.png" alt="" />
+      </div>
+      <div class="company-logo">
+        <img src="~@/assets/images/companies/iocc.png" alt="" />
+      </div>
+      <div class="company-logo">
+        <img src="~@/assets/images/companies/tv-digital.png" alt="" />
+      </div>
+      <div class="company-logo">
+        <img src="~@/assets/images/companies/changes.png" alt="" />
+      </div>
+    </div>
     <section class="stories">
       <h3 class="h3 text-center">Истории успеха</h3>
+      <client-only>
+        <Carousel>
+          <Slide>
+            <div class="img-wrap text-center">
+              <img src="~@/assets/images/tasks/comment.svg" alt="" />
+            </div>
+            <h5 class="h5 slide-title">Стимулирование сарафанного werwerwer</h5>
+            <p class="text">
+              Заставьте постоянного клиента привести своих друзей. Сделайте их
+              постоянными покупателями и повторите всё ещё раз.
+            </p>
+          </Slide>
+          <Slide>
+            <div class="img-wrap text-center">
+              <img src="~@/assets/images/tasks/speakers.svg" alt="" />
+            </div>
+            <h5 class="h5 slide-title">Стимулирование сарафанного fdgsg fg</h5>
+            <p class="text">
+              Заставьте постоянного клиента привести своих друзей. Сделайте их
+              постоянными покупателями и повторите всё ещё раз.
+            </p>
+          </Slide>
+          <Slide>
+            <div class="img-wrap text-center">
+              <img src="~@/assets/images/tasks/clock.svg" alt="" />
+            </div>
+            <h5 class="h5 slide-title">Стимулирование сарафанного 243423</h5>
+            <p class="text">
+              Заставьте постоянного клиента привести своих друзей. Сделайте их
+              постоянными покупателями и повторите всё ещё раз.
+            </p>
+          </Slide>
+        </Carousel>
+      </client-only>
     </section>
   </main>
 </template>
 
 <script>
-import Carrousel from '@/components/carousel/Swiper'
+import Slider from '@/components/carousel/Swiper'
 import Slide from '@/components/carousel/Slide'
 import NavLink from '@/components/NavLink'
 import ProductImage from '@/components/products/ProductImage'
+import Carousel from '@/components/carousel/Carousel'
 
 export default {
   components: {
     NavLink,
-    Carrousel,
+    Slider,
     Slide,
     ProductImage,
+    Carousel,
   },
 }
 </script>
@@ -338,9 +563,9 @@ export default {
 }
 .products-container {
   background: #e5efff;
-  height: 800px;
   position: relative;
   overflow: hidden;
+  padding: 0 10%;
 }
 .products-container::before,
 .products-container::after {
@@ -357,6 +582,7 @@ export default {
 .products-container::after {
   top: 100%;
   transform: translate(-50%, -34%);
+  height: 520px;
 }
 .products-sub-logo {
   position: absolute;
@@ -367,7 +593,257 @@ export default {
   z-index: 1;
 }
 
+.product-item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+}
+.product-item.content-right {
+  margin-left: auto;
+}
+.description {
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
+.product-title {
+  margin-bottom: 20px;
+  line-height: 46px;
+  letter-spacing: 0.396px;
+}
+.product-content {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 50px;
+}
 .stories {
   padding: 50px 0 300px;
+}
+.big-circle {
+  display: block;
+  width: 227px;
+  height: 227px;
+  background-image: url(~/assets/images/products/big-circle.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+.small-circle {
+  display: block;
+  width: 65px;
+  height: 65px;
+  background-image: url(~/assets/images/products/small-circle.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+.dots {
+  display: block;
+  width: 213px;
+  height: 368px;
+  background-image: url(~/assets/images/products/dots-vertical.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+.dots.horisontal {
+  transform: rotate(90deg);
+}
+.company-logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80px 10% 120px;
+}
+</style>
+
+<style lang="scss">
+.product-item.review {
+  max-width: 80%;
+  z-index: 10;
+  .dots {
+    top: 360px;
+    left: 10px;
+  }
+  .small-circle {
+    left: -50px;
+    top: 140px;
+  }
+  .big-circle {
+    top: 160px;
+    left: 20px;
+    width: 336px;
+    height: 336px;
+  }
+  .product-image {
+    margin-left: 160px;
+  }
+  .product-content {
+    max-width: 480px;
+  }
+}
+.product-item.bonus {
+  max-width: 70%;
+  margin-top: -100px;
+  z-index: 9;
+  .dots {
+    top: 360px;
+    right: 10px;
+  }
+  .small-circle {
+    right: 400px;
+    top: 40px;
+  }
+  .big-circle {
+    top: 0px;
+    right: 60px;
+  }
+  .product-image {
+    margin-right: 160px;
+  }
+  .product-content {
+    max-width: 400px;
+  }
+}
+.product-item.gifts {
+  max-width: 70%;
+  margin-top: -180px;
+  justify-content: start;
+  z-index: 8;
+  .big-circle {
+    top: 400px;
+    left: -100px;
+  }
+  .product-image {
+    margin-left: -40px;
+  }
+  .product-content {
+    max-width: 400px;
+  }
+}
+.product-item.referal {
+  max-width: 65%;
+  margin-top: -180px;
+  z-index: 7;
+  .dots {
+    top: 160px;
+    right: -100px;
+  }
+  .big-circle {
+    top: -60px;
+    right: 230px;
+  }
+  .product-image {
+    margin-right: 0px;
+  }
+  .product-content {
+    max-width: 480px;
+  }
+}
+.product-item.analitics {
+  max-width: 70%;
+  margin-top: -150px;
+  justify-content: start;
+  z-index: 6;
+  .small-circle {
+    top: 50px;
+    left: 20px;
+  }
+  .dots {
+    top: 240px;
+    left: -30px;
+  }
+  .product-image {
+    margin-left: 30px;
+  }
+  .product-content {
+    max-width: 400px;
+  }
+}
+.product-item.game {
+  max-width: 70%;
+  margin-top: -180px;
+  justify-content: flex-end;
+  z-index: 5;
+  .big-circle {
+    top: 390px;
+    right: 60px;
+  }
+  .dots {
+    top: -50px;
+    right: 0px;
+  }
+  .product-image {
+    margin-right: 100px;
+  }
+  .product-content {
+    max-width: 400px;
+  }
+}
+.product-item.crm {
+  max-width: 70%;
+  margin-top: -210px;
+  justify-content: start;
+  z-index: 4;
+  .big-circle {
+    top: -10px;
+    left: 220px;
+  }
+  .dots {
+    top: 330px;
+    left: -20px;
+  }
+  .product-image {
+    margin-left: 0;
+  }
+  .product-content {
+    max-width: 400px;
+  }
+}
+.product-item.rules {
+  max-width: 70%;
+  margin-top: -180px;
+  justify-content: flex-end;
+  z-index: 3;
+  .big-circle {
+    top: 450px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+  }
+  .dots {
+    top: -150px;
+    right: 270px;
+  }
+  .product-image {
+    margin-right: 0px;
+  }
+  .product-content {
+    max-width: 450px;
+    margin-right: 20px;
+  }
+  .description {
+    margin-bottom: 10px;
+  }
+}
+.product-item.qr-code {
+  max-width: 70%;
+  margin-top: -210px;
+  justify-content: start;
+  z-index: 2;
+  padding-bottom: 100px;
+  .big-circle {
+    top: 30px;
+    left: 320px;
+    width: 100px;
+    height: 100px;
+  }
+  .product-image {
+    margin-left: 0;
+  }
+  .product-content {
+    max-width: 400px;
+  }
 }
 </style>

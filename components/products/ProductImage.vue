@@ -22,10 +22,11 @@ export default {
 <style scoped>
 .image-wrap {
   border-radius: 20px;
-  filter: drop-shadow(-25px 18px 44px rgba(84, 48, 209, 0.35));
+  box-shadow: -25px 18px 34px rgba(84, 48, 209, 0.35),
+    -25px 18px 34px rgba(84, 48, 209, 0.35);
   position: relative;
   display: inline-block;
-  margin: 100px;
+  margin: 80px 20px 30px;
 }
 .blur {
   position: absolute;
@@ -40,5 +41,6 @@ export default {
 .image {
   position: relative;
   border-radius: 20px;
+  margin-bottom: -2px;
 }
 </style>

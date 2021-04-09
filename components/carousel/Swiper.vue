@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Carrousel',
+  name: 'Slider',
   data() {
     return {
       swiperOptions: {

@@ -56,4 +56,15 @@ export default {
 .btn-orange-gradient:hover {
   box-shadow: -2px 20px 53px -8px rgba(232, 97, 49, 0.86);
 }
+.simple-btn {
+  display: inline-block;
+  background: #ffa800;
+  border-radius: 60px;
+  transition: box-shadow 0.3s linear;
+  color: #fff;
+  padding: 15px 60px;
+}
+.simple-btn:hover {
+  box-shadow: 22px 18px 53px -15px rgba(232, 97, 49, 0.69);
+}
 </style>
