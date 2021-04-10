@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "E-commerce",
+    "content": "Приложение ToJoin также ценно и для онлайн-шопинга. Одна из механик стимулирования продаж - накапливание бонусов за покупки, которые потом можно тратить на частичную оплату чека. Так мы не только даём выгоду при первой покупке, но и стимулируем последующие.",
+    "image_left": [
+      "images/stories/story-left-1.png",
+      "images/stories/story-left-2.png",
+      "images/stories/story-left-3.png"
+    ],
+    "image_right": [
+      "images/stories/story-right-1.png",
+      "images/stories/story-right-2.png",
+      "images/stories/story-right-3.png"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Кофейни",
+    "content": "В современном бизнесе открыть кофейню и получит потом клиентов в первый же месяц довольно тяжело. Конкуренция большая, потребитель избалован, сложно из онлайна привести клиента в оффлайн. Чем в этом случае поможет наше приложение? В шапке профиля Instagram мы разместим ссылку, которая ведёт на страницу кофейни в ToJoin. Перейдя по ссылке, клиент сразу же получает небольшой бонус, который можно потратить в счёт частичной оплаты первой покупки. Так мы стимулируем первое касание с аудиторией уже в оффлайне.",
+    "image_left": [
+      "images/stories/story-left-1.png",
+      "images/stories/story-left-2.png",
+      "images/stories/story-left-3.png"
+    ],
+    "image_right": [
+      "images/stories/story-right-1.png",
+      "images/stories/story-right-2.png",
+      "images/stories/story-right-3.png"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Фитнес-центр",
+    "content": "Основная задача фитнес-центра - не просто привести клиента, а сделать его постоянным и не допустить ухода в другой зал. В этом может помочь бонусная программа, которая предусматривает кэшбэк с  каждого приобретённого абонемента. Таким образом за год покупки месячного абонемента клиент может накопить баллы на один  бесплатный месяц занятий, что неплохо мотивирует его ходить именно к вам, а не к вашим конкурентам.",
+    "image_left": [
+      "images/stories/story-left-1.png",
+      "images/stories/story-left-2.png",
+      "images/stories/story-left-3.png"
+    ],
+    "image_right": [
+      "images/stories/story-right-1.png",
+      "images/stories/story-right-2.png",
+      "images/stories/story-right-3.png"
+    ]
+  }
+]

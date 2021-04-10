@@ -1,11 +1,18 @@
 <template>
   <swiper-slide
-    ><div class="slide"><slot /></div
+    ><div :class="classname"><slot /></div
   ></swiper-slide>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    classname: {
+      type: String,
+      default: 'slide',
+    },
+  },
+}
 </script>
 <style scoped>
 .slide {

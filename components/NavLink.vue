@@ -67,4 +67,16 @@ export default {
 .simple-btn:hover {
   box-shadow: 22px 18px 53px -15px rgba(232, 97, 49, 0.69);
 }
+
+.light-btn {
+  display: inline-block;
+  background: #ffb467;
+  border-radius: 60px;
+  transition: box-shadow 0.3s linear;
+  color: #fff;
+  padding: 15px 60px;
+}
+.light-btn:hover {
+  box-shadow: 22px 18px 53px -15px rgba(232, 97, 49, 0.69);
+}
 </style>
