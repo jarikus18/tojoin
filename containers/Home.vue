@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <div class="home">
     <section class="first-screen">
       <div class="resources">
         <div class="bg-line" />
@@ -332,7 +332,12 @@
       <h3 class="h3 text-center">Истории успеха</h3>
       <client-only>
         <Carousel>
-          <StodySlide v-for="story in stories" :key="story.id" :item="story" />
+          <StodySlide
+            v-for="(story, index) in stories"
+            :key="story.id"
+            :item="story"
+            :index="index"
+          />
           <!-- <StodySlide>
             <h5 class="h5 slide-title text-center">Кофейни</h5>
 
@@ -411,7 +416,7 @@
         <NavLink class="light-btn" href="/">Еще истории успеха</NavLink>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -441,6 +446,9 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  margin-top: -200px;
+}
 .first-screen {
   position: relative;
   min-height: 1000px;
@@ -597,6 +605,8 @@ export default {
 
 .tasks {
   position: relative;
+  max-width: 1620px;
+  margin: auto;
 }
 .img-wrap {
   height: 208px;
@@ -637,6 +647,10 @@ export default {
   top: 100%;
   transform: translate(-50%, -34%);
   height: 520px;
+}
+.product-list {
+  max-width: 1920px;
+  margin: auto;
 }
 .products-sub-logo {
   position: absolute;
@@ -713,9 +727,11 @@ export default {
   margin: 80px 10% 120px;
 }
 .show-more {
-  margin-top: -40px;
   position: relative;
   margin-left: 33%;
+  top: -40px;
+  z-index: 1;
+  display: inline-block;
 }
 </style>
 
@@ -723,6 +739,7 @@ export default {
 .product-item.review {
   max-width: 80%;
   z-index: 10;
+  justify-content: flex-start;
   .dots {
     top: 360px;
     left: 10px;
@@ -747,6 +764,7 @@ export default {
 .product-item.bonus {
   max-width: 70%;
   margin-top: -100px;
+  justify-content: flex-end;
   z-index: 9;
   .dots {
     top: 360px;
@@ -765,6 +783,7 @@ export default {
   }
   .product-content {
     max-width: 400px;
+    margin-right: 40px;
   }
 }
 .product-item.gifts {
@@ -787,6 +806,7 @@ export default {
   max-width: 65%;
   margin-top: -180px;
   z-index: 7;
+  justify-content: flex-end;
   .dots {
     top: 160px;
     right: -100px;
@@ -840,6 +860,7 @@ export default {
   }
   .product-content {
     max-width: 400px;
+    margin-right: 20px;
   }
 }
 .product-item.crm {

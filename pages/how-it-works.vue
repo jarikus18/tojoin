@@ -1,11 +1,11 @@
 <template>
-  <Home />
+  <HowItWorks />
 </template>
 
 <script>
-import Home from '../containers/Home'
+import HowItWorks from '@/containers/HowItWorks'
 
 export default {
-  components: { Home },
+  components: { HowItWorks },
 }
 </script>

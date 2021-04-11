@@ -14,8 +14,9 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 3,
-        spaceBetween: 40,
+        spaceBetween: 0,
         slidesPerGroup: 3,
+        centeredSlides: true,
         loop: true,
         pagination: {
           el: '.swiper-pagination',
@@ -43,6 +44,7 @@ export default {
 .swiper-container {
   padding-bottom: 150px;
 }
+
 .swiper-container-horizontal > .swiper-pagination-bullets {
   bottom: 80px;
 }

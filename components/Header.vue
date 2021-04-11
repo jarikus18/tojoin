@@ -21,7 +21,7 @@
 // import { mapActions, mapState } from 'vuex'
 import NavLink from './NavLink'
 import LangSwitcher from './LanguageSwitcher'
-import DesktopMenu from './DesktopMenu'
+import DesktopMenu from './menu/DesktopMenu'
 
 export default {
   components: {
