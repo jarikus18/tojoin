@@ -75,14 +75,17 @@
         </ul>
       </div>
     </div>
+    <ScrollTop />
   </footer>
 </template>
 
 <script>
 import NavLink from '@/components/NavLink'
+import ScrollTop from '@/components/ScrollTop'
 export default {
   components: {
     NavLink,
+    ScrollTop,
   },
 }
 </script>

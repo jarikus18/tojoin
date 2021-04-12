@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header id="header" class="header">
     <div class="left">
       <div class="logo">
         <NavLink href="/">

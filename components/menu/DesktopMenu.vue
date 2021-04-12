@@ -16,7 +16,14 @@
       Продукты
       <transition name="fade">
         <ul v-if="productList" class="submenu-list two-column">
-          <li class="submenu-item">Бонусная программа</li>
+          <li
+            class="submenu-item"
+            :style="{
+              backgroundImage: `url(${require('~/assets/icons/menu/bonus.svg')})`,
+            }"
+          >
+            Бонусная программа
+          </li>
           <li class="submenu-item">Бонусная программа</li>
           <li class="submenu-item">Бонусная программа</li>
           <li class="submenu-item">Бонусная программа</li>
@@ -58,13 +65,14 @@
 
 <script>
 import NavLink from '@/components/NavLink'
+
 export default {
   components: {
     NavLink,
   },
   data() {
     return {
-      productList: false,
+      productList: true,
       resoursesList: false,
     }
   },
@@ -124,9 +132,14 @@ export default {
   font-size: 24px;
   line-height: 30px;
   font-family: 'Rubik', sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 17px;
   width: 50%;
-  /* min-width: 315px; */
+  padding-left: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
 }
 .fade-enter-active,
 .fade-leave-active {
