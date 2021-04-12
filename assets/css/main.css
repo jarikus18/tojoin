@@ -18,6 +18,11 @@ body {
   background-color: #fafbfe;
   color: #1b1732;
 }
+
+.body_overflow {
+  overflow: hidden;
+}
+
 p {
   margin-bottom: 10px;
 }

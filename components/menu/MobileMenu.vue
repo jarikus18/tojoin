@@ -8,14 +8,13 @@
     <li
       :class="[
         'menu-list-item color-text small-text has-submenu',
-        productList && 'has-submenu--active',
+        submenu.productList && 'has-submenu--active',
       ]"
-      @mouseover="productList = true"
-      @mouseleave="productList = false"
+      @click="toggleSubmenu('productList')"
     >
-      Продукты
+      <span>Продукты</span>
       <transition name="fade">
-        <ul v-if="productList" class="submenu-list two-column">
+        <ul v-if="submenu.productList" class="submenu-list">
           <li
             class="submenu-item"
             :style="{
@@ -43,15 +42,13 @@
     <li
       :class="[
         'menu-list-item color-text small-text has-submenu',
-        resoursesList && 'has-submenu--active',
+        submenu.resoursesList && 'has-submenu--active',
       ]"
-      @mouseover="resoursesList = true"
-      @mouseleave="resoursesList = false"
+      @click="toggleSubmenu('resoursesList')"
     >
-      Ресурсы
-
+      <span>Ресурсы</span>
       <transition name="fade">
-        <ul v-if="resoursesList" class="submenu-list">
+        <ul v-if="submenu.resoursesList" class="submenu-list">
           <li class="submenu-item">Описание API</li>
           <li class="submenu-item">Примеры использования</li>
           <li class="submenu-item">Учебник</li>
@@ -72,45 +69,38 @@ export default {
   },
   data() {
     return {
-      productList: false,
-      resoursesList: false,
+      submenu: {
+        productList: false,
+        resoursesList: false,
+      },
     }
+  },
+  methods: {
+    toggleSubmenu(value) {
+      this.submenu[value] = !this.submenu[value]
+    },
   },
 }
 </script>
 
 <style scoped>
-.menu-list {
-  list-style: none;
-  display: flex;
-}
 .menu-list-item {
-  margin: 0 20px;
-  white-space: nowrap;
+  margin: 30px 15px 10px;
   position: relative;
 }
-.menu-list-item.has-submenu {
-  margin-right: 35px;
-}
+
 .submenu-list {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    1.42deg,
-    #fff 80.53%,
-    rgba(255, 255, 255, 0) 95.31%
-  );
-  border-radius: 0 0 20px 20px;
-  padding: 35px 25px 0;
-  width: 384px;
-  padding-top: 40px;
+  padding: 15px 15px 0;
+  padding-top: 20px;
 }
-.menu-list-item.has-submenu::after {
+.menu-list-item.has-submenu span {
+  position: relative;
+}
+.menu-list-item.has-submenu span::after {
   content: '';
   position: absolute;
   top: 0;
+  right: -30px;
   width: 24px;
   height: 24px;
   background-color: #1b1732;
@@ -119,25 +109,20 @@ export default {
   background-repeat: no-repeat;
   transition: all 0.3s;
 }
-.menu-list-item.has-submenu--active::after {
+.menu-list-item.has-submenu--active span::after {
   transform: rotate(180deg);
   background-color: #f09231;
 }
-.submenu-list.two-column {
-  width: 760px;
-  display: flex;
-  flex-wrap: wrap;
-}
+
 .submenu-item {
-  font-size: 24px;
+  font-size: 18px;
   line-height: 30px;
   font-family: 'Rubik', sans-serif;
   margin-bottom: 17px;
-  width: 50%;
-  padding-left: 55px;
+  padding-left: 38px;
   background-size: contain;
   background-repeat: no-repeat;
-  min-height: 46px;
+  min-height: 30px;
   display: flex;
   align-items: center;
 }
@@ -148,10 +133,5 @@ export default {
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
-}
-@media (max-width: 992px) {
-  .menu-list-item {
-    margin: 0 10px;
-  }
 }
 </style>

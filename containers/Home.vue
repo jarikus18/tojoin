@@ -34,6 +34,11 @@
           Попробовать бесплатно
         </NavLink>
       </div>
+      <div class="mobile-block">
+        <div class="social-list-wrapper">
+          <SocialLinks />
+        </div>
+      </div>
     </section>
     <section class="tasks">
       <h3 class="h3 text-center">Задачи которые мы решаем</h3>
@@ -426,6 +431,7 @@ import StodySlide from '@/components/carousel/StorySlide'
 import NavLink from '@/components/NavLink'
 import ProductImage from '@/components/products/ProductImage'
 import Carousel from '@/components/carousel/Carousel'
+import SocialLinks from '@/components/SocialLinks'
 import stories from '@/assets/stories.json'
 
 export default {
@@ -436,6 +442,7 @@ export default {
     StodySlide,
     ProductImage,
     Carousel,
+    SocialLinks,
   },
   data() {
     return {
@@ -483,6 +490,9 @@ export default {
   right: 0;
   top: 0;
   /* transform: scale(0.9); */
+}
+.mobile-block {
+  display: none;
 }
 .bg-line {
   position: absolute;
@@ -723,8 +733,12 @@ export default {
 .company-logos {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 80px 10% 120px;
+}
+.company-logos .company-logo {
+  margin: 0 30px 30px;
 }
 .show-more {
   position: relative;
@@ -732,6 +746,31 @@ export default {
   top: -40px;
   z-index: 1;
   display: inline-block;
+}
+@media (max-width: 992px) {
+  .resources {
+    display: none;
+  }
+  .text-block {
+    padding-top: 100px;
+    padding-left: 15px;
+    max-width: none;
+  }
+  .show-more {
+    margin-left: 0;
+  }
+  .mobile-block {
+    display: block;
+    margin-top: 50px;
+    background: url('~/assets/images/illustration.svg') center no-repeat;
+    background-size: contain;
+    height: 461px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .social-list-wrapper {
+    padding: 0 0 100px 15px;
+  }
 }
 </style>
 

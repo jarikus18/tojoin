@@ -14,31 +14,10 @@
     <div class="footer-bottom footer-text-regular gray">
       <div class="info">
         <div class="footer-logo">
-          <img src="~@/assets/images/logo-footer.svg" alt="logo footer" />
+          <Logo />
         </div>
         <div class="slogan">TutSvoi - приложение для автоматизации бизнеса</div>
-        <ul class="social-list">
-          <li class="social-item">
-            <a class="social-link" href="#">
-              <img src="~@/assets/icons/facebook.svg" alt="facebook" />
-            </a>
-          </li>
-          <li class="social-item">
-            <a class="social-link" href="#"
-              ><img src="~@/assets/icons/google-play.svg" alt="google-play"
-            /></a>
-          </li>
-          <li class="social-item">
-            <a class="social-link" href="#">
-              <img src="~@/assets/icons/instagram.svg" alt="instagram" />
-            </a>
-          </li>
-          <li class="social-item">
-            <a class="social-link" href="#">
-              <img src="~@/assets/icons/telegram.svg" alt="telegram"
-            /></a>
-          </li>
-        </ul>
+        <div class="social-list-wrapper"><SocialLinks /></div>
         <div class="copyright">® 2021 TutSvoi</div>
       </div>
       <div class="products">
@@ -82,10 +61,13 @@
 <script>
 import NavLink from '@/components/NavLink'
 import ScrollTop from '@/components/ScrollTop'
+import SocialLinks from '@/components/SocialLinks'
+
 export default {
   components: {
     NavLink,
     ScrollTop,
+    SocialLinks,
   },
 }
 </script>
@@ -128,6 +110,16 @@ export default {
   justify-content: space-between;
   padding: 200px 10% 75px;
 }
+.footer-logo {
+  position: relative;
+}
+.footer-logo::after {
+  content: '®';
+  position: absolute;
+}
+.social-list-wrapper {
+  margin: 80px 0 100px;
+}
 .info {
   width: 33%;
 }
@@ -142,37 +134,75 @@ export default {
   line-height: 30px;
   margin-bottom: 20px;
 }
+.menu-list {
+  padding-left: 10px;
+}
 .menu-item {
   margin-bottom: 10px;
   line-height: 30px;
 }
-.social-list {
-  display: flex;
-  align-items: center;
-  margin: 80px 0 100px;
-}
-.social-item {
-  margin-right: 16px;
-}
-.social-link {
-  background: #fff;
-  box-shadow: 0.1px 1px 1px rgba(17, 19, 35, 0.01);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s linear;
-}
-.social-link:hover {
-  box-shadow: 0.1px 13px 18px rgba(17, 19, 35, 0.08);
-}
-.social-link img {
-  width: 24px;
-  height: 24px;
-}
+
 .copyright {
   color: #afb5c0;
+}
+@media (max-width: 1200px) {
+  .subscribe {
+    flex-wrap: wrap;
+    justify-content: center;
+    top: -180px;
+  }
+  .text {
+    margin-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .footer-bottom {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 40px;
+  }
+}
+@media (max-width: 992px) {
+  .footer-bottom {
+    flex-wrap: wrap;
+  }
+  .info {
+    order: 1;
+    margin-top: 30px;
+    width: 100%;
+  }
+  .social-list-wrapper {
+    margin: 25px 0 35px;
+  }
+}
+@media (max-width: 768px) {
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 314px;
+    background: linear-gradient(
+      180deg,
+      rgba(236, 240, 253, 0) 0%,
+      rgba(236, 240, 253, 0.53) 14.32%,
+      #ecf0fd 45.83%,
+      rgba(236, 240, 253, 0.43) 84.33%,
+      rgba(236, 240, 253, 0) 100%
+    );
+  }
+  .subscribe {
+    background: none;
+    top: -60px;
+    padding: 20px 15px;
+  }
+  .menu-list {
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+  .text .title {
+    white-space: normal;
+  }
 }
 </style>

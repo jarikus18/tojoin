@@ -16,9 +16,9 @@ export default {
         effect: 'fade',
         autoHeight: true,
         spaceBetween: 20,
-        autoplay: {
-          delay: 5000,
-        },
+        // autoplay: {
+        //   delay: 5000,
+        // },
         navigation: {
           nextEl: '.slider-button-next',
           prevEl: '.slider-button-prev',

@@ -18,6 +18,19 @@ export default {
         slidesPerGroup: 3,
         centeredSlides: true,
         loop: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            centeredSlides: false,
+          },
+          768: {
+            slidesPerView: 2,
+            centeredSlides: false,
+          },
+          1200: {
+            slidesPerView: 3,
+          },
+        },
         pagination: {
           el: '.swiper-pagination',
         },
@@ -35,7 +48,7 @@ export default {
     },
   },
   mounted() {
-    this.swiper.slideTo(3, 1000, false)
+    // this.swiper.destroy(true, true)
   },
 }
 </script>

@@ -10,9 +10,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'tojoin',
-    htmlAttrs: {
-      lang: 'ru',
-    },
+    // htmlAttrs: {
+    //   lang: 'ru',
+    // },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -35,7 +35,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/click-outside.js',
-    { src: '@/plugins/vue-awesome-swiper.js', mode: 'client' },
+    {
+      src: '@/plugins/vue-awesome-swiper.js',
+      mode: 'client',
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -78,4 +81,7 @@ export default {
     fallback: true,
     // routes: dynamicRoutes,
   },
+  // server: {
+  //   host: '192.168.0.101',
+  // },
 }

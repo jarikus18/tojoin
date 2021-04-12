@@ -36,21 +36,33 @@ export default {
   position: fixed;
   right: 15px;
   bottom: 15px;
-  display: block;
+  display: none;
   width: 51px;
   height: 51px;
-  background: red;
+  background: #fff;
   box-shadow: 0 13px 18px rgba(17, 19, 35, 0.08);
   border-radius: 50%;
   opacity: 0;
   visibility: hidden;
-  background-size: 70%;
   transition: all 0.15s ease-in-out;
-  mask: url('~@/assets/icons/arrow-right.svg') no-repeat center;
-  transform: rotate(90deg);
+  z-index: 10;
   &.active {
-    opacity: 0.6;
+    opacity: 1;
     visibility: visible;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('~@/assets/icons/arrow-top.svg') no-repeat center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 992px) {
+    display: block;
   }
 }
 </style>

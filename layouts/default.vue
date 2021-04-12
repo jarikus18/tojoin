@@ -5,6 +5,15 @@
     <Footer />
   </div>
 </template>
+
+<script>
+export default {
+  head() {
+    return this.$nuxtI18nHead({ addSeoAttributes: true })
+  },
+}
+</script>
+
 <style scoped>
 .main {
   min-height: 100vh;
