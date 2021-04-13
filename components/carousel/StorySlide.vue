@@ -13,7 +13,6 @@
       </div>
       <div class="slide-body">
         <h5 class="h5 slide-title text-center">{{ item.title }}</h5>
-        <code>{{ index }}</code>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div class="story-text" v-html="item.content"></div>
       </div>

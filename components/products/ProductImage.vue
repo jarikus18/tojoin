@@ -42,5 +42,7 @@ export default {
   position: relative;
   border-radius: 20px;
   margin-bottom: -2px;
+  max-width: 100%;
+  object-fit: cover;
 }
 </style>

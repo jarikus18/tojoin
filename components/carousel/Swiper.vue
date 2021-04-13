@@ -63,14 +63,10 @@ export default {
   },
   methods: {
     onResize: throttle(function () {
-      if (window.innerWidth <= 768 && !this.swiper.destroyed) {
-        console.log('destroyed', window.innerWidth)
-        // this.swiper.destroy()
+      if (window.innerWidth <= 768) {
+        this.swiper.slideTo(0, 0, false)
       }
-      if (window.innerWidth > 768 && this.swiper.destroyed) {
-        // this.swiper.init()
-      }
-    }, 2000),
+    }, 500),
   },
 }
 </script>
@@ -123,6 +119,7 @@ export default {
 @media (max-width: 768px) {
   .tasks-swiper.swiper-container {
     padding-bottom: 0;
+    pointer-events: none;
   }
   .swiper-pagination,
   .swiper-button-prev,
