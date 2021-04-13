@@ -1,5 +1,5 @@
 <template>
-  <swiper ref="mySwiper" :options="swiperOptions">
+  <swiper ref="mySwiper" class="tasks-swiper" :options="swiperOptions">
     <slot></slot>
     <div slot="pagination" class="swiper-pagination"></div>
     <div slot="button-prev" class="swiper-button-prev"></div>
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 export default {
   name: 'Slider',
   data() {
@@ -18,17 +20,23 @@ export default {
         slidesPerGroup: 3,
         centeredSlides: true,
         loop: true,
+        simulateTouch: true,
         breakpoints: {
           0: {
             slidesPerView: 1,
+            slidesPerGroup: 1,
             centeredSlides: false,
+            loop: false,
+            simulateTouch: false,
           },
-          768: {
+          992: {
             slidesPerView: 2,
             centeredSlides: false,
+            simulateTouch: true,
           },
           1200: {
             slidesPerView: 3,
+            slidesPerGroup: 3,
           },
         },
         pagination: {
@@ -48,7 +56,21 @@ export default {
     },
   },
   mounted() {
-    // this.swiper.destroy(true, true)
+    this.$nextTick(function () {
+      this.onResize()
+    })
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
+  methods: {
+    onResize: throttle(function () {
+      if (window.innerWidth <= 768 && !this.swiper.destroyed) {
+        console.log('destroyed', window.innerWidth)
+        // this.swiper.destroy()
+      }
+      if (window.innerWidth > 768 && this.swiper.destroyed) {
+        // this.swiper.init()
+      }
+    }, 2000),
   },
 }
 </script>
@@ -97,5 +119,18 @@ export default {
 }
 .swiper-button-next::after {
   transform: rotate(180deg);
+}
+@media (max-width: 768px) {
+  .tasks-swiper.swiper-container {
+    padding-bottom: 0;
+  }
+  .swiper-pagination,
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  .tasks-swiper .swiper-wrapper {
+    display: block;
+  }
 }
 </style>

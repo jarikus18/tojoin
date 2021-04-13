@@ -17,10 +17,12 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: #fafbfe;
   color: #1b1732;
+  width: 100%;
 }
 
 .body_overflow {
   overflow: hidden;
+  position: fixed;
 }
 
 p {
@@ -117,4 +119,13 @@ li {
 }
 .m-0 {
   margin: 0;
+}
+
+@media (max-width: 769px) {
+  .h1 {
+    font-size: 44px;
+  }
+  .h3 {
+    font-size: 38px;
+  }
 }

@@ -459,6 +459,7 @@ export default {
 .first-screen {
   position: relative;
   min-height: 1000px;
+  overflow: hidden;
 }
 .first-screen::after {
   position: absolute;
@@ -478,11 +479,13 @@ export default {
 .text-block {
   position: relative;
   padding-top: 320px;
-  padding-left: 220px;
-  max-width: 60vw;
+  max-width: 1600px;
+  width: 100%;
+  padding-left: 40px;
+  margin: auto;
 }
 .subtitle {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 55px;
 }
 .resources {
@@ -747,12 +750,56 @@ export default {
   z-index: 1;
   display: inline-block;
 }
+@media (max-width: 1800px) {
+  .resources {
+    right: -10%;
+  }
+}
+@media (max-width: 1500px) {
+  .resources {
+    right: -20%;
+  }
+  .girl {
+    top: 120px;
+  }
+  .gift {
+    display: none;
+  }
+  .text-block {
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: 0;
+    padding-top: 200px;
+  }
+}
+@media (max-width: 1200px) {
+  .resources {
+    right: -30%;
+  }
+}
 @media (max-width: 992px) {
+  .first-screen {
+    overflow: initial;
+    min-height: auto;
+  }
+  .first-screen::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    content: '';
+    bottom: -150px;
+    left: 0;
+    min-height: 700px;
+    width: 100%;
+    background: url('~/assets/images/illustration.svg') center no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+  }
   .resources {
     display: none;
   }
   .text-block {
-    padding-top: 100px;
+    padding-top: 150px;
     padding-left: 15px;
     max-width: none;
   }
@@ -762,14 +809,34 @@ export default {
   .mobile-block {
     display: block;
     margin-top: 50px;
-    background: url('~/assets/images/illustration.svg') center no-repeat;
-    background-size: contain;
-    height: 461px;
+    height: 420px;
     display: flex;
     align-items: flex-end;
+    position: relative;
+    z-index: 1;
   }
   .social-list-wrapper {
     padding: 0 0 100px 15px;
+  }
+}
+@media (max-width: 1200px) {
+  .text-block .h1 {
+    line-height: 52px;
+  }
+  .text-block .subtitle {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+@media (max-width: 768px) {
+  .first-screen::before {
+    bottom: -250px;
+    background-position: center right;
+  }
+}
+@media (max-width: 414px) {
+  .first-screen::before {
+    bottom: -150px;
   }
 }
 </style>
