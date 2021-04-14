@@ -16,11 +16,9 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 3,
-        spaceBetween: 0,
+        spaceBetween: 40,
         slidesPerGroup: 3,
-        centeredSlides: true,
         loop: true,
-        simulateTouch: true,
         breakpoints: {
           0: {
             slidesPerView: 1,
@@ -31,6 +29,7 @@ export default {
           },
           992: {
             slidesPerView: 2,
+            slidesPerGroup: 2,
             centeredSlides: false,
             simulateTouch: true,
           },
@@ -116,6 +115,7 @@ export default {
 .swiper-button-next::after {
   transform: rotate(180deg);
 }
+
 @media (max-width: 768px) {
   .tasks-swiper.swiper-container {
     padding-bottom: 0;

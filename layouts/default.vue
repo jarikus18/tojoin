@@ -18,5 +18,6 @@ export default {
 .main {
   min-height: 100vh;
   padding-top: 200px;
+  overflow: hidden;
 }
 </style>

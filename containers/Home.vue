@@ -461,7 +461,6 @@ export default {
 .first-screen {
   position: relative;
   min-height: 1000px;
-  overflow: hidden;
 }
 .first-screen::after {
   position: absolute;
@@ -494,7 +493,6 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
-  /* transform: scale(0.9); */
 }
 .mobile-block {
   display: none;
@@ -777,6 +775,13 @@ export default {
   .resources {
     right: -30%;
   }
+  .text-block .h1 {
+    line-height: 52px;
+  }
+  .text-block .subtitle {
+    font-size: 18px;
+    line-height: 25px;
+  }
 }
 @media (max-width: 992px) {
   .first-screen {
@@ -819,22 +824,12 @@ export default {
   .social-list-wrapper {
     padding: 0 0 100px 15px;
   }
-}
-@media (max-width: 1200px) {
-  .text-block .h1 {
-    line-height: 52px;
-  }
-  .text-block .subtitle {
-    font-size: 18px;
-    line-height: 25px;
-  }
-}
-@media (max-width: 992px) {
   .product-title {
     font-size: 38px;
     line-height: 40px;
   }
 }
+
 @media (max-width: 768px) {
   .first-screen::before {
     bottom: -250px;
@@ -853,6 +848,9 @@ export default {
     position: absolute;
     top: 0;
     left: 15px;
+  }
+  .stories {
+    display: none;
   }
 }
 @media (max-width: 567px) {
