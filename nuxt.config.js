@@ -7,9 +7,6 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'tojoin',
-    // htmlAttrs: {
-    //   lang: 'ru',
-    // },
     meta: [
       {
         charset: 'utf-8',

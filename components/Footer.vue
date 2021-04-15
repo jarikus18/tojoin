@@ -20,39 +20,27 @@
         <div class="social-list-wrapper"><SocialLinks /></div>
         <div class="copyright">® 2021 TutSvoi</div>
       </div>
-      <div class="products">
-        <div class="menu-title color-text">Продукты</div>
-        <ul class="menu-list">
-          <li class="menu-item">Бонусная программа</li>
-          <li class="menu-item">Подарки и скидки</li>
-          <li class="menu-item">Qr-коды</li>
-          <li class="menu-item">Свои правила</li>
-          <li class="menu-item">Реферальная система</li>
-          <li class="menu-item">Отзывы и показатель лояльности</li>
-          <li class="menu-item">CRM и аналитика бизнеса</li>
-          <li class="menu-item">Геймификация</li>
-        </ul>
-      </div>
-      <div class="resources">
-        <div class="menu-title color-text">Ресурсы</div>
-        <ul class="menu-list">
-          <li class="menu-item">Учебник</li>
-          <li class="menu-item">Примеры использования</li>
-          <li class="menu-item">Описание API</li>
-          <li class="menu-item">Помощь</li>
-        </ul>
-      </div>
-      <div class="company">
-        <div class="menu-title color-text">Компания</div>
-        <ul class="menu-list">
-          <li class="menu-item">О нас</li>
-          <li class="menu-item">Вакансии</li>
-          <li class="menu-item">Связаться</li>
-          <li class="menu-item">Политика конфиденциальности</li>
-          <li class="menu-item">Условия использования</li>
-          <li class="menu-item">Партнерская программа</li>
-        </ul>
-      </div>
+      <template v-for="(item, index) in menu.menu_list">
+        <div v-if="item.has_submenu" :key="index" class="footer-menu">
+          <div class="menu-title color-text">
+            {{ $prismic.asText(item.menu_item_name) }}
+          </div>
+          <ul class="menu-list">
+            <li
+              v-for="(el, ind) in menu[item.submenu_linked]"
+              :key="ind"
+              class="menu-item"
+            >
+              <NavLink
+                classname="footer-text-regular"
+                :href="`/${item.submenu_linked}/${$prismic.asText(el.link)}`"
+              >
+                {{ $prismic.asText(el.title) }}
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </template>
     </div>
     <ScrollTop />
   </footer>
@@ -62,6 +50,7 @@
 import NavLink from '@/components/NavLink'
 import ScrollTop from '@/components/ScrollTop'
 import SocialLinks from '@/components/SocialLinks'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -69,6 +58,7 @@ export default {
     ScrollTop,
     SocialLinks,
   },
+  computed: mapState(['menu']),
 }
 </script>
 
@@ -133,6 +123,7 @@ export default {
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 20px;
+  padding-left: 10px;
 }
 .menu-list {
   padding-left: 10px;
@@ -140,6 +131,10 @@ export default {
 .menu-item {
   margin-bottom: 10px;
   line-height: 30px;
+}
+
+.menu-item >>> a {
+  color: #4f5665;
 }
 
 .copyright {

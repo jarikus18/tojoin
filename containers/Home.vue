@@ -13,25 +13,29 @@
         <div class="positive-review" />
         <div class="chart-vector">
           <div class="top">
-            <span class="small-text">Прирост клиентов</span>
-            <span class="small-text green">+ 73%</span>
+            <span class="small-text">{{ data.chart_text }}</span>
+            <span class="small-text green">{{ data.chart_percent }}</span>
           </div>
           <div class="bottom">
             <img
               src="~@/assets/images/first-screen/chart_vector.svg"
               alt="chart"
             />
-            <span class="blue">20245</span>
+            <span class="blue">{{ data.chart_numbers }}</span>
           </div>
         </div>
       </div>
       <div class="text-block">
         <h1 class="h1 m-0">{{ $prismic.asText(data.home_title) }}</h1>
         <p class="caption-1 color-subtitle subtitle">
-          TutSvoi - приложение для автоматизации бизнеса
+          {{ data.home_subtitle }}
         </p>
-        <NavLink href="/" classname="btn-orange-gradient">
-          Попробовать бесплатно
+        <NavLink
+          :href="data.button_link.url"
+          :type="data.button_link.link_type"
+          classname="btn-orange-gradient"
+        >
+          {{ data.button_name }}
         </NavLink>
       </div>
       <div class="mobile-block">
@@ -41,92 +45,17 @@
       </div>
     </section>
     <section class="tasks">
-      <h3 class="h3 text-center">Задачи которые мы решаем</h3>
+      <h3 class="h3 text-center">{{ data.task_title }}</h3>
       <client-only>
         <div class="carousel-wrap">
           <Slider>
-            <Slide>
+            <Slide v-for="(slide, index) in data.task_carousel" :key="index">
               <div class="img-wrap text-center">
                 <img src="~@/assets/images/tasks/comment.svg" alt="" />
               </div>
-              <h5 class="h5 slide-title">Сбор обратной связи</h5>
+              <h5 class="h5 slide-title">{{ slide.title }}</h5>
               <p class="text">
-                Узнайте, что людям нравится в вашем бизнесе, а что напротив,
-                отталкивает. Определите свои конкурентные преимущества и
-                используйте их в рекламных активностях.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/research.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Поиск слабых мест бизнеса</h5>
-              <p class="text">
-                Почему люди не приходят к вам повторно? Какая смена приносит
-                меньшую прибыль? Почему конкурент зарабатывает больше?
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/clock.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">
-                Ускорение тестирования новых продуктов
-              </h5>
-              <p class="text">
-                Уведомите клиента о поступлении нового товара и предложите его
-                опробовать на взаимовыгодных условиях.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/hand.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Создание адвокатов бренда</h5>
-              <p class="text">
-                Соберите группу людей, которые смогут не только рекомендовать
-                ваш бизнес, но и бороться с негативом в его сторону.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/community.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Коммуникация с клиентом</h5>
-              <p class="text">
-                Ведите переписку, отвечайте на вопросы, получайте заказы,
-                напоминайте о себе, уведомляйте о специальных предложениях.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/comment.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Сбор обратной связи</h5>
-              <p class="text">
-                Узнайте, что людям нравится в вашем бизнесе, а что напротив,
-                отталкивает. Определите свои конкурентные преимущества и
-                используйте их в рекламных активностях.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/cycle.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Продление жизненного цикла клиента</h5>
-              <p class="text">
-                Удержите клиента и сделайте его постоянным. Дешевле сохранить
-                существующего покупателя, чем привести нового.
-              </p>
-            </Slide>
-            <Slide>
-              <div class="img-wrap text-center">
-                <img src="~@/assets/images/tasks/speakers.svg" alt="" />
-              </div>
-              <h5 class="h5 slide-title">Стимулирование сарафанного радио</h5>
-              <p class="text">
-                Заставьте постоянного клиента привести своих друзей. Сделайте их
-                постоянными покупателями и повторите всё ещё раз.
+                {{ $prismic.asText(slide.content) }}
               </p>
             </Slide>
           </Slider>
@@ -134,10 +63,7 @@
       </client-only>
     </section>
     <section class="products">
-      <h3 class="h3 text-center">Наши продукты</h3>
-      <div class="products-sub-logo">
-        <img src="~@/assets/images/products/ut.svg" alt="ut" />
-      </div>
+      <h3 class="h3 text-center">{{ data.products_title }}</h3>
       <div class="products-container">
         <ul class="product-list">
           <li class="product-item review">
@@ -420,7 +346,7 @@
         </Carousel>
       </client-only>
       <div class="show-more">
-        <NavLink class="light-btn" href="/">Еще истории успеха</NavLink>
+        <NavLink classname="light-btn" href="/">Еще истории успеха</NavLink>
       </div>
     </section>
   </div>
@@ -672,14 +598,6 @@ export default {
   max-width: 1620px;
   margin: auto;
 }
-.products-sub-logo {
-  position: absolute;
-  right: 15%;
-  top: 0;
-  width: 236px;
-  height: 385px;
-  z-index: 1;
-}
 
 .product-item {
   display: flex;
@@ -842,9 +760,6 @@ export default {
   .first-screen::before {
     bottom: -250px;
     background-position: center right;
-  }
-  .products-sub-logo {
-    display: none;
   }
 }
 @media (max-width: 767px) {

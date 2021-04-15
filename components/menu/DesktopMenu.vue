@@ -1,65 +1,56 @@
 <template>
   <ul class="menu-list">
-    <li class="menu-list-item">
-      <NavLink classname="color-text small-text" href="/about">
-        О платформе
-      </NavLink>
-    </li>
-    <li
-      :class="[
-        'menu-list-item color-text small-text has-submenu',
-        productList && 'has-submenu--active',
-      ]"
-      @mouseover="productList = true"
-      @mouseleave="productList = false"
-    >
-      Продукты
-      <transition name="fade">
-        <ul v-if="productList" class="submenu-list two-column">
-          <li
-            class="submenu-item"
-            :style="{
-              backgroundImage: `url(${require('~/assets/icons/menu/bonus.svg')})`,
-            }"
+    <template v-for="(item, index) in menu.menu_list">
+      <template v-if="!item.has_submenu">
+        <li :key="index" class="menu-list-item">
+          <NavLink
+            classname="color-text small-text"
+            :href="`/${$prismic.asText(item.menu_item_link)}`"
           >
-            Бонусная программа
-          </li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-          <li class="submenu-item">Бонусная программа</li>
-        </ul>
-      </transition>
-    </li>
-    <li class="menu-list-item color-text small-text">
-      <NavLink classname="color-text small-text" href="/tariff">
-        Тарифы
-      </NavLink>
-    </li>
-    <li
-      :class="[
-        'menu-list-item color-text small-text has-submenu',
-        resoursesList && 'has-submenu--active',
-      ]"
-      @mouseover="resoursesList = true"
-      @mouseleave="resoursesList = false"
-    >
-      Ресурсы
+            {{ $prismic.asText(item.menu_item_name) }}
+          </NavLink>
+        </li>
+      </template>
 
-      <transition name="fade">
-        <ul v-if="resoursesList" class="submenu-list">
-          <li class="submenu-item">Описание API</li>
-          <li class="submenu-item">Примеры использования</li>
-          <li class="submenu-item">Учебник</li>
-          <li class="submenu-item">Помощь</li>
-          <li class="submenu-item">Блог</li>
-        </ul>
-      </transition>
-    </li>
+      <template v-else-if="item.has_submenu && item.display_on_header">
+        <li
+          :key="index"
+          :class="[
+            'menu-list-item color-text small-text has-submenu',
+            submenu[item.submenu_linked] && 'has-submenu--active',
+          ]"
+          @mouseover="submenu[item.submenu_linked] = true"
+          @mouseleave="submenu[item.submenu_linked] = false"
+        >
+          {{ $prismic.asText(item.menu_item_name) }}
+          <transition name="fade">
+            <ul
+              v-if="submenu[item.submenu_linked]"
+              :class="[
+                'submenu-list',
+                item.submenu_linked === 'products' && 'two-column',
+              ]"
+            >
+              <li
+                v-for="(el, ind) in menu[item.submenu_linked]"
+                :key="ind"
+                class="submenu-item"
+                :style="{
+                  backgroundImage: `url(${require('~/assets/icons/menu/bonus.svg')})`,
+                }"
+              >
+                <NavLink
+                  classname="color-text"
+                  :href="`/${item.submenu_linked}/${$prismic.asText(el.link)}`"
+                >
+                  {{ $prismic.asText(el.title) }}
+                </NavLink>
+              </li>
+            </ul>
+          </transition>
+        </li>
+      </template>
+    </template>
   </ul>
 </template>
 
@@ -70,10 +61,20 @@ export default {
   components: {
     NavLink,
   },
+  props: {
+    menu: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
   data() {
     return {
-      productList: false,
-      resoursesList: false,
+      submenu: {
+        products: false,
+        resource: false,
+      },
     }
   },
 }

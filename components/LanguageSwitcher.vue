@@ -4,28 +4,12 @@
     <img src="~@/assets/images/lang-switcher.svg" alt="" />
     <div :class="['modal', isDropdwonMenuVisible && 'open']">
       <ul class="text-center">
-        <li>
+        <li v-for="locale in availableLocales" :key="locale.code">
           <NuxtLink
             class="lang-item small-text color-text"
-            :to="switchLocalePath('en')"
+            :to="switchLocalePath(locale.code)"
           >
-            En
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            class="lang-item small-text color-text"
-            :to="switchLocalePath('ru')"
-          >
-            Ru
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            class="lang-item small-text color-text"
-            :to="switchLocalePath('uk')"
-          >
-            Uk
+            {{ locale.code }}
           </NuxtLink>
         </li>
       </ul>
@@ -42,7 +26,14 @@ export default {
       isDropdwonMenuVisible: false,
     }
   },
-  computed: mapState(['locale']),
+  computed: {
+    ...mapState(['locale']),
+    availableLocales() {
+      return this.$i18n.locales.filter(
+        (locale) => locale.code !== this.$i18n.locale
+      )
+    },
+  },
   methods: {
     toggleSwitcher() {
       this.isDropdwonMenuVisible = !this.isDropdwonMenuVisible
@@ -65,23 +56,25 @@ export default {
 }
 .modal {
   position: absolute;
-  top: 25px;
-  left: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  background: #eaf1fe;
+  top: 20px;
+  left: -9px;
+  padding: 10px 10px 5px;
+  background: linear-gradient(
+    1.95deg,
+    #fff 75.17%,
+    rgba(255, 255, 255, 0) 95.96%
+  );
+  border-radius: 0 0 15px 15px;
   opacity: 0;
 }
 .modal.open {
   opacity: 1;
 }
 .lang-item {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
   transition: all 0.3s linear;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  display: block;
 }
 .lang-item:hover {
   text-decoration: underline;

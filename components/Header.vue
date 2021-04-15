@@ -7,12 +7,11 @@
         </NavLink>
       </div>
       <div class="desktop-menu">
-        <code>{{ menu }}</code>
-        <DesktopMenu />
+        <DesktopMenu :menu="menu" />
       </div>
       <transition name="slide-fade">
         <div v-if="showMenu" class="mobile-menu">
-          <MobileMenu />
+          <MobileMenu :menu="menu" />
         </div>
       </transition>
     </div>

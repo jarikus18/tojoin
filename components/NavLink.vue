@@ -1,7 +1,23 @@
 <template>
-  <NuxtLink :to="localePath(href)" :class="['link-btn small-text', classname]">
-    <slot></slot>
-  </NuxtLink>
+  <div class="link-wrapper">
+    <template v-if="type === 'Web'">
+      <a
+        :href="href"
+        :class="['link-btn small-text', classname]"
+        target="_blank"
+      >
+        <slot></slot>
+      </a>
+    </template>
+    <template v-else>
+      <NuxtLink
+        :to="localePath(href)"
+        :class="['link-btn small-text', classname]"
+      >
+        <slot></slot>
+      </NuxtLink>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -14,6 +30,10 @@ export default {
     href: {
       type: String,
       default: '/',
+    },
+    type: {
+      type: String,
+      default: '',
     },
   },
 }
