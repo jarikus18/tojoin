@@ -16,9 +16,11 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 3,
-        spaceBetween: 40,
+        spaceBetween: 20,
         slidesPerGroup: 3,
         loop: true,
+        centeredSlides: true,
+        keyboardControl: true,
         breakpoints: {
           0: {
             slidesPerView: 1,
@@ -29,8 +31,7 @@ export default {
           },
           992: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
-            centeredSlides: false,
+            slidesPerGroup: 1,
             simulateTouch: true,
           },
           1200: {
@@ -72,7 +73,11 @@ export default {
 
 <style>
 .swiper-container {
-  padding-bottom: 150px;
+  padding-bottom: 200px;
+}
+
+.swiper-container .swiper-slide {
+  height: auto;
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets {

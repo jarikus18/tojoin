@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="text-block">
-        <h1 class="h1 m-0">{{ $t('title_home') }}</h1>
+        <h1 class="h1 m-0">{{ $prismic.asText(data.home_title) }}</h1>
         <p class="caption-1 color-subtitle subtitle">
           TutSvoi - приложение для автоматизации бизнеса
         </p>
@@ -446,6 +446,14 @@ export default {
     Carousel,
     SocialLinks,
   },
+  props: {
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
   data() {
     return {
       stories,
@@ -619,7 +627,7 @@ export default {
 .tasks {
   position: relative;
   max-width: 1620px;
-  margin: auto;
+  margin: 0 auto;
 }
 .img-wrap {
   height: 208px;

@@ -1,7 +1,7 @@
 const LOCALES = [
   {
     code: 'en',
-    iso: 'en',
+    iso: 'en-us',
     name: 'English',
     file: 'en.json',
   },
@@ -13,7 +13,7 @@ const LOCALES = [
   },
   {
     code: 'uk',
-    iso: 'uk',
+    iso: 'uk-ua',
     name: 'Українська',
     file: 'uk.json',
   },
