@@ -12,7 +12,6 @@ export default {
     const { data } = await $prismic.api.getSingle('home_page', {
       lang: i18n.localeProperties.iso,
     })
-    console.log('data', data)
     return {
       data,
     }

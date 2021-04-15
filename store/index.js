@@ -1,7 +1,7 @@
 export const state = () => ({
   locale: {},
   common: {},
-  openMenu: false,
+  menu: {},
   articles: {
     list: [],
     total: 0,
@@ -15,11 +15,14 @@ export const mutations = {
   SET_COMMON_DATA(state, obj) {
     state.common = obj
   },
-  SET_MENU_STATE(state, payload) {
-    state.openMenu = payload === 'close' ? false : !state.openMenu
-  },
   SET_ARTICLES(state, data) {
     state.articles = data
+  },
+  SET_MENU(state, menu) {
+    state.menu = menu
+  },
+  SET_ERROR(state, error) {
+    state.menu = error
   },
 }
 
@@ -30,8 +33,20 @@ export const actions = {
   nuxtServerInit({ commit }) {
     commit('SET_LOCALE', this.$i18n.localeProperties)
   },
-  toggleMenu({ commit, state }, params) {
-    commit('SET_MENU_STATE', params)
+  async fetchMenu({ commit }, $prismic) {
+    try {
+      const menu = (
+        await $prismic.api.getSingle('menu', {
+          lang: this.$i18n.localeProperties.iso,
+        })
+      ).data
+
+      commit('SET_MENU', menu)
+    } catch (e) {
+      const error = 'Please create a menu document'
+
+      commit('SET_ERROR', error)
+    }
   },
 }
 
@@ -48,11 +63,3 @@ export const getters = {
     return state.articles.list.find((p) => p.featured)
   },
 }
-
-// function localSearch(item, search) {
-//   return (
-//     item.title.toLowerCase().includes(search) ||
-//     item.short_description.toLowerCase().includes(search) ||
-//     item.content.toLowerCase().includes(search)
-//   )
-// }

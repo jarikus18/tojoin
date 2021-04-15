@@ -7,6 +7,7 @@
         </NavLink>
       </div>
       <div class="desktop-menu">
+        <code>{{ menu }}</code>
         <DesktopMenu />
       </div>
       <transition name="slide-fade">
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-// import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import NavLink from './NavLink'
 import LangSwitcher from './LanguageSwitcher'
 import DesktopMenu from './menu/DesktopMenu'
@@ -55,6 +56,7 @@ export default {
       },
     }
   },
+  computed: mapState(['menu']),
   watch: {
     $route() {
       this.showMenu = false

@@ -8,6 +8,9 @@
 
 <script>
 export default {
+  async middleware({ store, $prismic }) {
+    await store.dispatch('fetchMenu', $prismic)
+  },
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true })
   },
