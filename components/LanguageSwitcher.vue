@@ -1,7 +1,16 @@
 <template>
   <div v-click-outside class="lang" @click="toggleSwitcher">
-    <span class="small-text">{{ $i18n.locale }}</span>
-    <img src="~@/assets/images/lang-switcher.svg" alt="" />
+    <span class="small-text lang-indicator">{{ $i18n.locale }}</span>
+    <img
+      class="lang-indicator-desktop"
+      src="~@/assets/images/lang-switcher.svg"
+      alt=""
+    />
+    <img
+      class="lang-indicator-mobile"
+      src="~@/assets/icons/lang-switcher-orange.svg"
+      alt=""
+    />
     <div :class="['modal', isDropdwonMenuVisible && 'open']">
       <ul class="text-center">
         <li v-for="locale in availableLocales" :key="locale.code">
@@ -78,5 +87,17 @@ export default {
 }
 .lang-item:hover {
   text-decoration: underline;
+}
+.lang-indicator-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .lang-indicator,
+  .lang-indicator-desktop {
+    display: none;
+  }
+  .lang-indicator-mobile {
+    display: block;
+  }
 }
 </style>

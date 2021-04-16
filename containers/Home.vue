@@ -39,6 +39,8 @@
         </NavLink>
       </div>
       <div class="mobile-block">
+        <span class="circle" />
+        <span class="circle-big" />
         <div class="social-list-wrapper">
           <SocialLinks />
         </div>
@@ -50,11 +52,11 @@
         <div class="carousel-wrap">
           <Slider>
             <Slide v-for="(slide, index) in data.task_carousel" :key="index">
-              <div class="img-wrap text-center">
+              <div class="img-wrap text-center slide-image">
                 <img src="~@/assets/images/tasks/comment.svg" alt="" />
               </div>
               <h5 class="h5 slide-title">{{ slide.title }}</h5>
-              <p class="text">
+              <p class="text slide-text">
                 {{ $prismic.asText(slide.content) }}
               </p>
             </Slide>
@@ -428,7 +430,9 @@ export default {
   right: 0;
   top: 0;
 }
-.mobile-block {
+.mobile-block,
+.mobile-block .circle,
+.mobile-block .circle-big {
   display: none;
 }
 .bg-line {
@@ -560,6 +564,8 @@ export default {
 }
 .img-wrap img {
   max-height: 208px;
+  max-width: 100%;
+  object-fit: cover;
 }
 .slide-title {
   line-height: 46px;
@@ -747,6 +753,28 @@ export default {
     position: relative;
     z-index: 1;
   }
+  .mobile-block .circle {
+    display: block;
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(224.72deg, #528ef9 -1%, #eef4fe 100.5%);
+    opacity: 0.5;
+    border-radius: 50%;
+    position: absolute;
+    top: -90px;
+    right: -23px;
+  }
+  .mobile-block .circle-big {
+    display: block;
+    width: 91px;
+    height: 91px;
+    background: linear-gradient(119.86deg, #5291ff -34.21%, #edf4fe 112.91%);
+    border-radius: 50%;
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    z-index: -1;
+  }
   .social-list-wrapper {
     padding: 0 0 100px 15px;
   }
@@ -760,6 +788,35 @@ export default {
   .first-screen::before {
     bottom: -250px;
     background-position: center right;
+  }
+  .slide-title {
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: bold;
+  }
+  .slide-text {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .slide-image {
+    max-width: 110px;
+    margin: 0 auto;
+  }
+  .img-wrap {
+    height: 100px;
+  }
+  .tasks .h3 {
+    text-align: left;
+    padding-left: 15px;
+    line-height: 46px;
+  }
+  .products .h3 {
+    margin-bottom: 50px;
+    text-align: left;
+    padding-left: 15px;
+  }
+  .company-logos {
+    margin: 0 15px 100px;
   }
 }
 @media (max-width: 767px) {

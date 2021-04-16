@@ -129,12 +129,15 @@ export default {
   padding-left: 10px;
 }
 .menu-item {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   line-height: 30px;
 }
 
 .menu-item >>> a {
   color: #4f5665;
+  white-space: normal;
+  line-height: 20px;
+  display: block;
 }
 
 .copyright {
@@ -191,6 +194,9 @@ export default {
     background: none;
     top: -60px;
     padding: 20px 15px;
+  }
+  .menu-title {
+    padding-left: 0;
   }
   .menu-list {
     padding-left: 0;

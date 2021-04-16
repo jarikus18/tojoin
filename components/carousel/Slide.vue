@@ -43,7 +43,16 @@ export default {
   .wrapper {
     display: flex;
     justify-content: center;
-    margin: 20px auto 0;
+    margin: 20px auto 10px;
+    max-width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    margin-bottom: 50px;
+  }
+  .slide {
+    min-height: 360px;
   }
 }
 </style>

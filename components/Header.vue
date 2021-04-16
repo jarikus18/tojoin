@@ -163,7 +163,7 @@ export default {
   width: 26px;
   height: 26px;
   display: none;
-  margin-left: 30px;
+  margin-left: 20px;
   span {
     border-radius: 6px;
     width: 26px;
