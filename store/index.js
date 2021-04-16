@@ -2,6 +2,7 @@ export const state = () => ({
   locale: {},
   common: {},
   menu: {},
+  settings: {},
   articles: {
     list: [],
     total: 0,
@@ -21,8 +22,14 @@ export const mutations = {
   SET_MENU(state, menu) {
     state.menu = menu
   },
-  SET_ERROR(state, error) {
+  SET_MENU_ERROR(state, error) {
     state.menu = error
+  },
+  SET_GENERAL_SETTINGS(state, settings) {
+    state.settings = settings
+  },
+  SET_GENERAL_SETTINGS_ERROR(state, error) {
+    state.settings = error
   },
 }
 
@@ -45,7 +52,22 @@ export const actions = {
     } catch (e) {
       const error = 'Please create a menu document'
 
-      commit('SET_ERROR', error)
+      commit('SET_MENU_ERROR', error)
+    }
+  },
+  async fetchGeneralSettings({ commit }, $prismic) {
+    try {
+      const settings = (
+        await $prismic.api.getSingle('general_settings', {
+          lang: this.$i18n.localeProperties.iso,
+        })
+      ).data
+
+      commit('SET_GENERAL_SETTINGS', settings)
+    } catch (e) {
+      const error = 'Please create a general settings'
+
+      commit('SET_GENERAL_SETTINGS_ERROR', error)
     }
   },
 }

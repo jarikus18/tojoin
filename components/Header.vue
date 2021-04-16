@@ -55,7 +55,7 @@ export default {
       },
     }
   },
-  computed: mapState(['menu']),
+  computed: mapState(['menu', 'settings']),
   watch: {
     $route() {
       this.showMenu = false

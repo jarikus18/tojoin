@@ -53,7 +53,11 @@
           <Slider>
             <Slide v-for="(slide, index) in data.task_carousel" :key="index">
               <div class="img-wrap text-center slide-image">
-                <img src="~@/assets/images/tasks/comment.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="~@/assets/images/tasks/comment.svg"
+                  alt=""
+                />
               </div>
               <h5 class="h5 slide-title">{{ slide.title }}</h5>
               <p class="text slide-text">
@@ -814,6 +818,9 @@ export default {
     margin-bottom: 50px;
     text-align: left;
     padding-left: 15px;
+  }
+  .products-container {
+    background: none;
   }
   .company-logos {
     margin: 0 15px 100px;

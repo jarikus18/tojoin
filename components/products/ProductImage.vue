@@ -6,7 +6,7 @@
         backgroundImage: `url(${image})`,
       }"
     />
-    <img class="image" :src="image" alt="" />
+    <img class="image" loading="lazy" :src="image" alt="" />
   </div>
 </template>
 <script>
@@ -44,5 +44,13 @@ export default {
   margin-bottom: -2px;
   max-width: 100%;
   object-fit: cover;
+}
+@media (max-width: 768px) {
+  .image-wrap {
+    box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.35);
+  }
+  .blur {
+    display: none;
+  }
 }
 </style>

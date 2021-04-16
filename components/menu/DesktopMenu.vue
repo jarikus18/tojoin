@@ -96,15 +96,14 @@ export default {
 .submenu-list {
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: linear-gradient(
     1.42deg,
     #fff 80.53%,
     rgba(255, 255, 255, 0) 95.31%
   );
   border-radius: 0 0 20px 20px;
-  padding: 35px 25px 0;
+  padding: 35px 25px 20px;
   width: 384px;
   padding-top: 40px;
 }
@@ -125,22 +124,27 @@ export default {
   background-color: #f09231;
 }
 .submenu-list.two-column {
-  width: 760px;
+  width: 670px;
   display: flex;
   flex-wrap: wrap;
 }
 .submenu-item {
-  font-size: 24px;
-  line-height: 30px;
   font-family: 'Rubik', sans-serif;
-  margin-bottom: 17px;
-  width: 50%;
+  margin-bottom: 20px;
   padding-left: 55px;
   background-size: contain;
   background-repeat: no-repeat;
-  min-height: 46px;
+  height: 46px;
   display: flex;
   align-items: center;
+}
+.two-column .submenu-item {
+  width: 50%;
+}
+.submenu-item >>> a {
+  white-space: normal;
+  font-size: 22px;
+  line-height: 30px;
 }
 .fade-enter-active,
 .fade-leave-active {
