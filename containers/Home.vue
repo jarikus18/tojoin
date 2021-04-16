@@ -54,7 +54,7 @@
             <Slide v-for="(slide, index) in data.task_carousel" :key="index">
               <div class="img-wrap text-center slide-image">
                 <img
-                  loading="lazy"
+                  v-lazy-load
                   src="~@/assets/images/tasks/comment.svg"
                   alt=""
                 />
@@ -252,19 +252,23 @@
     </section>
     <div class="container company-logos">
       <div class="company-logo">
-        <img src="~@/assets/images/companies/compact.png" alt="" />
+        <img v-lazy-load src="~@/assets/images/companies/compact.png" alt="" />
       </div>
       <div class="company-logo">
-        <img src="~@/assets/images/companies/company.png" alt="" />
+        <img v-lazy-load src="~@/assets/images/companies/company.png" alt="" />
       </div>
       <div class="company-logo">
-        <img src="~@/assets/images/companies/iocc.png" alt="" />
+        <img v-lazy-load src="~@/assets/images/companies/iocc.png" alt="" />
       </div>
       <div class="company-logo">
-        <img src="~@/assets/images/companies/tv-digital.png" alt="" />
+        <img
+          v-lazy-load
+          src="~@/assets/images/companies/tv-digital.png"
+          alt=""
+        />
       </div>
       <div class="company-logo">
-        <img src="~@/assets/images/companies/changes.png" alt="" />
+        <img v-lazy-load src="~@/assets/images/companies/changes.png" alt="" />
       </div>
     </div>
     <section class="stories">

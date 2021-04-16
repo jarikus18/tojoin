@@ -59,6 +59,7 @@ export default {
   modules: [
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n',
+    'nuxt-lazy-load',
     'vue-scrollto/nuxt',
     [
       '@nuxtjs/prismic',
