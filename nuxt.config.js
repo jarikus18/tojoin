@@ -34,7 +34,9 @@ export default {
       {
         href:
           'https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Rubik:wght@400;500&display=swap',
-        rel: 'stylesheet',
+        rel: 'preload',
+        as: 'style',
+        onload: 'this.rel="stylesheet"',
       },
     ],
   },
