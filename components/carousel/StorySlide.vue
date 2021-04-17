@@ -4,7 +4,7 @@
       <div class="left-side">
         <div class="dots-left" />
         <img
-          v-for="(img, ind) in item.image_left"
+          v-for="(img, ind) in imageLeft"
           :key="`story-image-left-${ind + 1}`"
           :class="['story-image-left', `story-image-left-${ind + 1}`]"
           :src="require(`~/assets/${img}`)"
@@ -14,12 +14,12 @@
       <div class="slide-body">
         <h5 class="h5 slide-title text-center">{{ item.title }}</h5>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div class="story-text" v-html="item.content"></div>
+        <div class="story-text" v-html="$prismic.asHtml(item.content)"></div>
       </div>
       <div class="right-side">
         <div class="dots-right" />
         <img
-          v-for="(img, ind) in item.image_right"
+          v-for="(img, ind) in imageRight"
           :key="`story-image-right-${ind + 1}`"
           :class="['story-image-right', `story-image-right-${ind + 1}`]"
           :src="require(`~/assets/${img}`)"
@@ -43,6 +43,20 @@ export default {
       type: Number,
       default: 0,
     },
+  },
+  data() {
+    return {
+      imageLeft: [
+        'images/stories/story-left-1.png',
+        'images/stories/story-left-2.png',
+        'images/stories/story-left-3.png',
+      ],
+      imageRight: [
+        'images/stories/story-right-1.png',
+        'images/stories/story-right-2.png',
+        'images/stories/story-right-3.png',
+      ],
+    }
   },
 }
 </script>

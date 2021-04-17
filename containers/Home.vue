@@ -53,11 +53,7 @@
           <Slider>
             <Slide v-for="(slide, index) in data.task_carousel" :key="index">
               <div class="img-wrap text-center slide-image">
-                <img
-                  v-lazy-load
-                  src="~@/assets/images/tasks/comment.svg"
-                  alt=""
-                />
+                <img data-not-lazy :src="slide.image.url" alt="" />
               </div>
               <h5 class="h5 slide-title">{{ slide.title }}</h5>
               <p class="text slide-text">
@@ -72,178 +68,30 @@
       <h3 class="h3 text-center">{{ data.products_title }}</h3>
       <div class="products-container">
         <ul class="product-list">
-          <li class="product-item review">
+          <li
+            v-for="(product, index) in data.products_list"
+            :key="index"
+            :class="[
+              'product-item',
+              product.css_selector,
+              index % 2 === 1 && 'content-right',
+            ]"
+          >
             <div class="product-image">
               <span class="big-circle" />
               <span class="small-circle" />
               <span class="dots" />
-              <ProductImage
-                :image="require('~/assets/images/products/happy-couple.jpg')"
-              />
+              <ProductImage :image="product.image.url" />
             </div>
             <div class="description">
-              <h4 class="h4 product-title">Отзывы и показатель лояльности</h4>
+              <h4 class="h4 product-title">{{ product.title }}</h4>
               <div class="product-content">
-                Насколько клиенты удовлетворены обслуживанием? Получите оценку
-                от 1 до 10 и прочтите развёрнутый комментарий.
+                {{ $prismic.asText(product.description) }}
               </div>
               <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-          </li>
-          <li class="product-item content-right bonus">
-            <div class="description">
-              <h4 class="h4 product-title">Кэшбэк и бонусы</h4>
-              <div class="product-content">
-                Начисление бонусных баллов при совершении покупки. Участники
-                программы лояльности смогут использовать баллы на частичную
-                оплату повторных покупок.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="small-circle" />
-              <span class="dots horisontal" />
-              <ProductImage
-                :image="require('~/assets/images/products/portrait-happy.jpg')"
-              />
-            </div>
-          </li>
-          <li class="product-item gifts">
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots" />
-              <ProductImage
-                :image="require('~/assets/images/products/celebration.jpg')"
-              />
-            </div>
-            <div class="description">
-              <h4 class="h4 product-title">Подарки и скидки</h4>
-              <div class="product-content">
-                Создавайте QR-коды и назначайте на них любые действия, либо
-                дарите клиентам подарки через панель администратора.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-          </li>
-          <li class="product-item content-right referal">
-            <div class="description">
-              <h4 class="h4 product-title">Реферальная система</h4>
-              <div class="product-content">
-                Ваши клиенты могут приглашать друзей в систему лояльности, тем
-                самым приводя к вам новых клиентов.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots horisontal" />
-              <ProductImage
-                :image="require('~/assets/images/products/girls-star.jpg')"
-              />
-            </div>
-          </li>
-          <li class="product-item analitics">
-            <div class="product-image">
-              <span class="small-circle" />
-              <span class="dots" />
-              <ProductImage
-                :image="require('~/assets/images/products/analitics.jpg')"
-              />
-            </div>
-            <div class="description">
-              <h4 class="h4 product-title">Аналитика</h4>
-              <div class="product-content">
-                Все показатели бизнеса собраны в одном месте. Анализ и
-                оптимизация ещё никогда не были настолько удобными.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-          </li>
-          <li class="product-item content-right game">
-            <div class="description">
-              <h4 class="h4 product-title">Геймификация</h4>
-              <div class="product-content">
-                Превратите шопинг в игру. Создайте сценарий покупок и дарите
-                вознаграждение тем, кто ему следует.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots" />
-              <ProductImage
-                :image="require('~/assets/images/products/excited-happy.jpg')"
-              />
-            </div>
-          </li>
-          <li class="product-item crm">
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots horisontal" />
-              <ProductImage
-                :image="require('~/assets/images/products/business.jpg')"
-              />
-            </div>
-            <div class="description">
-              <h4 class="h4 product-title">CRM-система</h4>
-              <div class="product-content">
-                Ведите учёт клиентов, собирайте данные и обрабатывайте заявки.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-          </li>
-          <li class="product-item content-right rules">
-            <div class="description">
-              <h4 class="h4 product-title">Свои правила</h4>
-              <div class="product-content">
-                Автоматизируй бизнесс процессы. Создавай свои правила для
-                поздравле- ний клиентов, напоминаний, свои условия для бонусной
-                программы, собирай информацию с пользователей и использовать её
-                в работе (дарить купон на любимую еду).
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
-              </div>
-            </div>
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots horisontal" />
-              <ProductImage
-                :image="require('~/assets/images/products/notebook.jpg')"
-              />
-            </div>
-          </li>
-          <li class="product-item qr-code">
-            <div class="product-image">
-              <span class="big-circle" />
-              <span class="dots" />
-              <ProductImage
-                :image="require('~/assets/images/products/qr-code.jpg')"
-              />
-            </div>
-            <div class="description">
-              <h4 class="h4 product-title">QR-коды</h4>
-              <div class="product-content">
-                Открывай меню, приглашай в лояльность, дари подарки. Вешай любое
-                действие.
-              </div>
-              <div class="product-button">
-                <NavLink classname="simple-btn" href="/">подробнее</NavLink>
+                <NavLink classname="simple-btn" :href="`/${product.link}`"
+                  >подробнее</NavLink
+                >
               </div>
             </div>
           </li>
@@ -251,112 +99,32 @@
       </div>
     </section>
     <div class="container company-logos">
-      <div class="company-logo">
-        <img v-lazy-load src="~@/assets/images/companies/compact.png" alt="" />
-      </div>
-      <div class="company-logo">
-        <img v-lazy-load src="~@/assets/images/companies/company.png" alt="" />
-      </div>
-      <div class="company-logo">
-        <img v-lazy-load src="~@/assets/images/companies/iocc.png" alt="" />
-      </div>
-      <div class="company-logo">
-        <img
-          v-lazy-load
-          src="~@/assets/images/companies/tv-digital.png"
-          alt=""
-        />
-      </div>
-      <div class="company-logo">
-        <img v-lazy-load src="~@/assets/images/companies/changes.png" alt="" />
+      <div
+        v-for="(logotype, index) in data.logotypes_list"
+        :key="index"
+        class="company-logo"
+      >
+        <img v-lazy-load :src="logotype.image.url" alt="" />
       </div>
     </div>
     <section class="stories">
-      <h3 class="h3 text-center">Истории успеха</h3>
+      <h3 class="h3 text-center">{{ data.stories_title }}</h3>
       <client-only>
         <Carousel>
           <StodySlide
-            v-for="(story, index) in stories"
+            v-for="(story, index) in data.stories_slider"
             :key="story.id"
             :item="story"
             :index="index"
           />
-          <!-- <StodySlide>
-            <h5 class="h5 slide-title text-center">Кофейни</h5>
-
-            <p class="text">
-              В современном бизнесе открыть кофейню и получит потом клиентов в
-              первый же месяц довольно тяжело. Конкуренция большая, потребитель
-              избалован, сложно из онлайна привести клиента в оффлайн.
-            </p>
-            <p class="text">
-              Чем в этом случае поможет наше приложение? В шапке профиля
-              Instagram мы разместим ссылку, которая ведёт на страницу кофейни в
-              ToJoin. Перейдя по ссылке, клиент сразу же получает небольшой
-              бонус, который можно потратить в счёт частичной оплаты первой
-              покупки. Так мы стимулируем первое касание с аудиторией уже в
-              оффлайне.
-            </p>
-            <p class="text">
-              После первой покупки наступает этап удержания клиента. Реализуем
-              мы его с помощью всё тех же бонусов за каждую покупку. Но что
-              более интересно, в ход идёт геймификация и разблокировка
-              достижений. Например, 5 раз в неделю зайди за утренним кофе и
-              получи статус «кофеман» (название изменяемо). Другой сценарий -
-              вам нужно протестировать новый напиток. Мы предлагаем посетителю
-              попробовать его и разблокировать достижение «новатор».
-            </p>
-            <p class="text">
-              Возможен сценарий, когда клиент уже бывал у вас, но по какой-то
-              причине давно не заходил. Мы можем догнать его с помощью
-              push-уведомления и напомнить о себе и специальном предложении на
-              утренний кофе.
-            </p>
-            <p class="text">
-              Доступны уведомление по геолокации - напоминайте своим клиентам,
-              работающим рядом, что можно зайти за утренним кофе по дороге в
-              офис.
-            </p>
-          </StodySlide>
-
-          <StodySlide>
-            <h5 class="h5 slide-title text-center">Фитнес-центр</h5>
-            <p class="text">
-              Основная задача фитнес-центра - не просто привести клиента, а
-              сделать его постоянным и не допустить ухода в другой зал. В этом
-              может помочь бонусная программа, которая предусматривает кэшбэк с
-              каждого приобретённого абонемента. Таким образом за год покупки
-              месячного абонемента клиент может накопить баллы на один
-              бесплатный месяц занятий, что неплохо мотивирует его ходить именно
-              к вам, а не к вашим конкурентам.
-            </p>
-            <p class="text">
-              Также не стоит забывать, что многие спортсмены тренируются с
-              друзьями. Мы можем стимулировать коллективные посещения с помощью
-              реферальной программы. Её суть в том, что приглашённый и
-              пригласивший получают бонусы для дальнейшей оплаты своих
-              абонементов.
-            </p>
-            <p class="text">
-              После приглашения друзей и перехода их в статус вашего клиента
-              возвращаемся к первому пункту и работаем над его удержанием.
-            </p>
-            <p class="text">
-              Помимо систем лояльности, мы можем собирать обратную связь от
-              посетителей. Например, узнать, насколько им понравился тренер,
-              либо каких групповых занятий им не хватает.
-            </p>
-            <p class="text">
-              В приложении также реализована система чатов уведомлений. Вы
-              можете всегда быть на связи со своими клиентами, информировать их
-              о новых форматах занятий, записывать их на персональные тренировки
-              и напоминать о том, что их абонемент скоро закончится.
-            </p>
-          </StodySlide> -->
         </Carousel>
       </client-only>
       <div class="show-more">
-        <NavLink classname="light-btn" href="/">Еще истории успеха</NavLink>
+        <NavLink
+          classname="light-btn"
+          :href="`/${data.more_success_stories_link}`"
+          >{{ data.more_success_stories }}</NavLink
+        >
       </div>
     </section>
   </div>
@@ -370,7 +138,6 @@ import NavLink from '@/components/NavLink'
 import ProductImage from '@/components/products/ProductImage'
 import Carousel from '@/components/carousel/Carousel'
 import SocialLinks from '@/components/SocialLinks'
-import stories from '@/assets/stories.json'
 
 export default {
   components: {
@@ -389,11 +156,6 @@ export default {
         return {}
       },
     },
-  },
-  data() {
-    return {
-      stories,
-    }
   },
 }
 </script>
@@ -572,6 +334,7 @@ export default {
 }
 .img-wrap img {
   max-height: 208px;
+  height: 100%;
   max-width: 100%;
   object-fit: cover;
 }
@@ -621,6 +384,8 @@ export default {
 }
 .product-item.content-right {
   margin-left: auto;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
 }
 .description {
   margin-bottom: 40px;
@@ -835,6 +600,9 @@ export default {
     flex-direction: column;
     align-items: start;
   }
+  .product-item.content-right {
+    flex-direction: column;
+  }
   .product-title {
     position: absolute;
     top: 0;
@@ -934,11 +702,11 @@ export default {
 .product-item.bonus {
   max-width: 70%;
   margin-top: -100px;
-  justify-content: flex-end;
   z-index: 9;
   .dots {
-    top: 360px;
+    top: 300px;
     right: 10px;
+    transform: rotate(90deg);
   }
   .small-circle {
     right: 400px;
@@ -949,7 +717,7 @@ export default {
     right: 60px;
   }
   .product-image {
-    margin-right: 160px;
+    margin-right: 120px;
   }
   .product-content {
     max-width: 400px;
@@ -1020,6 +788,9 @@ export default {
   .dots {
     display: none;
   }
+  .small-circle {
+    display: none;
+  }
   .product-image {
     margin-left: 20px;
   }
@@ -1062,10 +833,14 @@ export default {
   .dots {
     top: 160px;
     right: -100px;
+    transform: rotate(90deg);
   }
   .big-circle {
     top: -60px;
     right: 230px;
+  }
+  .small-circle {
+    display: none;
   }
   .product-image {
     margin-right: 0px;
@@ -1121,6 +896,9 @@ export default {
   .small-circle {
     top: 50px;
     left: 20px;
+  }
+  .big-circle {
+    display: none;
   }
   .dots {
     top: 240px;
@@ -1247,6 +1025,10 @@ export default {
   .dots {
     top: 330px;
     left: -20px;
+    transform: rotate(90deg);
+  }
+  .small-circle {
+    display: none;
   }
   .product-image {
     margin-left: 0;
@@ -1296,6 +1078,10 @@ export default {
   .dots {
     top: -150px;
     right: 270px;
+    transform: rotate(90deg);
+  }
+  .small-circle {
+    display: none;
   }
   .product-image {
     margin-right: 0px;
@@ -1356,6 +1142,9 @@ export default {
     left: 320px;
     width: 100px;
     height: 100px;
+  }
+  .small-circle {
+    display: none;
   }
   .dots {
     display: none;

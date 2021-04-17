@@ -1,45 +1,24 @@
 <template>
   <ul class="social-list">
-    <li class="social-item">
-      <a class="social-link" href="#">
-        <img
-          class="social-image"
-          src="~@/assets/icons/facebook.svg"
-          alt="facebook"
-        />
+    <li
+      v-for="{ name, link, icon } in settings.social_item"
+      :key="name"
+      class="social-item"
+    >
+      <a class="social-link" :href="link" target="_blank" rel="noopener">
+        <img data-not-lazy class="social-image" :src="icon.url" :alt="name" />
       </a>
-    </li>
-    <li class="social-item">
-      <a class="social-link" href="#"
-        ><img
-          class="social-image"
-          src="~@/assets/icons/google-play.svg"
-          alt="google-play"
-      /></a>
-    </li>
-    <li class="social-item">
-      <a class="social-link" href="#">
-        <img
-          class="social-image"
-          src="~@/assets/icons/instagram.svg"
-          alt="instagram"
-        />
-      </a>
-    </li>
-    <li class="social-item">
-      <a class="social-link" href="#">
-        <img
-          class="social-image"
-          src="~@/assets/icons/telegram.svg"
-          alt="telegram"
-      /></a>
     </li>
   </ul>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: mapState(['settings']),
+}
 </script>
+
 <style scoped>
 .social-list {
   display: flex;

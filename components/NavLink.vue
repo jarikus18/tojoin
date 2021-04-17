@@ -5,6 +5,7 @@
         :href="href"
         :class="['link-btn small-text', classname]"
         target="_blank"
+        rel="noopener"
       >
         <slot></slot>
       </a>

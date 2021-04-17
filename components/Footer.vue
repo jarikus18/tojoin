@@ -58,7 +58,7 @@ export default {
     ScrollTop,
     SocialLinks,
   },
-  computed: mapState(['menu']),
+  computed: mapState(['menu', 'settings']),
 }
 </script>
 

@@ -36,7 +36,7 @@ export default {
           },
           1200: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
+            slidesPerGroup: 2,
           },
         },
         pagination: {
