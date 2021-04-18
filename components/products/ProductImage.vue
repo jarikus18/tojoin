@@ -28,6 +28,7 @@ export default {
   display: inline-block;
   margin: 80px 20px 30px;
   width: 370px;
+  overflow: hidden;
 }
 .blur {
   position: absolute;
