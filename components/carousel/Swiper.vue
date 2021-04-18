@@ -16,7 +16,7 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 3,
-        spaceBetween: 20,
+        spaceBetween: 10,
         slidesPerGroup: 3,
         loop: true,
         centeredSlides: true,
@@ -37,6 +37,10 @@ export default {
           1200: {
             slidesPerView: 3,
             slidesPerGroup: 2,
+            spaceBetween: 10,
+          },
+          1400: {
+            spaceBetween: 20,
           },
         },
         pagination: {
@@ -114,11 +118,29 @@ export default {
 .swiper-button-next::after {
   content: '';
   background-image: url('~@/assets/icons/arrow-right.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
   width: 51px;
   height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .swiper-button-next::after {
   transform: rotate(180deg);
+}
+
+@media (max-width: 1440px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 68px;
+    height: 68px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    width: 31px;
+  }
 }
 
 @media (max-width: 768px) {

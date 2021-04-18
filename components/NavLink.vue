@@ -69,7 +69,6 @@ export default {
   border-radius: 60px;
   transition: box-shadow 0.3s linear;
   font-weight: bold;
-  font-size: 28px;
   line-height: 150%;
   color: #fff;
   padding: 16px 57px;
@@ -102,7 +101,6 @@ export default {
 }
 @media (max-width: 768px) {
   .btn-orange-gradient {
-    font-size: 16px;
     line-height: 24px;
     padding: 14px 27px;
   }

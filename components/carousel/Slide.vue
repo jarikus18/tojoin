@@ -29,14 +29,18 @@ export default {
     0 6.6501px 7.24861px rgba(75, 57, 140, 0.0242336),
     0 2.76726px 3.01631px rgba(75, 57, 140, 0.0168687);
   border-radius: 20px;
-  min-height: 548px;
-  padding: 30px 25px 20px;
+  padding: 30px 25px 10px;
   height: 100%;
 }
 @media (max-width: 1600px) {
   .slide {
-    padding: 25px 20px;
+    padding: 25px 20px 5px;
     max-width: 450px;
+  }
+}
+@media (max-width: 1440px) {
+  .slide {
+    max-width: 400px;
   }
 }
 @media (max-width: 1200px) {

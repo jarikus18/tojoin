@@ -18,6 +18,7 @@
           </div>
           <div class="bottom">
             <img
+              data-not-lazy
               src="~@/assets/images/first-screen/chart_vector.svg"
               alt="chart"
             />
@@ -85,11 +86,13 @@
             </div>
             <div class="description">
               <h4 class="h4 product-title">{{ product.title }}</h4>
-              <div class="product-content">
+              <div class="text product-content color-text">
                 {{ $prismic.asText(product.description) }}
               </div>
               <div class="product-button">
-                <NavLink classname="simple-btn" :href="`/${product.link}`"
+                <NavLink
+                  classname="simple-btn big-btn-text"
+                  :href="`/${product.link}`"
                   >подробнее</NavLink
                 >
               </div>
@@ -160,7 +163,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .home {
   margin-top: -200px;
 }
@@ -199,6 +202,22 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
+  @media (max-width: 1800px) {
+    right: -10%;
+  }
+  @media (max-width: 1500px) {
+    transform: scale(0.9);
+  }
+  @media (max-width: 1280px) {
+    right: -15%;
+    transform: scale(0.85);
+  }
+  @media (max-width: 1200px) {
+    transform: scale(0.8);
+  }
+  @media (max-width: 992px) {
+    display: none;
+  }
 }
 .mobile-block,
 .mobile-block .circle,
@@ -328,19 +347,34 @@ export default {
   position: relative;
   max-width: 1620px;
   margin: 0 auto;
+  @media (max-width: 1440px) {
+    max-width: 1280px;
+  }
+  @media (max-width: 1280px) {
+    max-width: 1100px;
+  }
 }
+
 .img-wrap {
   height: 208px;
+  img {
+    max-width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 1440px) {
+    height: 158px;
+  }
+  @media (max-width: 1280px) {
+    height: 128px;
+  }
 }
-.img-wrap img {
-  max-height: 208px;
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-}
+
 .slide-title {
   line-height: 46px;
   margin: 20px 0 10px;
+  @media (max-width: 1440px) {
+    line-height: 36px;
+  }
 }
 .carousel-wrap {
   padding: 30px 0 50px;
@@ -374,6 +408,9 @@ export default {
 .product-list {
   max-width: 1620px;
   margin: auto;
+  @media (max-width: 1440px) {
+    max-width: 1320px;
+  }
 }
 
 .product-item {
@@ -397,8 +434,6 @@ export default {
   letter-spacing: 0.396px;
 }
 .product-content {
-  font-weight: 600;
-  font-size: 22px;
   line-height: 30px;
   margin-bottom: 50px;
 }
@@ -454,15 +489,8 @@ export default {
   z-index: 1;
   display: inline-block;
 }
-@media (max-width: 1800px) {
-  .resources {
-    right: -10%;
-  }
-}
+
 @media (max-width: 1500px) {
-  .resources {
-    right: -20%;
-  }
   .girl {
     top: 120px;
   }
@@ -470,21 +498,16 @@ export default {
     display: none;
   }
   .text-block {
-    max-width: 600px;
     margin-right: auto;
     margin-left: 0;
     padding-top: 200px;
   }
 }
 @media (max-width: 1200px) {
-  .resources {
-    right: -30%;
-  }
   .text-block .h1 {
     line-height: 52px;
   }
   .text-block .subtitle {
-    font-size: 18px;
     line-height: 25px;
   }
 }
@@ -505,9 +528,6 @@ export default {
     background: url('~/assets/images/illustration.svg') center no-repeat;
     background-size: contain;
     background-position: bottom right;
-  }
-  .resources {
-    display: none;
   }
   .text-block {
     padding-top: 150px;
@@ -657,9 +677,6 @@ export default {
   .product-content {
     max-width: 480px;
   }
-  @media (max-width: 1400px) {
-    max-width: none;
-  }
   @media (max-width: 992px) {
     .product-image {
       margin-left: 15px;
@@ -667,6 +684,8 @@ export default {
     }
   }
   @media (max-width: 767px) {
+    max-width: none;
+
     .big-circle {
       top: 50px;
       left: 300px;
@@ -723,7 +742,7 @@ export default {
     max-width: 400px;
     margin-right: 40px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1500px) {
     margin-top: 0;
     max-width: none;
   }
@@ -797,7 +816,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -848,7 +867,7 @@ export default {
   .product-content {
     max-width: 480px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -910,7 +929,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -971,7 +990,7 @@ export default {
     max-width: 400px;
     margin-right: 20px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -1036,7 +1055,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -1093,7 +1112,7 @@ export default {
   .description {
     margin-bottom: 10px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }
@@ -1155,7 +1174,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     margin-top: 0;
     max-width: none;
   }

@@ -6,7 +6,7 @@
         <p class="subtitle">И сделай свой бизнес “смарт”.</p>
       </div>
       <div class="button">
-        <NavLink href="/" classname="btn-orange-gradient">
+        <NavLink href="/" classname="btn-orange-gradient big-btn-text">
           Попробовать бесплатно
         </NavLink>
       </div>

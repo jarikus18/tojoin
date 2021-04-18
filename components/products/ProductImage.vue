@@ -27,8 +27,7 @@ export default {
   position: relative;
   display: inline-block;
   margin: 80px 20px 30px;
-  min-width: 270px;
-  min-height: 370px;
+  width: 370px;
 }
 .blur {
   position: absolute;
@@ -47,6 +46,11 @@ export default {
   max-width: 100%;
   object-fit: cover;
 }
+@media (max-width: 1440px) {
+  .image-wrap {
+    width: 270px;
+  }
+}
 @media (max-width: 768px) {
   .image-wrap {
     box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.35);
@@ -57,8 +61,7 @@ export default {
 }
 @media (max-width: 767px) {
   .image-wrap {
-    min-width: auto;
-    min-height: auto;
+    width: auto;
   }
 }
 </style>
