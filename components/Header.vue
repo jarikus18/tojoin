@@ -122,7 +122,7 @@ export default {
   transform: translateX(-100px);
   opacity: 0;
 }
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .header {
     padding: 0 22px;
   }
@@ -155,7 +155,7 @@ export default {
     padding-top: 34px;
     padding-bottom: 12px;
   }
-}
+} */
 </style>
 
 <style lang="scss" scoped>
@@ -183,8 +183,8 @@ export default {
       width: 16px;
     }
   }
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     display: block;
-  }
+  } */
 }
 </style>

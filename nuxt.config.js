@@ -13,8 +13,7 @@ export default {
       },
       {
         name: 'viewport',
-        // content: 'width=device-width, initial-scale=1',
-        content: 'width=1920',
+        content: 'width=device-width, initial-scale=1',
       },
       {
         hid: 'description',

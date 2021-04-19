@@ -32,7 +32,7 @@ export default {
   padding: 30px 25px 10px;
   height: 100%;
 }
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
   .slide {
     padding: 25px 20px 5px;
     max-width: 450px;
@@ -50,13 +50,13 @@ export default {
     margin: 20px auto 10px;
     max-width: 90%;
   }
-}
+} */
 @media (max-width: 768px) {
-  .wrapper {
+  /* .wrapper {
     margin-bottom: 50px;
   }
   .slide {
     min-height: 360px;
-  }
+  } */
 }
 </style>

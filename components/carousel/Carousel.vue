@@ -143,13 +143,13 @@ export default {
 }
 
 @media (max-width: 1200px) {
-  .slider-button-prev {
+  /* .slider-button-prev {
     left: 47%;
     transform: translateX(-47%);
   }
   .slider-button-next {
     left: 53%;
     transform: translateX(-53%);
-  }
+  } */
 }
 </style>

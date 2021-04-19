@@ -9,6 +9,12 @@
 *:focus {
   outline: none;
 }
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+}
 body {
   padding: 0;
   margin: 0;
@@ -53,15 +59,18 @@ li {
 }
 .h3 {
   font-weight: 700;
-  @include adaptive-font(54, 38);
+  font-size: 54px;
+  // @include adaptive-font(54, 38);
 }
 .h4 {
   font-weight: 700;
-  @include adaptive-font(44, 26);
+  font-size: 44px;
+  // @include adaptive-font(44, 26);
 }
 .h5 {
   font-weight: 600;
-  @include adaptive-font(34, 24);
+  font-size: 34px;
+  // @include adaptive-font(34, 24);
 }
 .button-text {
   font-weight: 700;
@@ -69,7 +78,8 @@ li {
 }
 .caption-1 {
   font-weight: 600;
-  @include adaptive-font(28, 18);
+  font-size: 28px;
+  // @include adaptive-font(28, 18);
 }
 .caption-2 {
   font-weight: 600;
@@ -80,17 +90,19 @@ li {
   font-size: 20px;
 }
 .big-btn-text {
-  @include adaptive-font(28, 16);
+  font-size: 28px;
+  // @include adaptive-font(28, 16);
 }
 .small-text {
   font-size: 18px;
-  @include adaptive-font(18, 16);
+  // @include adaptive-font(18, 16);
 }
 .text {
   font-weight: 600;
   line-height: 30px;
   color: #6a6a6a;
-  @include adaptive-font(22, 18);
+  font-size: 22px;
+  // @include adaptive-font(22, 18);
 }
 .footer-text-medium {
   font-family: 'Rubik', sans-serif;

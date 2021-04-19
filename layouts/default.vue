@@ -1,5 +1,9 @@
 <template>
-  <div class="page-layout">
+  <div
+    v-if="showContent"
+    class="page-layout"
+    :style="`transform: scale(${currentScale})`"
+  >
     <Header />
     <main class="main"><Nuxt /></main>
     <Footer />
@@ -13,6 +17,14 @@ export default {
   async middleware({ store, $prismic }) {
     await store.dispatch('fetchMenu', $prismic)
     await store.dispatch('fetchGeneralSettings', $prismic)
+  },
+  data() {
+    return {
+      MOBILE_WIDTH: 375,
+      DESKTOP_WIDTH: 1920,
+      currentScale: 1,
+      showContent: false,
+    }
   },
   head() {
     return {
@@ -32,7 +44,31 @@ export default {
       ],
     }
   },
-  computed: mapState(['settings']),
+
+  computed: {
+    ...mapState(['settings']),
+  },
+  mounted() {
+    this.getCurrentScale()
+    this.showContent = true
+    this.$nextTick(function () {
+      this.onResize()
+    })
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
+  methods: {
+    onResize() {
+      if (process.client) {
+        this.getCurrentScale()
+      }
+    },
+    getCurrentScale() {
+      this.currentScale = (
+        (window.innerWidth - 20) /
+        this.DESKTOP_WIDTH
+      ).toFixed(3)
+    },
+  },
 }
 </script>
 
@@ -41,5 +77,9 @@ export default {
   min-height: 100vh;
   padding-top: 200px;
   overflow: hidden;
+}
+.page-layout {
+  transform-origin: left top;
+  width: 1920px;
 }
 </style>

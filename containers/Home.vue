@@ -581,7 +581,7 @@ export default {
   }
 } */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .first-screen::before {
     bottom: -250px;
     background-position: center right;
@@ -618,8 +618,8 @@ export default {
   .company-logos {
     margin: 0 15px 100px;
   }
-}
-@media (max-width: 767px) {
+} */
+/* @media (max-width: 767px) {
   .product-item {
     flex-direction: column;
     align-items: start;
@@ -653,7 +653,7 @@ export default {
   .first-screen::before {
     bottom: -150px;
   }
-}
+} */
 </style>
 
 <style lang="scss">
@@ -708,7 +708,7 @@ export default {
       margin-left: 15px;
       margin-top: 20px;
     }
-  } */
+  }
   @media (max-width: 767px) {
     max-width: none;
 
@@ -742,7 +742,7 @@ export default {
       top: 260px;
       left: 50%;
     }
-  }
+  } */
 }
 .product-item.bonus {
   max-width: 70%;
@@ -768,7 +768,7 @@ export default {
     max-width: 400px;
     margin-right: 40px;
   }
-  @media (max-width: 1500px) {
+  /* @media (max-width: 1500px) {
     margin-top: -50px;
     max-width: none;
     .small-circle {
@@ -832,7 +832,7 @@ export default {
       top: 25%;
       right: 50%;
     }
-  }
+  } */
 }
 .product-item.gifts {
   max-width: 70%;
@@ -855,7 +855,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -80px;
     max-width: none;
     .big-circle {
@@ -893,7 +893,7 @@ export default {
       top: 20%;
       left: 55%;
     }
-  }
+  } */
 }
 .product-item.referal {
   max-width: 65%;
@@ -918,7 +918,7 @@ export default {
   .product-content {
     max-width: 480px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -120px;
     max-width: none;
     .big-circle {
@@ -968,7 +968,7 @@ export default {
       top: 25%;
       right: 50%;
     }
-  }
+  } */
 }
 .product-item.analitics {
   max-width: 70%;
@@ -992,7 +992,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -100px;
     max-width: none;
     .dots {
@@ -1040,7 +1040,7 @@ export default {
     .dots {
       top: 32%;
     }
-  }
+  } */
 }
 .product-item.game {
   max-width: 70%;
@@ -1062,7 +1062,7 @@ export default {
     max-width: 400px;
     margin-right: 20px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -100px;
     max-width: none;
     .dots {
@@ -1118,7 +1118,7 @@ export default {
       width: 117px;
       height: 117px;
     }
-  }
+  } */
 }
 .product-item.crm {
   max-width: 70%;
@@ -1143,7 +1143,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -150px;
     max-width: none;
     .dots {
@@ -1195,7 +1195,7 @@ export default {
       top: 20%;
       left: 60%;
     }
-  }
+  } */
 }
 .product-item.rules {
   max-width: 70%;
@@ -1226,7 +1226,7 @@ export default {
   .description {
     margin-bottom: 10px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -60px;
     max-width: none;
     .dots {
@@ -1278,7 +1278,7 @@ export default {
       width: 89px;
       height: 89px;
     }
-  }
+  } */
 }
 .product-item.qr-code {
   max-width: 70%;
@@ -1304,7 +1304,7 @@ export default {
   .product-content {
     max-width: 400px;
   }
-  @media (max-width: 1450px) {
+  /* @media (max-width: 1450px) {
     margin-top: -120px;
     max-width: none;
     .big-circle {
@@ -1351,6 +1351,6 @@ export default {
       width: 83px;
       height: 83px;
     }
-  }
+  } */
 }
 </style>

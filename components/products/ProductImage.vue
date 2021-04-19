@@ -28,6 +28,7 @@ export default {
   display: inline-block;
   margin: 80px 20px 30px;
   width: 370px;
+  min-height: 450px;
   overflow: hidden;
 }
 .blur {
@@ -47,7 +48,7 @@ export default {
   max-width: 100%;
   object-fit: cover;
 }
-@media (max-width: 1440px) {
+/* @media (max-width: 1440px) {
   .image-wrap {
     width: 270px;
   }
@@ -64,5 +65,5 @@ export default {
   .image-wrap {
     width: auto;
   }
-}
+} */
 </style>

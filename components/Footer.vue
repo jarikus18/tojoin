@@ -146,7 +146,7 @@ export default {
 .copyright {
   color: #afb5c0;
 }
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .subscribe {
     flex-wrap: wrap;
     justify-content: center;
@@ -162,8 +162,8 @@ export default {
     padding-right: 5%;
     padding-bottom: 40px;
   }
-}
-@media (max-width: 992px) {
+} */
+/* @media (max-width: 992px) {
   .footer-bottom {
     flex-wrap: wrap;
   }
@@ -211,7 +211,7 @@ export default {
   .text .title {
     white-space: normal;
   }
-}
+} */
 @media (max-width: 568px) {
   .footer-menu {
     width: auto;

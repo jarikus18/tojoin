@@ -44,16 +44,16 @@ export default {
           //   simulateTouch: true,
           //   loop: true,
           // },
-          1200: {
-            slidesPerView: 3,
-            slidesPerGroup: 1,
-            spaceBetween: 10,
-            simulateTouch: true,
-            loop: true,
-          },
-          1400: {
-            spaceBetween: 20,
-          },
+          // 1200: {
+          //   slidesPerView: 3,
+          //   slidesPerGroup: 1,
+          //   spaceBetween: 10,
+          //   simulateTouch: true,
+          //   loop: true,
+          // },
+          // 1400: {
+          //   spaceBetween: 20,
+          // },
         },
         pagination: {
           el: '.swiper-pagination',
