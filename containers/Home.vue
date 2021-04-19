@@ -871,6 +871,9 @@ export default {
   @media (max-width: 1280px) {
     margin-top: -40px;
   }
+  @media (max-width: 992px) {
+    margin-top: 0;
+  }
   @media (max-width: 767px) {
     .big-circle {
       display: none;
@@ -1091,6 +1094,9 @@ export default {
       right: 260px;
       width: 214px;
       height: 214px;
+    }
+    .small-circle {
+      top: 50px;
     }
     .dots {
       top: 15%;
@@ -1338,6 +1344,7 @@ export default {
     }
   }
   @media (max-width: 567px) {
+    margin-top: 30px;
     .product-image {
       margin-left: 0px;
     }

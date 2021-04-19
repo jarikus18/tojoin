@@ -113,6 +113,9 @@ export default {
 .info {
   width: 33%;
 }
+.footer-menu {
+  width: 22.22%;
+}
 .slogan {
   max-width: 210px;
   line-height: 19px;
@@ -169,6 +172,9 @@ export default {
     margin-top: 30px;
     width: 100%;
   }
+  .footer-menu {
+    width: 50%;
+  }
   .social-list-wrapper {
     margin: 25px 0 35px;
   }
@@ -204,6 +210,12 @@ export default {
   }
   .text .title {
     white-space: normal;
+  }
+}
+@media (max-width: 568px) {
+  .footer-menu {
+    width: auto;
+    padding-right: 15px;
   }
 }
 </style>
