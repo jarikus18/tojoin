@@ -146,6 +146,24 @@ export default {
 .copyright {
   color: #afb5c0;
 }
+@media (max-width: 1450px) {
+  .slogan {
+    font-size: 20px;
+    line-height: 26px;
+    max-width: 260px;
+  }
+  .menu-title {
+    font-size: 24px;
+  }
+  .menu-item >>> a {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .copyright {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
 /* @media (max-width: 1200px) {
   .subscribe {
     flex-wrap: wrap;

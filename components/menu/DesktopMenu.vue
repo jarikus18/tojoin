@@ -36,7 +36,7 @@
                 :key="ind"
                 class="submenu-item"
                 :style="{
-                  backgroundImage: `url(${require('~/assets/icons/menu/bonus.svg')})`,
+                  backgroundImage: `url(${el.image.url})`,
                 }"
               >
                 <NavLink
@@ -110,7 +110,8 @@ export default {
 .menu-list-item.has-submenu::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 24px;
   height: 24px;
   background-color: #1b1732;
@@ -131,8 +132,9 @@ export default {
 .submenu-item {
   font-family: 'Rubik', sans-serif;
   margin-bottom: 20px;
-  padding-left: 55px;
-  background-size: contain;
+  padding-left: 65px;
+  background-size: 45px 45px;
+  background-position: center left;
   background-repeat: no-repeat;
   height: 46px;
   display: flex;
@@ -154,6 +156,23 @@ export default {
 .fade-leave-active {
   opacity: 0;
 }
+
+@media (max-width: 1450px) {
+  .menu-list-item,
+  .menu-list-item >>> a {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .menu-list-item,
+  .menu-list-item >>> a {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
 @media (max-width: 992px) {
   .menu-list-item {
     margin: 0 10px;

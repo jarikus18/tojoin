@@ -81,5 +81,6 @@ export default {
 .page-layout {
   transform-origin: left top;
   width: 1920px;
+  height: 100vh;
 }
 </style>

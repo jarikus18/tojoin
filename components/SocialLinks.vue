@@ -45,4 +45,14 @@ export default {
   width: 24px;
   height: 24px;
 }
+@media (max-width: 1450px) {
+  .social-link {
+    width: 58px;
+    height: 58px;
+  }
+  .social-image {
+    width: 36px;
+    height: 36px;
+  }
+}
 </style>

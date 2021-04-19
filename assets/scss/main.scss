@@ -51,7 +51,8 @@ li {
   font-weight: 700;
   line-height: 65px;
   letter-spacing: 0.4px;
-  @include adaptive-font(64, 44);
+  font-size: 64px;
+  // @include adaptive-font(64, 44);
 }
 .h2 {
   font-weight: 700;

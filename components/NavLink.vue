@@ -99,6 +99,14 @@ export default {
 .light-btn:hover {
   box-shadow: 22px 18px 53px -15px rgba(232, 97, 49, 0.69);
 }
+@media (max-width: 1450px) {
+  .btn-orange-gradient,
+  .btn,
+  .simple-btn,
+  .light-btn {
+    font-size: 24px;
+  }
+}
 @media (max-width: 768px) {
   .btn-orange-gradient {
     line-height: 24px;
