@@ -71,13 +71,13 @@ export default {
   background-image: url('~@/assets/icons/arrow-right.svg');
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center center;
   width: 51px;
   height: 25px;
-  position: absolute;
+  margin: 0 5px;
 }
 .slider-button-next::after {
   transform: rotate(180deg);
-  margin-bottom: 3px;
 }
 .carousel-container .swiper-slide {
   opacity: 0 !important;
@@ -140,5 +140,16 @@ export default {
   width: 32px;
   height: 19px;
   filter: opacity(50%);
+}
+
+@media (max-width: 1200px) {
+  .slider-button-prev {
+    left: 47%;
+    transform: translateX(-47%);
+  }
+  .slider-button-next {
+    left: 53%;
+    transform: translateX(-53%);
+  }
 }
 </style>

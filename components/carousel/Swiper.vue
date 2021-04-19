@@ -14,6 +14,7 @@ export default {
   name: 'Slider',
   data() {
     return {
+      mobileContainer: 767,
       swiperOptions: {
         slidesPerView: 3,
         spaceBetween: 10,
@@ -29,10 +30,17 @@ export default {
             loop: false,
             simulateTouch: false,
           },
+          767: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+            simulateTouch: true,
+            loop: true,
+          },
           992: {
             slidesPerView: 2,
             slidesPerGroup: 1,
             simulateTouch: true,
+            loop: true,
           },
           1200: {
             slidesPerView: 3,
@@ -67,7 +75,7 @@ export default {
   },
   methods: {
     onResize: throttle(function () {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= this.mobileContainer) {
         this.swiper.slideTo(0, 0, false)
       }
     }, 500),
@@ -143,7 +151,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .tasks-swiper.swiper-container {
     padding-bottom: 0;
     pointer-events: none;

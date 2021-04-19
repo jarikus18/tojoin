@@ -439,6 +439,10 @@ export default {
 }
 .stories {
   padding: 50px 0 300px;
+
+  @media (max-width: 1300px) {
+    padding: 50px 0 200px;
+  }
 }
 
 .big-circle {
@@ -464,7 +468,7 @@ export default {
   width: 213px;
   height: 368px;
   background-image: url(~/assets/images/products/dots-vertical.svg);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
 }
@@ -488,6 +492,12 @@ export default {
   top: -40px;
   z-index: 1;
   display: inline-block;
+  @media (max-width: 1200px) {
+    margin: 40px auto;
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 1500px) {
@@ -533,9 +543,6 @@ export default {
     padding-top: 150px;
     padding-left: 15px;
     max-width: none;
-  }
-  .show-more {
-    margin-left: 0;
   }
   .mobile-block {
     display: block;
@@ -677,6 +684,28 @@ export default {
   .product-content {
     max-width: 480px;
   }
+  @media (max-width: 1450px) {
+    .small-circle {
+      left: 15px;
+    }
+    .big-circle {
+      left: 80px;
+      width: 236px;
+      height: 236px;
+    }
+    .dots {
+      left: 45px;
+      top: 300px;
+      width: 180px;
+      height: 308px;
+    }
+  }
+  @media (max-width: 1200px) {
+    max-width: none;
+    .dots {
+      top: 200px;
+    }
+  }
   @media (max-width: 992px) {
     .product-image {
       margin-left: 15px;
@@ -743,8 +772,21 @@ export default {
     margin-right: 40px;
   }
   @media (max-width: 1500px) {
-    margin-top: 0;
+    margin-top: -50px;
     max-width: none;
+    .small-circle {
+      right: 300px;
+    }
+    .big-circle {
+      width: 160px;
+      height: 160px;
+    }
+    .dots {
+      top: 220px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: 0;
   }
   @media (max-width: 992px) {
     .product-image {
@@ -817,8 +859,17 @@ export default {
     max-width: 400px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -80px;
     max-width: none;
+    .big-circle {
+      top: 300px;
+      left: -20px;
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: -40px;
   }
   @media (max-width: 767px) {
     .big-circle {
@@ -868,8 +919,20 @@ export default {
     max-width: 480px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -120px;
     max-width: none;
+    .big-circle {
+      top: 0px;
+      right: 160px;
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: -100px;
+  }
+  @media (max-width: 992px) {
+    margin-top: 0;
   }
   @media (max-width: 767px) {
     flex-direction: column-reverse;
@@ -930,10 +993,19 @@ export default {
     max-width: 400px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -100px;
     max-width: none;
+    .dots {
+      top: 200px;
+      left: 0;
+      max-width: 180px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: -80px;
   }
   @media (max-width: 992px) {
+    margin-top: 0;
     .product-image {
       margin-left: 15px;
     }
@@ -991,10 +1063,23 @@ export default {
     margin-right: 20px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -100px;
     max-width: none;
+    .dots {
+      max-width: 180px;
+      right: 15px;
+    }
+    .big-circle {
+      top: 290px;
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 1300px) {
+    margin-top: -80px;
   }
   @media (max-width: 992px) {
+    margin-top: 0;
     .product-image {
       margin-right: 15px;
     }
@@ -1056,8 +1141,34 @@ export default {
     max-width: 400px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -150px;
     max-width: none;
+    .dots {
+      max-width: 180px;
+      left: 15px;
+      top: 260px;
+    }
+    .big-circle {
+      top: 10px;
+      left: 150px;
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 1300px) {
+    margin-top: -120px;
+  }
+  @media (max-width: 1200px) {
+    margin-top: -80px;
+    .big-circle {
+      top: 50px;
+    }
+    .dots {
+      top: 200px;
+    }
+  }
+  @media (max-width: 992px) {
+    margin-top: 0;
   }
   @media (max-width: 767px) {
     .dots {
@@ -1113,8 +1224,24 @@ export default {
     margin-bottom: 10px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -60px;
     max-width: none;
+    .dots {
+      right: 160px;
+      max-width: 160px;
+    }
+    .big-circle {
+      top: 340px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: -40px;
+  }
+  @media (max-width: 992px) {
+    margin-top: 0;
+    .dots {
+      top: -100px;
+    }
   }
   @media (max-width: 767px) {
     flex-direction: column-reverse;
@@ -1175,8 +1302,23 @@ export default {
     max-width: 400px;
   }
   @media (max-width: 1450px) {
-    margin-top: 0;
+    margin-top: -120px;
     max-width: none;
+    .big-circle {
+      left: 220px;
+    }
+  }
+  @media (max-width: 1280px) {
+    margin-top: -100px;
+  }
+  @media (max-width: 1200px) {
+    margin-top: -40px;
+    .big-circle {
+      top: 50px;
+    }
+  }
+  @media (max-width: 992px) {
+    margin-top: 0;
   }
   @media (max-width: 767px) {
     .big-circle {
