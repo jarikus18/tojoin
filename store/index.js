@@ -56,34 +56,6 @@ export const actions = {
       dictionary[this.$i18n.localeProperties.code].settings
     )
   },
-  // async fetchMenu({ commit }, $prismic) {
-  //   try {
-  //     const menu = (
-  //       await $prismic.api.getSingle('menu', {
-  //         lang: this.$i18n.localeProperties.iso,
-  //       })
-  //     ).data
-  //     commit('SET_MENU', menu)
-  //   } catch (e) {
-  //     const error = 'Please create a menu document'
-  //     commit('SET_MENU_ERROR', error)
-  //   }
-  // },
-  async fetchGeneralSettings({ commit }, $prismic) {
-    try {
-      const settings = (
-        await $prismic.api.getSingle('general_settings', {
-          lang: this.$i18n.localeProperties.iso,
-        })
-      ).data
-
-      commit('SET_GENERAL_SETTINGS', settings)
-    } catch (e) {
-      const error = 'Please create a general settings'
-
-      commit('SET_GENERAL_SETTINGS_ERROR', error)
-    }
-  },
 }
 
 export const getters = {

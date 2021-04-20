@@ -1,6 +1,6 @@
 import LOCALES from './i18n.config'
 const DEFAULT_LOCALE = 'ru'
-const BASE_URL = process.env.NUXT_ENV_BACKEND_URL
+const API_URL = process.env.NUXT_ENV_API_URL
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -64,7 +64,7 @@ export default {
     [
       '@nuxtjs/prismic',
       {
-        endpoint: 'https://teeple.cdn.prismic.io/api/v2',
+        endpoint: API_URL,
       },
     ],
     ['nuxt-sm'],
@@ -74,7 +74,7 @@ export default {
     extend(config, ctx) {},
   },
   i18n: {
-    baseUrl: BASE_URL,
+    baseUrl: '/',
     locales: LOCALES,
     defaultLocale: DEFAULT_LOCALE,
     parsePages: false,

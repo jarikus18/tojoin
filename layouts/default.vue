@@ -1,7 +1,6 @@
 <template>
   <div
-    v-if="showContent"
-    class="page-layout"
+    :class="['page-layout', showContent && 'd-block']"
     :style="currentScale !== 1 && `transform: scale(${currentScale})`"
   >
     <Header />
@@ -82,6 +81,10 @@ export default {
   transform-origin: left top;
   width: 1920px;
   height: 100vh;
+  display: none;
+}
+.page-layout.d-block {
+  display: block;
 }
 @media (max-width: 767px) {
   .page-layout {
