@@ -137,7 +137,7 @@ export default {
   }
   .mobile-menu {
     display: block;
-    padding-bottom: 100px;
+    padding-bottom: 140px;
   }
 }
 @media (max-width: 568px) {
