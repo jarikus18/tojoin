@@ -107,6 +107,19 @@ export default {
     font-size: 24px;
   }
 }
+
+@media (max-width: 991px) {
+  .btn-orange-gradient,
+  .btn,
+  .simple-btn,
+  .light-btn {
+    font-size: 32px;
+  }
+  .btn-orange-gradient {
+    padding: 22px 67px;
+  }
+}
+
 @media (max-width: 768px) {
   .btn-orange-gradient {
     line-height: 24px;

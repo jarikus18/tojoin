@@ -173,4 +173,10 @@ export default {
   right: 120px;
   top: 100%;
 }
+@media (max-width: 991px) {
+  .story-text >>> p {
+    font-size: 26px;
+    line-height: 34px;
+  }
+}
 </style>

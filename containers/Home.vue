@@ -436,6 +436,10 @@ export default {
 .product-content {
   line-height: 30px;
   margin-bottom: 50px;
+  @media (max-width: 991px) {
+    font-size: 28px;
+    line-height: 36px;
+  }
 }
 .stories {
   padding: 50px 0 300px;
@@ -1225,6 +1229,12 @@ export default {
   }
   .description {
     margin-bottom: 10px;
+  }
+  @media (max-width: 991px) {
+    margin-top: -60px;
+    .dots {
+      right: 150px;
+    }
   }
   /* @media (max-width: 1450px) {
     margin-top: -60px;

@@ -121,8 +121,9 @@ export default {
   transition: all 0.3s;
 }
 .menu-list-item.has-submenu--active::after {
-  transform: rotate(180deg);
+  transform: rotate(180deg) translateY(0);
   background-color: #f09231;
+  top: 0;
 }
 .submenu-list.two-column {
   width: 670px;
@@ -132,19 +133,19 @@ export default {
 .submenu-item {
   font-family: 'Rubik', sans-serif;
   margin-bottom: 20px;
-  padding-left: 65px;
+  padding-left: 55px;
   background-size: 45px 45px;
   background-position: center left;
   background-repeat: no-repeat;
   height: 46px;
   display: flex;
   align-items: center;
+  padding-right: 20px;
 }
 .two-column .submenu-item {
   width: 50%;
 }
 .submenu-item >>> a {
-  white-space: normal;
   font-size: 22px;
   line-height: 30px;
 }
@@ -163,6 +164,12 @@ export default {
     font-size: 24px;
     line-height: 30px;
   }
+  .submenu-list {
+    width: 420px;
+  }
+  .submenu-list.two-column {
+    width: 740px;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -173,9 +180,17 @@ export default {
   }
 }
 
-@media (max-width: 992px) {
-  .menu-list-item {
-    margin: 0 10px;
+@media (max-width: 991px) {
+  .menu-list-item,
+  .menu-list-item >>> a {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .submenu-list {
+    width: 520px;
+  }
+  .submenu-list.two-column {
+    width: 840px;
   }
 }
 </style>

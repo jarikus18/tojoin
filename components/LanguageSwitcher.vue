@@ -91,7 +91,7 @@ export default {
 .lang-indicator-mobile {
   display: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .lang-indicator,
   .lang-indicator-desktop {
     display: none;
