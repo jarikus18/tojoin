@@ -42,7 +42,11 @@
               >
                 <NavLink
                   classname="color-text"
-                  :href="`/${item.submenu_linked}/${$prismic.asText(el.link)}`"
+                  :href="
+                    item.submenu_linked === 'products'
+                      ? `/${item.submenu_linked}/${$prismic.asText(el.link)}`
+                      : `/${$prismic.asText(el.link)}`
+                  "
                 >
                   {{ $prismic.asText(el.title) }}
                 </NavLink>
