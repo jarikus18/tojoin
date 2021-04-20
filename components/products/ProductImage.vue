@@ -48,22 +48,16 @@ export default {
   max-width: 100%;
   object-fit: cover;
 }
-/* @media (max-width: 1440px) {
+
+@media (max-width: 767px) {
   .image-wrap {
-    width: 270px;
-  }
-}
-@media (max-width: 768px) {
-  .image-wrap {
+    width: auto;
+    min-height: auto;
     box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.35);
+    margin: 50px 20px 10px;
   }
   .blur {
     display: none;
   }
 }
-@media (max-width: 767px) {
-  .image-wrap {
-    width: auto;
-  }
-} */
 </style>

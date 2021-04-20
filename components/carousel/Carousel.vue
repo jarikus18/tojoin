@@ -141,15 +141,4 @@ export default {
   height: 19px;
   filter: opacity(50%);
 }
-
-@media (max-width: 1200px) {
-  /* .slider-button-prev {
-    left: 47%;
-    transform: translateX(-47%);
-  }
-  .slider-button-next {
-    left: 53%;
-    transform: translateX(-53%);
-  } */
-}
 </style>

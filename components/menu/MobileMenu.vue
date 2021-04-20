@@ -30,9 +30,7 @@
                 v-for="(el, ind) in menu[item.submenu_linked]"
                 :key="ind"
                 class="submenu-item"
-                :style="{
-                  backgroundImage: `url(${require('~/assets/icons/menu/bonus.svg')})`,
-                }"
+                :style="{ backgroundImage: `url(${el.image.url})` }"
               >
                 <NavLink
                   classname="color-text"
@@ -117,7 +115,8 @@ export default {
   font-family: 'Rubik', sans-serif;
   margin-bottom: 17px;
   padding-left: 38px;
-  background-size: contain;
+  background-size: 28px 28px;
+  background-position: center left;
   background-repeat: no-repeat;
   min-height: 30px;
   display: flex;

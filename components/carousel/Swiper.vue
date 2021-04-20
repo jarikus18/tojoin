@@ -21,37 +21,18 @@ export default {
         slidesPerGroup: 2,
         keyboardControl: true,
         breakpoints: {
-          // 0: {
-          //   slidesPerView: 1,
-          //   slidesPerGroup: 1,
-          //   centeredSlides: false,
-          //   loop: false,
-          //   simulateTouch: false,
-          // },
-          // 767: {
-          //   slidesPerView: 2,
-          //   slidesPerGroup: 1,
-          //   centeredSlides: false,
-          //   simulateTouch: true,
-          //   loop: true,
-          // },
-          // 992: {
-          //   slidesPerView: 2,
-          //   slidesPerGroup: 1,
-          //   centeredSlides: false,
-          //   simulateTouch: true,
-          //   loop: true,
-          // },
-          // 1200: {
-          //   slidesPerView: 3,
-          //   slidesPerGroup: 1,
-          //   spaceBetween: 10,
-          //   simulateTouch: true,
-          //   loop: true,
-          // },
-          // 1400: {
-          //   spaceBetween: 20,
-          // },
+          0: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            loop: false,
+            simulateTouch: false,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            slidesPerGroup: 2,
+            keyboardControl: true,
+          },
         },
         pagination: {
           el: '.swiper-pagination',

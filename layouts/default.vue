@@ -2,7 +2,7 @@
   <div
     v-if="showContent"
     class="page-layout"
-    :style="`transform: scale(${currentScale})`"
+    :style="currentScale !== 1 && `transform: scale(${currentScale})`"
   >
     <Header />
     <main class="main"><Nuxt /></main>
@@ -22,6 +22,7 @@ export default {
     return {
       MOBILE_WIDTH: 375,
       DESKTOP_WIDTH: 1920,
+      MOBILE_WIDTH_START: 767,
       currentScale: 1,
       showContent: false,
     }
@@ -63,7 +64,10 @@ export default {
       }
     },
     getCurrentScale() {
-      this.currentScale = (window.innerWidth / this.DESKTOP_WIDTH).toFixed(3)
+      this.currentScale =
+        this.MOBILE_WIDTH_START >= window.innerWidth
+          ? 1
+          : (window.innerWidth / this.DESKTOP_WIDTH).toFixed(3)
     },
   },
 }
@@ -79,5 +83,11 @@ export default {
   transform-origin: left top;
   width: 1920px;
   height: 100vh;
+}
+@media (max-width: 767px) {
+  .page-layout {
+    transform-origin: none;
+    width: auto;
+  }
 }
 </style>

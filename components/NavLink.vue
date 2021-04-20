@@ -120,7 +120,13 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .btn-orange-gradient,
+  .btn,
+  .simple-btn,
+  .light-btn {
+    font-size: 16px;
+  }
   .btn-orange-gradient {
     line-height: 24px;
     padding: 14px 27px;

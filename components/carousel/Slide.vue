@@ -32,31 +32,16 @@ export default {
   padding: 30px 25px 10px;
   height: 100%;
 }
-/* @media (max-width: 1600px) {
-  .slide {
-    padding: 25px 20px 5px;
-    max-width: 450px;
-  }
-}
-@media (max-width: 1440px) {
-  .slide {
-    max-width: 400px;
-  }
-}
-@media (max-width: 1200px) {
+
+@media (max-width: 767px) {
   .wrapper {
     display: flex;
     justify-content: center;
-    margin: 20px auto 10px;
+    margin: 20px auto 50px;
     max-width: 90%;
-  }
-} */
-@media (max-width: 768px) {
-  /* .wrapper {
-    margin-bottom: 50px;
   }
   .slide {
     min-height: 360px;
-  } */
+  }
 }
 </style>

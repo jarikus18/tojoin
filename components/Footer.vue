@@ -142,10 +142,10 @@ export default {
   line-height: 20px;
   display: block;
 }
-
 .copyright {
   color: #afb5c0;
 }
+
 @media (max-width: 1450px) {
   .slogan {
     font-size: 20px;
@@ -164,57 +164,6 @@ export default {
     line-height: 26px;
   }
 }
-/* @media (max-width: 1200px) {
-  .subscribe {
-    flex-wrap: wrap;
-    justify-content: center;
-    top: -180px;
-  }
-  .text {
-    margin-right: 0;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .footer-bottom {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 40px;
-  }
-} */
-/* 
-@media (max-width: 768px) {
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: 0;
-    width: 100%;
-    height: 314px;
-    background: linear-gradient(
-      180deg,
-      rgba(236, 240, 253, 0) 0%,
-      rgba(236, 240, 253, 0.53) 14.32%,
-      #ecf0fd 45.83%,
-      rgba(236, 240, 253, 0.43) 84.33%,
-      rgba(236, 240, 253, 0) 100%
-    );
-  }
-  .subscribe {
-    background: none;
-    top: -60px;
-    padding: 20px 15px;
-  }
-  .menu-title {
-    padding-left: 0;
-  }
-  .menu-list {
-    padding-left: 0;
-    margin-bottom: 30px;
-  }
-  .text .title {
-    white-space: normal;
-  }
-} */
 @media (max-width: 991px) {
   .subscribe {
     top: -145px;
@@ -266,10 +215,78 @@ export default {
     padding-left: 0;
   }
 }
-@media (max-width: 568px) {
+
+@media (max-width: 767px) {
+  .subscribe {
+    flex-wrap: wrap;
+    justify-content: center;
+    top: -60px;
+    background: none;
+    padding: 20px 15px;
+  }
+  .text .title {
+    font-size: 40px;
+    line-height: 44px;
+    white-space: normal;
+  }
+  .text .subtitle {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .text {
+    margin-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .footer-bottom {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 40px;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 314px;
+    background: linear-gradient(
+      180deg,
+      rgba(236, 240, 253, 0) 0%,
+      rgba(236, 240, 253, 0.53) 14.32%,
+      #ecf0fd 45.83%,
+      rgba(236, 240, 253, 0.43) 84.33%,
+      rgba(236, 240, 253, 0) 100%
+    );
+  }
   .footer-menu {
     width: auto;
     padding-right: 15px;
+  }
+
+  .menu-list {
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .slogan {
+    display: none;
+  }
+  .menu-title {
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  .menu-item >>> a {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 0;
+  }
+  .copyright {
+    font-size: 16px;
+    line-height: 19px;
   }
 }
 </style>

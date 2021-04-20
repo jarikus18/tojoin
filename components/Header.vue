@@ -122,25 +122,15 @@ export default {
   transform: translateX(-100px);
   opacity: 0;
 }
-/* @media (max-width: 1200px) {
-  .header {
-    padding: 0 22px;
-  }
+
+@media (max-width: 767px) {
   .btn-connect {
     display: none;
   }
-}
-@media (max-width: 992px) {
-  .header {
-    padding: 0 16px;
-  }
-}
-@media (max-width: 768px) {
   .header {
     background-color: #fff;
     top: 0;
-    padding-top: 25px;
-    padding-bottom: 10px;
+    padding: 25px 16px 10px;
   }
   .desktop-menu {
     display: none;
@@ -155,7 +145,7 @@ export default {
     padding-top: 34px;
     padding-bottom: 12px;
   }
-} */
+}
 </style>
 
 <style lang="scss" scoped>
@@ -183,8 +173,8 @@ export default {
       width: 16px;
     }
   }
-  /* @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: block;
-  } */
+  }
 }
 </style>
