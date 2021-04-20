@@ -63,10 +63,7 @@ export default {
       }
     },
     getCurrentScale() {
-      this.currentScale = (
-        (window.innerWidth - 20) /
-        this.DESKTOP_WIDTH
-      ).toFixed(3)
+      this.currentScale = (window.innerWidth / this.DESKTOP_WIDTH).toFixed(3)
     },
   },
 }

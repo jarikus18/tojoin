@@ -23,6 +23,7 @@ body {
   color: #1b1732;
   width: 100%;
   overflow: auto;
+  overflow-x: hidden;
   overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
