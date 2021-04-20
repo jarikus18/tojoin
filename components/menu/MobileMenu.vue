@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     toggleSubmenu(value) {
-      console.log('value', value)
       this.submenu[value] = !this.submenu[value]
     },
   },

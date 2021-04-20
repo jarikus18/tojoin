@@ -19,8 +19,9 @@
             'menu-list-item color-text small-text has-submenu',
             submenu[item.submenu_linked] && 'has-submenu--active',
           ]"
-          @mouseover="submenu[item.submenu_linked] = true"
-          @mouseleave="submenu[item.submenu_linked] = false"
+          @click="clickToggleSubmenu(item.submenu_linked)"
+          @mouseover="toggleSubmenu(item.submenu_linked, true)"
+          @mouseleave="toggleSubmenu(item.submenu_linked, false)"
         >
           {{ $prismic.asText(item.menu_item_name) }}
           <transition name="fade">
@@ -76,6 +77,22 @@ export default {
         resource: false,
       },
     }
+  },
+  methods: {
+    toggleSubmenu(value, bool) {
+      if (process.client) {
+        if (window.innerWidth > 1023) {
+          this.submenu[value] = bool
+        }
+      }
+    },
+    clickToggleSubmenu(value) {
+      if (process.client) {
+        if (window.innerWidth <= 1023) {
+          this.submenu[value] = !this.submenu[value]
+        }
+      }
+    },
   },
 }
 </script>
