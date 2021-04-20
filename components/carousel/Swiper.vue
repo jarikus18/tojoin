@@ -19,8 +19,6 @@ export default {
         slidesPerView: 3,
         spaceBetween: 10,
         slidesPerGroup: 2,
-        loop: true,
-        centeredSlides: true,
         keyboardControl: true,
         breakpoints: {
           // 0: {
