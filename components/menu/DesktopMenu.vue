@@ -84,17 +84,18 @@ export default {
   },
   methods: {
     toggleSubmenu(value, bool) {
-      if (process.client) {
-        if (window.innerWidth > 1023) {
-          this.submenu[value] = bool
-        }
+      if (process.client && window.innerWidth > 1023) {
+        this.submenu[value] = bool
       }
     },
     clickToggleSubmenu(value) {
-      if (process.client) {
-        if (window.innerWidth <= 1023) {
-          this.submenu[value] = !this.submenu[value]
+      if (process.client && window.innerWidth <= 1023) {
+        if (value === 'products') {
+          this.submenu.resource = false
+        } else {
+          this.submenu.products = false
         }
+        this.submenu[value] = !this.submenu[value]
       }
     },
   },

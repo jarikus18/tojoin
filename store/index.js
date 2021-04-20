@@ -1,3 +1,9 @@
+import ru from '../locales/ru.json'
+import en from '../locales/en.json'
+import uk from '../locales/uk.json'
+
+export const dictionary = { ru, en, uk }
+
 export const state = () => ({
   locale: {},
   common: {},
@@ -36,25 +42,33 @@ export const mutations = {
 export const actions = {
   changeLanguage({ commit }) {
     commit('SET_LOCALE', this.$i18n.localeProperties)
+    commit('SET_MENU', dictionary[this.$i18n.localeProperties.code].menu)
+    commit(
+      'SET_GENERAL_SETTINGS',
+      dictionary[this.$i18n.localeProperties.code].settings
+    )
   },
   nuxtServerInit({ commit }) {
     commit('SET_LOCALE', this.$i18n.localeProperties)
+    commit('SET_MENU', dictionary[this.$i18n.localeProperties.code].menu)
+    commit(
+      'SET_GENERAL_SETTINGS',
+      dictionary[this.$i18n.localeProperties.code].settings
+    )
   },
-  async fetchMenu({ commit }, $prismic) {
-    try {
-      const menu = (
-        await $prismic.api.getSingle('menu', {
-          lang: this.$i18n.localeProperties.iso,
-        })
-      ).data
-
-      commit('SET_MENU', menu)
-    } catch (e) {
-      const error = 'Please create a menu document'
-
-      commit('SET_MENU_ERROR', error)
-    }
-  },
+  // async fetchMenu({ commit }, $prismic) {
+  //   try {
+  //     const menu = (
+  //       await $prismic.api.getSingle('menu', {
+  //         lang: this.$i18n.localeProperties.iso,
+  //       })
+  //     ).data
+  //     commit('SET_MENU', menu)
+  //   } catch (e) {
+  //     const error = 'Please create a menu document'
+  //     commit('SET_MENU_ERROR', error)
+  //   }
+  // },
   async fetchGeneralSettings({ commit }, $prismic) {
     try {
       const settings = (

@@ -14,9 +14,8 @@
 import { mapState } from 'vuex'
 
 export default {
-  async middleware({ store, $prismic }) {
-    await store.dispatch('fetchMenu', $prismic)
-    await store.dispatch('fetchGeneralSettings', $prismic)
+  middleware({ store }) {
+    store.dispatch('changeLanguage')
   },
   data() {
     return {
