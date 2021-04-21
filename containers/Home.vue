@@ -107,7 +107,7 @@
         :key="index"
         class="company-logo"
       >
-        <img v-lazy-load :src="logotype.image.url" alt="" />
+        <img :src="logotype.image.url" alt="" />
       </div>
     </div>
     <section class="stories">

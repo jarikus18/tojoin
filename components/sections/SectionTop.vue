@@ -119,10 +119,10 @@ export default {
     min-height: 950px;
   }
   &-title {
-    width: 50%;
-    margin: 0 0 0 auto;
+    margin: 0 auto 0 50%;
     padding-top: 340px;
     padding-left: 40px;
+    max-width: 500px;
   }
 }
 .circle-big {
@@ -223,7 +223,7 @@ export default {
 .star {
   position: absolute;
   &.one {
-    top: 48%;
+    top: 53%;
     left: 65%;
     .article & {
       left: 85%;
@@ -252,7 +252,7 @@ export default {
 }
 .dots {
   position: absolute;
-  top: 45%;
+  top: 52%;
   left: 74%;
   display: flex;
   div {

@@ -6,7 +6,9 @@
         <div class="article-button">
           <NavLink
             classname="simple-btn big-btn-text"
-            :href="`/blog/${article.uid}`"
+            :href="`/${article.type === 'posts' ? 'blog' : 'examples'}/${
+              article.uid
+            }`"
             >подробнее</NavLink
           >
         </div>

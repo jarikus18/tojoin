@@ -6,7 +6,7 @@
         backgroundImage: `url(${image})`,
       }"
     />
-    <img v-lazy-load class="image" :src="image" alt="" />
+    <img class="image" :src="image" alt="" />
   </div>
 </template>
 <script>

@@ -3,12 +3,15 @@ import LOCALES from './i18n.config'
 const DEFAULT_LOCALE = 'ru'
 const API_URL = process.env.NUXT_ENV_API_URL
 
+// TODO The pageSize option defines the maximum number of documents that the API will return for your query. Default is 20, max is 100.
+
 const dynamicRoutes = async () => {
   try {
     const api = await prismic.getApi(API_URL)
 
     const data = await api.query(
-      prismic.predicates.at('document.type', 'posts')
+      prismic.predicates.at('document.type', 'posts'),
+      { pageSize: 100 }
     )
 
     return data.results.reduce((acc, item) => {
@@ -83,7 +86,6 @@ export default {
   modules: [
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n',
-    'nuxt-lazy-load',
     'vue-scrollto/nuxt',
     [
       '@nuxtjs/prismic',
