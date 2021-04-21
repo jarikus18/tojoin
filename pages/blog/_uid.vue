@@ -1,12 +1,13 @@
 <template>
-  <div class="article">
-    <code>{{ post }}</code>
-  </div>
+  <Article :post="post" />
 </template>
 
 <script>
+import Article from '@/containers/Article'
+
 export default {
   name: 'ArticlePage',
+  components: { Article },
   async asyncData({ $prismic, params, error }) {
     try {
       const post = (await $prismic.api.getByUID('posts', params.uid)).data

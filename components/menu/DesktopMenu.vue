@@ -82,6 +82,14 @@ export default {
       },
     }
   },
+  watch: {
+    $route() {
+      this.submenu = {
+        products: false,
+        resource: false,
+      }
+    },
+  },
   methods: {
     toggleSubmenu(value, bool) {
       if (process.client && window.innerWidth > 1023) {

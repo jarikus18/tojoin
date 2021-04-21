@@ -1,16 +1,17 @@
 <template>
-  <div class="section-wrapper">
+  <div :class="['section-wrapper', mode]">
     <div class="circle-big" />
     <div class="circle-medium" />
     <div class="circle-small" />
     <div class="bitmap">
       <div class="bitmap-bg" />
       <ul class="bitmap-list">
-        <li
-          v-for="(img, index) in bitmapImages"
-          :key="index"
-          class="bitmap-item"
-        >
+        <li v-for="(img, index) in images" :key="index" class="bitmap-item">
+          <div
+            v-if="mode === 'article'"
+            class="circle"
+            :style="`width: ${img.size - 10}px; height: ${img.size - 10}px`"
+          />
           <img
             data-not-lazy
             :src="require(`~/assets/${img.src}`)"
@@ -54,6 +55,10 @@ export default {
       type: String,
       default: '',
     },
+    mode: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -79,7 +84,22 @@ export default {
           size: 140,
         },
       ],
+      articleImages: [
+        { src: 'images/article/bitmap-3.svg', size: 90 },
+        { src: 'images/article/bitmap-4.svg', size: 113 },
+        { src: 'images/article/bitmap-5.svg', size: 160 },
+        { src: 'images/article/bitmap-1.svg', size: 210 },
+        { src: 'images/article/bitmap-2.svg', size: 155 },
+      ],
     }
+  },
+  computed: {
+    images() {
+      if (this.mode === 'article') {
+        return this.articleImages
+      }
+      return this.bitmapImages
+    },
   },
 }
 </script>
@@ -123,6 +143,11 @@ export default {
   position: absolute;
   top: 55%;
   left: 52%;
+  .article & {
+    top: 70%;
+    left: auto;
+    right: -2%;
+  }
 }
 .circle-small {
   background: linear-gradient(224.72deg, #86aefa -1%, #fafbfe 100.5%);
@@ -132,6 +157,9 @@ export default {
   position: absolute;
   top: 16%;
   left: 70%;
+  .article & {
+    left: 80%;
+  }
 }
 .bitmap {
   position: absolute;
@@ -141,6 +169,8 @@ export default {
     width: 100%;
     height: 100%;
     background: url('~/assets/images/blog/bitmap.png') no-repeat;
+    box-shadow: 16px 16px 48px rgba(0, 0, 0, 0.101959);
+    border-radius: 50%;
     mix-blend-mode: normal;
     opacity: 0.2;
     position: absolute;
@@ -167,21 +197,44 @@ export default {
     box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.3);
     transform: rotate(-25deg);
   }
+  .article &-item {
+    .circle {
+      box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.3);
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+    }
+  }
+
+  .article &-image {
+    border-radius: unset;
+    box-shadow: none;
+  }
 }
 .picture {
   position: absolute;
   top: 20%;
   left: 82%;
+  .article & {
+    top: 40%;
+    left: 60%;
+  }
 }
 .star {
   position: absolute;
   &.one {
     top: 48%;
     left: 65%;
+    .article & {
+      left: 85%;
+    }
   }
   &.two {
     top: 70%;
     left: 90%;
+    .article & {
+      left: 80%;
+    }
   }
 }
 .plus {
@@ -192,6 +245,9 @@ export default {
     position: absolute;
     top: 60%;
     left: 46%;
+    .article & {
+      left: 50%;
+    }
   }
 }
 .dots {
@@ -205,6 +261,10 @@ export default {
     height: 15px;
     border-radius: 50%;
     margin: 0 5px;
+  }
+  .article & {
+    top: 58%;
+    left: 72%;
   }
 }
 .tag {
@@ -225,6 +285,10 @@ export default {
     border-radius: 50%;
     top: 32.5%;
     left: 79%;
+    .article & {
+      top: 53%;
+      left: 56%;
+    }
   }
   &-blue {
     background: #b0cdfe;

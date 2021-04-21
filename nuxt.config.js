@@ -1,6 +1,30 @@
+import prismic from '@prismicio/client'
 import LOCALES from './i18n.config'
 const DEFAULT_LOCALE = 'ru'
 const API_URL = process.env.NUXT_ENV_API_URL
+
+const dynamicRoutes = async () => {
+  try {
+    const api = await prismic.getApi(API_URL)
+
+    const data = await api.query(
+      prismic.predicates.at('document.type', 'posts')
+    )
+
+    return data.results.reduce((acc, item) => {
+      const route = `/blog/${item.uid}`
+      const temp = LOCALES.map((lang) =>
+        lang.code === DEFAULT_LOCALE ? route : `/${lang.code}${route}`
+      )
+      return [...temp, ...acc]
+    }, [])
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error', error)
+    return []
+  }
+}
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -89,7 +113,8 @@ export default {
   },
   generate: {
     crawler: false,
-    fallback: true, // routes: dynamicRoutes,
+    fallback: true,
+    routes: dynamicRoutes,
   },
   // server: {
   //   host: '192.168.0.101',
