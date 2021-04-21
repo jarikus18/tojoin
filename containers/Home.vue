@@ -164,9 +164,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  margin-top: -200px;
-}
 .first-screen {
   position: relative;
   min-height: 1000px;

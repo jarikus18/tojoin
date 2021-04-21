@@ -47,9 +47,11 @@ export default {
   computed: {
     ...mapState(['settings']),
   },
+  beforeMount() {
+    this.showContent = true
+  },
   mounted() {
     this.getCurrentScale()
-    this.showContent = true
     this.$nextTick(function () {
       this.onResize()
     })
@@ -74,7 +76,6 @@ export default {
 <style scoped>
 .main {
   min-height: 100vh;
-  padding-top: 200px;
   overflow: hidden;
 }
 .page-layout {

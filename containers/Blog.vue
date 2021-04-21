@@ -39,13 +39,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.head {
-  margin-bottom: 200px;
-}
 .article {
   &-list {
     max-width: 1620px;
-    margin: 50px auto 300px;
+    margin: 0 auto 300px;
     display: flex;
     flex-wrap: wrap;
   }

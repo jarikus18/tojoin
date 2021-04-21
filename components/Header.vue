@@ -73,7 +73,7 @@ export default {
   position: absolute;
   top: 52px;
   left: 0;
-  padding: 0 42px;
+  padding: 0 62px 0 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
