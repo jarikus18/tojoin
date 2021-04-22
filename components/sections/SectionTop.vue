@@ -13,11 +13,17 @@
             :style="`width: ${img.size - 10}px; height: ${img.size - 10}px`"
           />
           <img
-            data-not-lazy
             :src="require(`~/assets/${img.src}`)"
-            class="bitmap-image"
+            class="bitmap-image desktop"
             :width="img.size"
             :height="img.size"
+            alt=""
+          />
+          <img
+            :src="require(`~/assets/${img.src}`)"
+            class="bitmap-image mobile"
+            :width="img.size / 2"
+            :height="img.size / 2"
             alt=""
           />
         </li>
@@ -45,11 +51,17 @@
     <div class="dot-orange" />
     <div class="dot-blue" />
     <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
+    <div class="social-list-wrapper">
+      <SocialLinks />
+    </div>
   </div>
 </template>
 <script>
+import SocialLinks from '@/components/SocialLinks'
+
 export default {
   name: 'SectionTop',
+  components: { SocialLinks },
   props: {
     title: {
       type: String,
@@ -117,12 +129,30 @@ export default {
     );
     width: 100%;
     min-height: 950px;
+
+    @media (max-width: 767px) {
+      background: none;
+      padding-top: 160px;
+      min-height: 750px;
+      margin: 0 0 50px;
+      & img {
+        max-width: 100%;
+      }
+    }
   }
   &-title {
     margin: 0 auto 0 50%;
     padding-top: 340px;
     padding-left: 40px;
     max-width: 500px;
+    @media (max-width: 767px) {
+      margin: auto;
+      padding: 80px 15px 0;
+      font-weight: 800;
+      font-size: 41px;
+      line-height: 48px;
+      letter-spacing: 0.396px;
+    }
   }
 }
 .circle-big {
@@ -134,6 +164,13 @@ export default {
   position: absolute;
   left: -4%;
   top: 60%;
+  @media (max-width: 767px) {
+    width: 232px;
+    height: 232px;
+    right: -166px;
+    top: 75%;
+    left: auto;
+  }
 }
 .circle-medium {
   background: linear-gradient(224.7deg, #d2e4ff 7.09%, #fafbfe 100.49%);
@@ -148,6 +185,12 @@ export default {
     left: auto;
     right: -2%;
   }
+  @media (max-width: 767px) {
+    width: 91px;
+    height: 91px;
+    left: -50px;
+    top: 75%;
+  }
 }
 .circle-small {
   background: linear-gradient(224.72deg, #86aefa -1%, #fafbfe 100.5%);
@@ -159,6 +202,12 @@ export default {
   left: 70%;
   .article & {
     left: 80%;
+  }
+  @media (max-width: 767px) {
+    top: 36%;
+    left: 90%;
+    width: 76px;
+    height: 76px;
   }
 }
 .bitmap {
@@ -196,6 +245,9 @@ export default {
     border-radius: 50%;
     box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.3);
     transform: rotate(-25deg);
+    &.mobile {
+      display: none;
+    }
   }
   .article &-item {
     .circle {
@@ -210,6 +262,34 @@ export default {
     border-radius: unset;
     box-shadow: none;
   }
+
+  @media (max-width: 767px) {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 218px;
+    height: 218px;
+    margin: 0 auto;
+    &-list {
+      width: 218px;
+      height: 218px;
+      @include distribute-on-circle(5, 218px, 100px, false);
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-image {
+      &.mobile {
+        display: block;
+        margin: auto;
+      }
+      &.desktop {
+        display: none;
+      }
+    }
+  }
 }
 .picture {
   position: absolute;
@@ -218,6 +298,12 @@ export default {
   .article & {
     top: 40%;
     left: 60%;
+  }
+  @media (max-width: 767px) {
+    max-width: 120px;
+    top: auto;
+    left: 50%;
+    bottom: 10%;
   }
 }
 .star {
@@ -236,17 +322,30 @@ export default {
       left: 80%;
     }
   }
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 .plus {
   position: absolute;
   top: 20%;
   left: 50%;
+  @media (max-width: 767px) {
+    display: none;
+  }
   &-big {
     position: absolute;
     top: 60%;
     left: 46%;
     .article & {
       left: 50%;
+    }
+    @media (max-width: 767px) {
+      top: 80%;
+      left: 16%;
+      display: block;
+      width: 13px;
+      height: 13px;
     }
   }
 }
@@ -266,6 +365,10 @@ export default {
     top: 58%;
     left: 72%;
   }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 .tag {
   position: absolute;
@@ -275,6 +378,10 @@ export default {
   width: 69px;
   height: 69px;
   border-radius: 50%;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 .dot {
   &-orange {
@@ -289,6 +396,10 @@ export default {
       top: 53%;
       left: 56%;
     }
+    @media (max-width: 767px) {
+      top: 87%;
+      left: 34%;
+    }
   }
   &-blue {
     background: #b0cdfe;
@@ -298,6 +409,15 @@ export default {
     border-radius: 50%;
     top: 27%;
     left: 45%;
+  }
+}
+.social-list-wrapper {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  @media (max-width: 767px) {
+    display: block;
   }
 }
 </style>

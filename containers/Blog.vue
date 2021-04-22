@@ -5,8 +5,12 @@
     </div>
 
     <ul class="article-list">
-      <li v-for="article in list" :key="article.uid" class="article-item">
-        <ArticlePreview :article="article" />
+      <li
+        v-for="(article, index) in list"
+        :key="article.uid"
+        :class="['article-item', (index + 1) % 2 === 0 && 'even']"
+      >
+        <ArticlePreview :article="article" :vendor="vendor" />
       </li>
     </ul>
     <div v-if="showPaginnation" class="pagination-wrapper">
@@ -16,10 +20,13 @@
         :page="filter.page"
       />
     </div>
+    <div v-if="currentList.length !== total" class="show-more">
+      <button @click="getMoreItems">Ещё примеры</button>
+    </div>
   </div>
 </template>
 <script>
-import ArticlePreview from '@/components/ArticlePreview'
+import ArticlePreview from '@/components/content/ArticlePreview'
 import SectionTop from '@/components/sections/SectionTop'
 import Pagination from '@/components/Pagination.vue'
 import config from '@/config'
@@ -37,6 +44,10 @@ export default {
       type: String,
       default: '',
     },
+    vendor: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -44,6 +55,8 @@ export default {
       filter: {
         page: 1,
       },
+      showMore: false,
+      currentList: [],
     }
   },
   computed: {
@@ -58,6 +71,7 @@ export default {
         list: this.posts.results,
         page: this.filter.page,
       })
+
       return list
     },
   },
@@ -68,9 +82,20 @@ export default {
     paginatedData({ list, page, size = config.offset }) {
       const start = (page - 1) * size
       const end = start + size
-      const arr = list.slice(start, end)
+      let arr = list.slice(start, end)
       this.total = list.length
+
+      if (this.showMore) {
+        arr = [...this.currentList, ...arr]
+      }
+      this.currentList = arr
       return { list: arr }
+    },
+    getMoreItems() {
+      if (this.total > this.currentList.length) {
+        this.showMore = true
+        this.filter.page += 1
+      }
     },
   },
 }
@@ -80,7 +105,7 @@ export default {
 .page {
   margin-bottom: 250px;
   position: relative;
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     bottom: -20%;
@@ -96,11 +121,20 @@ export default {
       rgba(236, 240, 253, 0) 100%
     );
   }
+  @media (max-width: 767px) {
+    margin-bottom: 150px;
+    background: linear-gradient(
+      179.99deg,
+      #e5efff 9.73%,
+      #fafbfe 64.86%,
+      #fafbfe 111.01%
+    );
+  }
 }
 .article {
   &-list {
     margin: 0 auto 30px;
-    padding: 0 5%;
+    padding: 0 8%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -126,9 +160,46 @@ export default {
     flex: 0 50%;
     margin-bottom: 8%;
   }
+
+  @media (max-width: 767px) {
+    &-list {
+      padding: 0 15px;
+      flex-direction: column;
+      &::before {
+        content: none;
+      }
+    }
+    &-item {
+      flex: 1;
+      margin-bottom: 50px;
+    }
+  }
 }
 .pagination-wrapper {
   margin: auto;
   text-align: center;
+  position: relative;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+.show-more {
+  text-align: center;
+  display: none;
+  position: relative;
+  & button {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #6a6a6a;
+    border: none;
+    background: none;
+    text-decoration: underline;
+  }
+  @media (max-width: 767px) {
+    display: block;
+  }
 }
 </style>

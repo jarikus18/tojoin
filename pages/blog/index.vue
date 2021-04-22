@@ -1,5 +1,5 @@
 <template>
-  <Blog :data="data" :posts="posts" title="Наш Блог" />
+  <Blog :data="data" :posts="posts" title="Наш Блог" vendor="blog" />
 </template>
 
 <script>

@@ -1,5 +1,10 @@
 <template>
-  <Blog :data="data" :posts="posts" title="Примеры использования" />
+  <Blog
+    :data="data"
+    :posts="posts"
+    title="Примеры использования"
+    vendor="examples"
+  />
 </template>
 
 <script>
@@ -14,9 +19,8 @@ export default {
       lang: i18n.localeProperties.iso,
     })
 
-    // Query to get posts content to preview
-    const blogPosts = await $prismic.api.query(
-      $prismic.predicates.at('document.type', 'posts'),
+    const blogStories = await $prismic.api.query(
+      $prismic.predicates.at('document.type', 'story'),
       {
         orderings: '[my.post.date desc]',
         pageSize: 100,
@@ -25,7 +29,7 @@ export default {
     )
     return {
       data,
-      posts: blogPosts,
+      posts: blogStories,
     }
   },
   head() {

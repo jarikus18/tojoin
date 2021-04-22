@@ -1,3 +1,3 @@
 export default {
-  offset: 2,
+  offset: 6,
 }

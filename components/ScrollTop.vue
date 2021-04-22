@@ -61,7 +61,7 @@ export default {
     width: 30px;
     height: 30px;
   }
-  @media (max-width: 992px) {
+  @media (max-width: 767px) {
     display: block;
   }
 }

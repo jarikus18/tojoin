@@ -60,7 +60,7 @@ export default {
       },
       {
         href:
-          'https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Rubik:wght@400;500&display=swap',
+          'https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700;800&family=Rubik:wght@400;500&display=swap',
         rel: 'stylesheet',
       },
     ],

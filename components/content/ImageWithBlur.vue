@@ -6,7 +6,12 @@
         backgroundImage: `url(${image})`,
       }"
     />
-    <img class="image" :src="image" alt="" />
+    <img
+      class="image"
+      :src="image"
+      alt=""
+      :style="height && `max-height: ${height}px`"
+    />
   </div>
 </template>
 <script>
@@ -17,6 +22,10 @@ export default {
       type: String,
       default: '',
     },
+    height: {
+      type: Number,
+      default: null,
+    },
   },
 }
 </script>
@@ -25,6 +34,7 @@ export default {
   border-radius: 20px;
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 .blur {
   position: absolute;
@@ -41,6 +51,7 @@ export default {
   border-radius: 20px;
   margin-bottom: -2px;
   max-width: 100%;
+  width: 100%;
   object-fit: cover;
 }
 

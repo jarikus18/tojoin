@@ -5,7 +5,7 @@
       :key="name"
       class="social-item"
     >
-      <a class="social-link" :href="link" target="_blank" rel="noopener">
+      <a class="social-link" :href="link.url" target="_blank" rel="noopener">
         <img data-not-lazy class="social-image" :src="icon.url" :alt="name" />
       </a>
     </li>
