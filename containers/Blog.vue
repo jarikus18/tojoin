@@ -4,15 +4,17 @@
       <SectionTop :title="title" />
     </div>
 
-    <ul class="article-list">
-      <li
-        v-for="(article, index) in list"
-        :key="article.uid"
-        :class="['article-item', (index + 1) % 2 === 0 && 'even']"
-      >
-        <ArticlePreview :article="article" :vendor="vendor" />
-      </li>
-    </ul>
+    <div class="article-wrapper">
+      <div class="container article-list">
+        <div
+          v-for="(article, index) in list"
+          :key="article.uid"
+          :class="['article-item', (index + 1) % 2 === 0 && 'even']"
+        >
+          <ArticlePreview :article="article" :vendor="vendor" />
+        </div>
+      </div>
+    </div>
     <div v-if="showPaginnation" class="pagination-wrapper">
       <Pagination
         :getcurrentpage="getCurrentPage"
@@ -132,11 +134,9 @@ export default {
   }
 }
 .article {
-  &-list {
+  &-wrapper {
     margin: 0 auto 30px;
     padding: 0 8%;
-    display: flex;
-    flex-wrap: wrap;
     position: relative;
     &::before {
       content: '';
@@ -156,14 +156,21 @@ export default {
       );
     }
   }
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1580px;
+  }
   &-item {
     flex: 0 50%;
     margin-bottom: 8%;
   }
 
   @media (max-width: 767px) {
-    &-list {
+    &-wrapper {
       padding: 0 15px;
+    }
+    &-list {
       flex-direction: column;
       &::before {
         content: none;

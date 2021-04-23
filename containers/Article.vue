@@ -3,47 +3,55 @@
     <div class="head">
       <SectionTop mode="article" />
     </div>
+
     <article class="single-article">
-      <h1 class="h1 title">{{ $prismic.asText(post.title) }}</h1>
+      <h1 class="h1 title container">{{ $prismic.asText(post.title) }}</h1>
       <div class="content">
-        <div class="content-image">
-          <div class="dots" />
-          <div class="circle" />
-          <div class="circle-big" />
-          <ImageWithBlur :image="post.image.url" />
-        </div>
-        <!-- eslint-disable vue/no-v-html -->
-        <div class="content-text" v-html="$prismic.asHtml(post.content)"></div>
-        <div class="content-mobile">
-          <Story>
-            <h5 class="content-mobile-title m-0">
-              {{ $prismic.asText(post.title) }}
-            </h5>
-            <!-- eslint-disable vue/no-v-html -->
-            <div
-              class="content-mobile-description"
-              v-html="$prismic.asHtml(post.content)"
-            ></div>
-          </Story>
-          <div class="back">
-            <NavLink classname="simple-btn big-btn-text" :href="back">
-              Истории успеха
-            </NavLink>
+        <div class="container content-wrapper">
+          <div class="content-image">
+            <div class="dots" />
+            <div class="circle" />
+            <div class="circle-big" />
+            <ImageWithBlur :image="post.image.url" />
+          </div>
+          <!-- eslint-disable vue/no-v-html -->
+          <div
+            class="content-text"
+            v-html="$prismic.asHtml(post.content)"
+          ></div>
+          <div class="content-mobile">
+            <Story>
+              <h5 class="content-mobile-title m-0">
+                {{ $prismic.asText(post.title) }}
+              </h5>
+              <!-- eslint-disable vue/no-v-html -->
+              <div
+                class="content-mobile-description"
+                v-html="$prismic.asHtml(post.content)"
+              ></div>
+            </Story>
+            <div class="back">
+              <NavLink classname="simple-btn big-btn-text" :href="back">
+                Истории успеха
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
     </article>
     <div v-if="related.total_pages > 0" class="related">
-      <h3 class="h3 related-title">Вам так же могут понравиться:</h3>
-      <ul class="related-list">
-        <li
-          v-for="article in related.results"
-          :key="article.uid"
-          class="related-item"
-        >
-          <RelatedArticle :article="article" />
-        </li>
-      </ul>
+      <div class="container">
+        <h3 class="h3 related-title">Вам так же могут понравиться:</h3>
+        <ul class="related-list">
+          <li
+            v-for="article in related.results"
+            :key="article.uid"
+            class="related-item"
+          >
+            <RelatedArticle :article="article" />
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -111,6 +119,9 @@ export default {
     display: flex;
     position: relative;
     padding: 0 5%;
+    &-wrapper {
+      display: flex;
+    }
     &-image {
       flex: 0 0 42%;
       margin-left: auto;

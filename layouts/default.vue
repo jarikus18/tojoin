@@ -96,6 +96,10 @@ export default {
 @media (min-width: 1921px) {
   .page-layout {
     margin: auto;
+    width: auto;
+  }
+  .main {
+    overflow: unset;
   }
 }
 </style>

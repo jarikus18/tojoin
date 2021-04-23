@@ -1,49 +1,51 @@
 <template>
   <div class="home">
     <section class="first-screen">
-      <div class="resources">
-        <div class="bg-line" />
-        <div class="ticket" />
-        <div class="gift" />
-        <div class="girl" />
-        <div class="j" />
-        <div class="dots-first-screen" />
-        <div class="save" />
-        <div class="sale" />
-        <div class="positive-review" />
-        <div class="chart-vector">
-          <div class="top">
-            <span class="small-text">{{ data.chart_text }}</span>
-            <span class="small-text green">{{ data.chart_percent }}</span>
-          </div>
-          <div class="bottom">
-            <img
-              data-not-lazy
-              src="~@/assets/images/first-screen/chart_vector.svg"
-              alt="chart"
-            />
-            <span class="blue">{{ data.chart_numbers }}</span>
+      <div class="container">
+        <div class="resources">
+          <div class="bg-line" />
+          <div class="ticket" />
+          <div class="gift" />
+          <div class="girl" />
+          <div class="j" />
+          <div class="dots-first-screen" />
+          <div class="save" />
+          <div class="sale" />
+          <div class="positive-review" />
+          <div class="chart-vector">
+            <div class="top">
+              <span class="small-text">{{ data.chart_text }}</span>
+              <span class="small-text green">{{ data.chart_percent }}</span>
+            </div>
+            <div class="bottom">
+              <img
+                data-not-lazy
+                src="~@/assets/images/first-screen/chart_vector.svg"
+                alt="chart"
+              />
+              <span class="blue">{{ data.chart_numbers }}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="text-block">
-        <h1 class="h1 m-0">{{ $prismic.asText(data.home_title) }}</h1>
-        <p class="caption-1 color-subtitle subtitle">
-          {{ data.home_subtitle }}
-        </p>
-        <NavLink
-          :href="data.button_link.url"
-          :type="data.button_link.link_type"
-          classname="btn-orange-gradient"
-        >
-          {{ data.button_name }}
-        </NavLink>
-      </div>
-      <div class="mobile-block">
-        <span class="circle" />
-        <span class="circle-big" />
-        <div class="social-list-wrapper">
-          <SocialLinks />
+        <div class="text-block">
+          <h1 class="h1 m-0">{{ $prismic.asText(data.home_title) }}</h1>
+          <p class="caption-1 color-subtitle subtitle">
+            {{ data.home_subtitle }}
+          </p>
+          <NavLink
+            :href="data.button_link.url"
+            :type="data.button_link.link_type"
+            classname="btn-orange-gradient"
+          >
+            {{ data.button_name }}
+          </NavLink>
+        </div>
+        <div class="mobile-block">
+          <span class="circle" />
+          <span class="circle-big" />
+          <div class="social-list-wrapper">
+            <SocialLinks />
+          </div>
         </div>
       </div>
     </section>
@@ -101,33 +103,39 @@
         </ul>
       </div>
     </section>
-    <div class="container company-logos">
-      <div
-        v-for="(logotype, index) in data.logotypes_list"
-        :key="index"
-        class="company-logo"
-      >
-        <img :src="logotype.image.url" alt="" />
+
+    <div class="container">
+      <div class="company-logos">
+        <div
+          v-for="(logotype, index) in data.logotypes_list"
+          :key="index"
+          class="company-logo"
+        >
+          <img :src="logotype.image.url" alt="" />
+        </div>
       </div>
     </div>
+
     <section class="stories">
-      <h3 class="h3 text-center">{{ data.stories_title }}</h3>
-      <client-only>
-        <Carousel>
-          <StodySlide
-            v-for="(story, index) in data.stories_slider"
-            :key="story.id"
-            :item="story"
-            :index="index"
-          />
-        </Carousel>
-      </client-only>
-      <div class="show-more">
-        <NavLink
-          classname="light-btn"
-          :href="`/${data.more_success_stories_link}`"
-          >{{ data.more_success_stories }}</NavLink
-        >
+      <div class="container">
+        <h3 class="h3 text-center">{{ data.stories_title }}</h3>
+        <client-only>
+          <Carousel>
+            <StodySlide
+              v-for="(story, index) in data.stories_slider"
+              :key="story.id"
+              :item="story"
+              :index="index"
+            />
+          </Carousel>
+        </client-only>
+        <div class="show-more">
+          <NavLink
+            classname="light-btn"
+            :href="`/${data.more_success_stories_link}`"
+            >{{ data.more_success_stories }}</NavLink
+          >
+        </div>
       </div>
     </section>
   </div>
@@ -252,8 +260,8 @@ export default {
 
 .j {
   position: absolute;
-  top: 102px;
-  right: 0;
+  top: 112px;
+  right: -100px;
   background-image: url('~@/assets/images/first-screen/j.svg');
   background-repeat: no-repeat;
   background-size: contain;

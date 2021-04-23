@@ -153,6 +153,13 @@ li {
     box-shadow: 2px 8px 23px -5px rgba(232, 97, 49, 0.69);
   }
 }
+.container {
+  @media (min-width: 1921px) {
+    max-width: 1920px;
+    margin: auto;
+    position: relative;
+  }
+}
 @media (max-width: 767px) {
   .h1 {
     font-weight: 800;

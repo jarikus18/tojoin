@@ -1,58 +1,62 @@
 <template>
   <div :class="['section-wrapper', mode]">
-    <div class="circle-big" />
-    <div class="circle-medium" />
-    <div class="circle-small" />
-    <div class="bitmap">
-      <div class="bitmap-bg" />
-      <ul class="bitmap-list">
-        <li v-for="(img, index) in images" :key="index" class="bitmap-item">
-          <div
-            v-if="mode === 'article'"
-            class="circle"
-            :style="`width: ${img.size - 10}px; height: ${img.size - 10}px`"
-          />
-          <img
-            :src="require(`~/assets/${img.src}`)"
-            class="bitmap-image desktop"
-            :width="img.size"
-            :height="img.size"
-            alt=""
-          />
-          <img
-            :src="require(`~/assets/${img.src}`)"
-            class="bitmap-image mobile"
-            :width="img.size / 2"
-            :height="img.size / 2"
-            alt=""
-          />
-        </li>
-      </ul>
-    </div>
-    <div class="plus"><img src="~@/assets/images/blog/plus.svg" alt="" /></div>
-    <div class="plus-big">
-      <img src="~@/assets/images/blog/plus-big.svg" alt="" />
-    </div>
-    <div class="picture">
-      <img src="~@/assets/images/blog/picture.svg" alt="" />
-    </div>
-    <div class="star one">
-      <img src="~@/assets/images/blog/star.svg" alt="" />
-    </div>
-    <div class="star two">
-      <img src="~@/assets/images/blog/star.svg" alt="" />
-    </div>
-    <div class="dots">
-      <div />
-      <div />
-      <div />
-    </div>
-    <div class="tag"><img src="~@/assets/images/blog/tag.svg" alt="" /></div>
-    <div class="dot-orange" />
-    <div class="dot-blue" />
-    <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
-    <div class="social-list-wrapper">
-      <SocialLinks />
+    <div class="container">
+      <div class="circle-big" />
+      <div class="circle-medium" />
+      <div class="circle-small" />
+      <div class="bitmap">
+        <div class="bitmap-bg" />
+        <ul class="bitmap-list">
+          <li v-for="(img, index) in images" :key="index" class="bitmap-item">
+            <div
+              v-if="mode === 'article'"
+              class="circle"
+              :style="`width: ${img.size - 10}px; height: ${img.size - 10}px`"
+            />
+            <img
+              :src="require(`~/assets/${img.src}`)"
+              class="bitmap-image desktop"
+              :width="img.size"
+              :height="img.size"
+              alt=""
+            />
+            <img
+              :src="require(`~/assets/${img.src}`)"
+              class="bitmap-image mobile"
+              :width="img.size / 2"
+              :height="img.size / 2"
+              alt=""
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="plus">
+        <img src="~@/assets/images/blog/plus.svg" alt="" />
+      </div>
+      <div class="plus-big">
+        <img src="~@/assets/images/blog/plus-big.svg" alt="" />
+      </div>
+      <div class="picture">
+        <img src="~@/assets/images/blog/picture.svg" alt="" />
+      </div>
+      <div class="star one">
+        <img src="~@/assets/images/blog/star.svg" alt="" />
+      </div>
+      <div class="star two">
+        <img src="~@/assets/images/blog/star.svg" alt="" />
+      </div>
+      <div class="dots">
+        <div />
+        <div />
+        <div />
+      </div>
+      <div class="tag"><img src="~@/assets/images/blog/tag.svg" alt="" /></div>
+      <div class="dot-orange" />
+      <div class="dot-blue" />
+      <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
+      <div class="social-list-wrapper">
+        <SocialLinks />
+      </div>
     </div>
   </div>
 </template>
@@ -128,13 +132,17 @@ export default {
       #fafbfe 145.03%
     );
     width: 100%;
-    min-height: 950px;
+    & .container {
+      min-height: 950px;
+    }
 
     @media (max-width: 767px) {
       background: none;
       padding-top: 160px;
-      min-height: 750px;
       margin: 0 0 50px;
+      & .container {
+        min-height: 600px;
+      }
       & img {
         max-width: 100%;
       }

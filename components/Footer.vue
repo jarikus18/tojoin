@@ -145,6 +145,12 @@ export default {
 .copyright {
   color: #afb5c0;
 }
+@media (min-width: 1921px) {
+  .footer-bottom {
+    max-width: 1920px;
+    margin: auto;
+  }
+}
 
 @media (max-width: 1450px) {
   .slogan {

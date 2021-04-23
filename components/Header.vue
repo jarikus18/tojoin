@@ -68,7 +68,7 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .header {
   position: absolute;
   top: 52px;
@@ -79,6 +79,11 @@ export default {
   justify-content: space-between;
   width: 100%;
   z-index: 100;
+  @media (min-width: 1921px) {
+    max-width: 1920px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 .left,
 .right {
