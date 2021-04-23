@@ -1,22 +1,23 @@
 <template>
   <div class="page">
-    <div class="head">
-      <SectionTop mode="article" />
-    </div>
-
     <article class="single-article">
-      <h1 class="h1 title container">{{ $prismic.asText(post.title) }}</h1>
       <div class="content">
-        <div class="container content-wrapper">
+        <div class="content-wrapper">
           <div class="content-image">
             <div class="dots" />
             <div class="circle" />
             <div class="circle-big" />
-            <ImageWithBlur :image="post.image.url" />
+            <div class="content-image content-image__mobile">
+              <ImageWithBlur :image="post.image.url" />
+            </div>
+            <div class="content-image content-image__desktop">
+              <img :src="post.image.url" alt="" />
+            </div>
           </div>
+          <h1 class="h1 title">{{ $prismic.asText(post.title) }}</h1>
           <!-- eslint-disable vue/no-v-html -->
           <div
-            class="content-text"
+            class="content-text color-text"
             v-html="$prismic.asHtml(post.content)"
           ></div>
           <div class="content-mobile">
@@ -26,7 +27,7 @@
               </h5>
               <!-- eslint-disable vue/no-v-html -->
               <div
-                class="content-mobile-description"
+                class="content-mobile-description color-text"
                 v-html="$prismic.asHtml(post.content)"
               ></div>
             </Story>
@@ -56,13 +57,12 @@
   </div>
 </template>
 <script>
-import SectionTop from '@/components/sections/SectionTop'
 import ImageWithBlur from '@/components/content/ImageWithBlur'
 import RelatedArticle from '@/components/content/RelatedArticle'
 import Story from '@/components/content/Story'
 
 export default {
-  components: { SectionTop, ImageWithBlur, RelatedArticle, Story },
+  components: { ImageWithBlur, RelatedArticle, Story },
   props: {
     back: {
       type: String,
@@ -92,47 +92,114 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  margin-bottom: 250px;
+  padding: 180px 0 250px;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      180deg,
+      #e5efff 9.72%,
+      #fafbfe 92.03%,
+      #fafbfe 145.03%
+    );
+    width: 100%;
+    height: 70vh;
+  }
   @media (max-width: 767px) {
-    margin-bottom: 150px;
+    padding: 0 0 150px;
     background: linear-gradient(
       179.99deg,
       #e5efff 9.73%,
       #fafbfe 64.86%,
       #fafbfe 111.01%
     );
+    &:before {
+      content: none;
+    }
   }
 }
 .single-article {
   margin-bottom: 150px;
-  margin-top: -180px;
   position: relative;
+  &::before {
+    content: '';
+    width: 172px;
+    height: 172px;
+    background: linear-gradient(224.7deg, #d2e4ff 7.09%, #fafbfe 100.49%);
+    position: absolute;
+    right: -85px;
+    top: 5%;
+    border-radius: 50%;
+  }
+  &::after {
+    content: '';
+    width: 323px;
+    height: 323px;
+    background: linear-gradient(225.91deg, #8fb8fd -46.01%, #fafbfe 85.99%);
+    transform: matrix(-0.97, 0.26, 0.26, 0.97, 0, 0);
+    border-radius: 50%;
+    position: absolute;
+    left: -155px;
+    top: 20%;
+  }
   .title {
-    margin-left: 35%;
-    margin-bottom: 5%;
-    padding-right: 5%;
     @media (max-width: 767px) {
       display: none;
     }
   }
   .content {
-    display: flex;
     position: relative;
     padding: 0 5%;
     &-wrapper {
-      display: flex;
+      max-width: 850px;
+      margin: auto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(236, 240, 253, 0) 0%,
+        rgba(236, 240, 253, 0.53) 14.32%,
+        #ecf0fd 45.83%,
+        rgba(236, 240, 253, 0.43) 84.33%,
+        rgba(236, 240, 253, 0) 100%
+      );
+    }
+    &::after {
+      content: '';
+      width: 278px;
+      height: 278px;
+      position: absolute;
+      right: -5%;
+      bottom: 30%;
+      background: linear-gradient(225.91deg, #8fb8fd -46.01%, #fafbfe 85.99%);
+      transform: rotate(57.84deg);
+      border-radius: 50%;
     }
     &-image {
-      flex: 0 0 42%;
-      margin-left: auto;
-      padding-right: 70px;
-      text-align: right;
       position: relative;
-      &::v-deep .image-wrap {
-        max-width: 557px;
+      &__desktop {
+        max-width: 80%;
+        overflow: hidden;
+        border-radius: 20px;
+        & img {
+          max-width: 100%;
+          display: block;
+          max-height: 385px;
+          border-radius: 20px;
+        }
       }
-      &::v-deep img {
-        border-radius: 0;
+      &__mobile {
+        display: none;
       }
       .dots {
         background: url('~/assets/images/article/green-dots.svg') no-repeat;
@@ -141,6 +208,7 @@ export default {
         width: 100%;
         position: absolute;
         bottom: 10%;
+        display: none;
       }
       .circle {
         position: absolute;
@@ -150,6 +218,7 @@ export default {
         height: 108px;
         border: 5px solid #ffba49;
         border-radius: 50%;
+        display: none;
       }
       .circle-big {
         position: absolute;
@@ -159,6 +228,7 @@ export default {
         height: 230px;
         border: 5px solid #ffba49;
         border-radius: 50%;
+        display: none;
       }
       @media (max-width: 767px) {
         flex: 1;
@@ -167,13 +237,17 @@ export default {
         &::v-deep .image-wrap {
           max-width: 50%;
         }
-        &::v-deep img {
-          border-radius: 20px;
+        &__mobile {
+          display: block;
+        }
+        &__desktop {
+          display: none;
         }
         .dots {
           height: 92px;
           background-size: contain;
           left: 40%;
+          display: block;
         }
         .circle-big {
           display: none;
@@ -183,6 +257,7 @@ export default {
           height: 114px;
           left: 30%;
           top: -15%;
+          display: block;
         }
       }
     }
@@ -215,33 +290,7 @@ export default {
     &-mobile {
       display: none;
     }
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(236, 240, 253, 0) 0%,
-        rgba(236, 240, 253, 0.53) 14.32%,
-        #ecf0fd 45.83%,
-        rgba(236, 240, 253, 0.43) 84.33%,
-        rgba(236, 240, 253, 0) 100%
-      );
-    }
-    &::after {
-      content: '';
-      width: 278px;
-      height: 278px;
-      position: absolute;
-      right: -3%;
-      bottom: -30%;
-      background: linear-gradient(225.91deg, #8fb8fd -46.01%, #fafbfe 85.99%);
-      transform: rotate(57.84deg);
-      border-radius: 50%;
-    }
+
     @media (max-width: 767px) {
       padding: 0 15px;
       display: block;
@@ -279,6 +328,16 @@ export default {
   @media (max-width: 767px) {
     margin: 0 auto 0;
     padding-top: 150px;
+    &::after {
+      width: 59px;
+      height: 59px;
+      opacity: 0.5;
+      top: 4%;
+      left: 0;
+    }
+    &::before {
+      content: none;
+    }
   }
 }
 .related {
@@ -293,6 +352,11 @@ export default {
   }
   &-item {
     flex: 0 0 33%;
+  }
+  @media (min-width: 1921px) {
+    .container {
+      padding: 0 10%;
+    }
   }
   @media (max-width: 767px) {
     display: none;

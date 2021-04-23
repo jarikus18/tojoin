@@ -54,6 +54,7 @@ export default {
     white-space: normal;
     position: relative;
     color: #1b1732;
+    text-align: left;
     &::before {
       content: '';
       position: absolute;

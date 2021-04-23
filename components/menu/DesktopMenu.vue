@@ -4,7 +4,7 @@
       <template v-if="!item.has_submenu">
         <li :key="index" class="menu-list-item">
           <NavLink
-            classname="color-text small-text"
+            classname="color-dark small-text"
             :href="`/${$prismic.asText(item.menu_item_link)}`"
           >
             {{ $prismic.asText(item.menu_item_name) }}
@@ -16,7 +16,7 @@
         <li
           :key="index"
           :class="[
-            'menu-list-item color-text small-text has-submenu',
+            'menu-list-item color-dark small-text has-submenu',
             submenu[item.submenu_linked] && 'has-submenu--active',
           ]"
           @click="clickToggleSubmenu(item.submenu_linked)"
@@ -41,7 +41,7 @@
                 }"
               >
                 <NavLink
-                  classname="color-text"
+                  classname="color-dark"
                   :href="
                     item.submenu_linked === 'products'
                       ? `/${item.submenu_linked}/${$prismic.asText(el.link)}`

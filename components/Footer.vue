@@ -22,7 +22,7 @@
       </div>
       <template v-for="(item, index) in menu.menu_list">
         <div v-if="item.has_submenu" :key="index" class="footer-menu">
-          <div class="menu-title color-text">
+          <div class="menu-title">
             {{ $prismic.asText(item.menu_item_name) }}
           </div>
           <ul class="menu-list">
