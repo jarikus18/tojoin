@@ -28,7 +28,9 @@
           data-netlify="true"
           name="contanctMessage"
           method="post"
-          @submit="onSubmit"
+          data-netlify-honeypot="bot-field"
+          enctype="application/x-www-form-urlencoded"
+          @submit.prevent="onSubmit"
         >
           <TextInput
             :value="formData.name"
@@ -133,7 +135,7 @@ export default {
           ...this.formData,
         }),
       })
-        .then(() => console.log('sended'))
+        .then((data) => console.log('data', data))
         .catch((error) => alert(error))
       this.errors = []
       e.preventDefault()
@@ -143,11 +145,13 @@ export default {
       this.formData[name] = value
     },
     encode(data) {
-      return Object.keys(data)
-        .map(
-          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-        )
-        .join('&')
+      const formData = new FormData()
+
+      for (const key of Object.keys(data)) {
+        formData.append(key, data[key])
+      }
+
+      return formData
     },
   },
 }
