@@ -4,16 +4,16 @@ const mailjet = require('node-mailjet').connect(
   'ac45b5831fd676c0df2dae11932f89ac'
 )
 
-exports.handler = async (event, context, callback) => {
+exports.handler = (event, context, callback) => {
+  if (!event.body) {
+    return {
+      statusCode: 500,
+      body: 'No data',
+    }
+  }
+
   const payload = JSON.parse(event.body)
   const { email, message, name } = payload
-
-  // const msg = {
-  //   to: SENDGRID_TO_EMAIL,
-  //   from: email,
-  //   subject: `New message from ${name}`,
-  //   text: message,
-  // }
 
   const request = mailjet.post('send', { version: 'v3.1' }).request({
     Messages: [
@@ -30,13 +30,14 @@ exports.handler = async (event, context, callback) => {
         ],
         Subject: 'New message from contact page',
         TextPart: 'Message',
-        HTMLPart: `<h2>${name}, ${email}</h2><br /><br /><h3>${message}</h3>`,
+        HTMLPart: `<h2>${name}, ${email}</h2><br /><h3>${message}</h3>`,
       },
     ],
   })
 
   try {
-    await request()
+    request.then()
+
     return {
       statusCode: 200,
       body: 'Message sent',

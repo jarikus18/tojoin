@@ -112,13 +112,16 @@ export default {
     }
   },
   methods: {
-    onSubmit(e) {
+    async onSubmit(e) {
       // eslint-disable-next-line no-console
       console.log(this.formData)
       if (this.name && this.email) {
         return true
       }
-
+      const res = await this.$axios.$post('/.netlify/functions/send', {
+        ...this.formData,
+      })
+      console.log('res', res)
       // fetch('/', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -135,13 +138,6 @@ export default {
     handleChange(e) {
       const { name, value } = e.target
       this.formData[name] = value
-    },
-    encode(data) {
-      return Object.keys(data)
-        .map(
-          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-        )
-        .join('&')
     },
   },
 }

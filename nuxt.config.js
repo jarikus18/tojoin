@@ -83,6 +83,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module', // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/axios',
   ],
   modules: [
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
