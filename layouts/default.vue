@@ -1,7 +1,7 @@
 <template>
   <div
     :class="['page-layout', showContent && 'd-block']"
-    :style="currentScale !== 1 && `transform: scale(${currentScale})`"
+    :style="currentScale < 1 && `transform: scale(${currentScale})`"
   >
     <Header />
     <main class="main"><Nuxt /></main>
@@ -91,6 +91,11 @@ export default {
   .page-layout {
     transform-origin: none;
     width: auto;
+  }
+}
+@media (min-width: 1921px) {
+  .page-layout {
+    margin: auto;
   }
 }
 </style>
