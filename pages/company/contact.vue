@@ -23,7 +23,13 @@
         <div class="picture">
           <img src="~@/assets/images/blog/picture.svg" alt="" />
         </div>
-        <form class="form" @submit="onSubmit">
+        <form
+          class="form"
+          data-netlify="true"
+          name="contanctMessage"
+          method="post"
+          @submit="onSubmit"
+        >
           <TextInput
             :value="formData.name"
             name="name"
@@ -118,12 +124,30 @@ export default {
       if (this.name && this.email) {
         return true
       }
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': e.target.getAttribute('name'),
+          ...this.formData,
+        }),
+      })
+        .then(() => console.log('sended'))
+        .catch((error) => alert(error))
       this.errors = []
       e.preventDefault()
     },
     handleChange(e) {
       const { name, value } = e.target
       this.formData[name] = value
+    },
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
     },
   },
 }

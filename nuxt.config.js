@@ -70,6 +70,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/click-outside.js',
+    '~/plugins/filters.js',
     {
       src: '@/plugins/vue-awesome-swiper.js',
       mode: 'client',

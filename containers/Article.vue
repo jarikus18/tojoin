@@ -7,11 +7,11 @@
             <div class="dots" />
             <div class="circle" />
             <div class="circle-big" />
-            <div class="content-image content-image__mobile">
+            <div :class="['content-image content-image__mobile', orientation]">
               <ImageWithBlur :image="post.image.url" />
             </div>
-            <div class="content-image content-image__desktop">
-              <img :src="post.image.url" alt="" />
+            <div :class="['content-image content-image__desktop', orientation]">
+              <ImageWithBlur :image="post.image.url" />
             </div>
           </div>
           <h1 class="h1 title">{{ $prismic.asText(post.title) }}</h1>
@@ -87,6 +87,12 @@ export default {
       },
     },
   },
+  computed: {
+    orientation() {
+      const { width, height } = this.post?.image?.dimensions || {}
+      return width >= height ? 'horizontal' : 'vertical'
+    },
+  },
 }
 </script>
 
@@ -146,6 +152,7 @@ export default {
     top: 20%;
   }
   .title {
+    font-size: 50px;
     @media (max-width: 767px) {
       display: none;
     }
@@ -191,12 +198,10 @@ export default {
         max-width: 80%;
         overflow: hidden;
         border-radius: 20px;
-        & img {
-          max-width: 100%;
-          display: block;
-          max-height: 385px;
-          border-radius: 20px;
-        }
+        height: 385px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: 0 25%;
       }
       &__mobile {
         display: none;
@@ -231,17 +236,17 @@ export default {
         display: none;
       }
       @media (max-width: 767px) {
-        flex: 1;
-        padding-right: 0;
-        text-align: left;
-        &::v-deep .image-wrap {
-          max-width: 50%;
-        }
         &__mobile {
           display: block;
         }
         &__desktop {
           display: none;
+        }
+        &.horizontal {
+          max-width: 100%;
+        }
+        &.vertical {
+          max-width: 50%;
         }
         .dots {
           height: 92px;
@@ -264,9 +269,8 @@ export default {
     &-text {
       flex: 0 0 58%;
       padding-right: 40px;
-      font-weight: 600;
-      font-size: 26px;
-      line-height: 40px;
+      font-size: 20px;
+      line-height: 27px;
       position: relative;
       &::v-deep p {
         position: relative;
@@ -342,7 +346,12 @@ export default {
 }
 .related {
   padding: 0 10%;
+  .container {
+    max-width: 1230px;
+    margin: auto;
+  }
   &-title {
+    font-size: 50px;
     line-height: 65px;
     padding-left: 30px;
   }
@@ -352,11 +361,6 @@ export default {
   }
   &-item {
     flex: 0 0 33%;
-  }
-  @media (min-width: 1921px) {
-    .container {
-      padding: 0 10%;
-    }
   }
   @media (max-width: 767px) {
     display: none;

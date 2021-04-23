@@ -2,7 +2,7 @@
   <article class="related-article">
     <div class="related-article-wrapper">
       <div class="related-article-image">
-        <ImageWithBlur :image="article.data.image.url" :height="567" />
+        <ImageWithBlur :image="article.data.image.url" :height="470" />
       </div>
       <div class="related-article-button">
         <NavLink
@@ -40,8 +40,10 @@ export default {
     text-align: center;
   }
   &-image {
-    max-width: 434px;
+    max-width: 355px;
+    height: 480px;
     margin: auto;
+    border-radius: 20px;
   }
 
   &-button {
@@ -49,8 +51,8 @@ export default {
     padding: 0 7.5%;
   }
   &-title {
-    font-size: 38px;
-    line-height: 122%;
+    font-size: 28px;
+    line-height: 38px;
     white-space: normal;
     position: relative;
     color: #1b1732;

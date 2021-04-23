@@ -1,5 +1,5 @@
 <template>
-  <div class="image-wrap">
+  <div :class="['image-wrap', classname]">
     <div
       class="blur"
       :style="{
@@ -7,7 +7,7 @@
       }"
     />
     <img
-      class="image"
+      :class="['image', classnameimage]"
       :src="image"
       alt=""
       :style="height && `max-height: ${height}px`"
@@ -26,15 +26,23 @@ export default {
       type: Number,
       default: null,
     },
+    classname: {
+      type: String,
+      default: '',
+    },
+    classnameimage: {
+      type: String,
+      default: '',
+    },
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .image-wrap {
   border-radius: 20px;
   position: relative;
-  display: inline-block;
   width: 100%;
+  height: 100%;
 }
 .blur {
   position: absolute;
@@ -52,16 +60,21 @@ export default {
   margin-bottom: -2px;
   max-width: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 @media (max-width: 767px) {
-  .image-wrap {
-    width: auto;
-    min-height: auto;
-  }
   .blur {
     display: none;
+  }
+  .img-absolute {
+    padding-top: 140%;
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
 </style>

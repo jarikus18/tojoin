@@ -4,7 +4,10 @@
       <div class="article-image">
         <div class="circle" />
         <div class="dots" />
-        <ImageWithBlur :image="article.data.image.url" />
+        <ImageWithBlur
+          :image="article.data.image.url"
+          classname="img-absolute"
+        />
         <div class="article-button">
           <NavLink
             classname="simple-btn big-btn-text"
@@ -67,6 +70,7 @@ export default {
   &-image {
     max-width: 286px;
     margin-right: 50px;
+    height: 395px;
   }
   &-button {
     text-align: center;
@@ -95,6 +99,8 @@ export default {
     }
     &-image {
       max-width: 50%;
+      width: 100%;
+      height: auto;
       margin: 0 auto 30px 0;
       position: relative;
       .even & {
