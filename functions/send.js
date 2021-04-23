@@ -1,13 +1,12 @@
+/* eslint-disable no-console */
 const mailjet = require('node-mailjet').connect(
   'c55f10f559f121694261c5383936fc43',
   'ac45b5831fd676c0df2dae11932f89ac'
 )
 
 exports.handler = async (event, context, callback) => {
-  // const payload = JSON.parse(event.body)
-  // const { email, message, name } = payload
-
-  // sgMail.setApiKey(SENDGRID_API_KEY)
+  const payload = JSON.parse(event.body)
+  const { email, message, name } = payload
 
   // const msg = {
   //   to: SENDGRID_TO_EMAIL,
@@ -29,23 +28,15 @@ exports.handler = async (event, context, callback) => {
             Name: 'Yaroslav',
           },
         ],
-        Subject: 'Greetings from Mailjet.',
-        TextPart: 'My first Mailjet email',
-        HTMLPart:
-          "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
-        CustomID: 'AppGettingStartedTest',
+        Subject: 'New message from contact page',
+        TextPart: 'Message',
+        HTMLPart: `<h2>${name}, ${email}</h2><br /><br /><h3>${message}</h3>`,
       },
     ],
   })
 
   try {
-    await request
-      .then((result) => {
-        console.log(result.body)
-      })
-      .catch((err) => {
-        console.log(err.statusCode)
-      })
+    await request()
     return {
       statusCode: 200,
       body: 'Message sent',
