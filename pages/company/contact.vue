@@ -127,16 +127,16 @@ export default {
         return true
       }
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({
-          'form-name': e.target.getAttribute('name'),
-          ...this.formData,
-        }),
-      })
-        .then((res) => console.log('sended', res))
-        .catch((error) => alert(error))
+      // fetch('/', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      //   body: this.encode({
+      //     'form-name': e.target.getAttribute('name'),
+      //     ...this.formData,
+      //   }),
+      // })
+      //   .then((res) => console.log('sended', res))
+      //   .catch((error) => alert(error))
       this.errors = []
       e.preventDefault()
     },

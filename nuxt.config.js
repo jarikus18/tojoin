@@ -119,6 +119,9 @@ export default {
     fallback: true,
     routes: dynamicRoutes,
   },
+  router: {
+    trailingSlash: true,
+  },
   // server: {
   //   host: '192.168.0.101',
   // },
