@@ -23,15 +23,7 @@
         <div class="picture">
           <img src="~@/assets/images/blog/picture.svg" alt="" />
         </div>
-        <form
-          class="form"
-          data-netlify="true"
-          name="contanctMessage"
-          method="post"
-          data-netlify-honeypot="bot-field"
-          enctype="application/x-www-form-urlencoded"
-          @submit.prevent="onSubmit"
-        >
+        <form class="form" @submit.prevent="onSubmit">
           <TextInput
             :value="formData.name"
             name="name"
