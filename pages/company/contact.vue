@@ -135,7 +135,7 @@ export default {
           ...this.formData,
         }),
       })
-        .then((data) => console.log('data', data))
+        .then((res) => console.log('sended', res))
         .catch((error) => alert(error))
       this.errors = []
       e.preventDefault()
@@ -145,13 +145,11 @@ export default {
       this.formData[name] = value
     },
     encode(data) {
-      const formData = new FormData()
-
-      for (const key of Object.keys(data)) {
-        formData.append(key, data[key])
-      }
-
-      return formData
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
     },
   },
 }
