@@ -12,10 +12,10 @@
       alt=""
     />
     <div :class="['modal', isDropdwonMenuVisible && 'open']">
-      <ul class="text-center">
+      <ul class="text-dark">
         <li v-for="locale in availableLocales" :key="locale.code">
           <NuxtLink
-            class="lang-item small-text color-text"
+            class="lang-item small-text color-dark"
             :to="switchLocalePath(locale.code)"
           >
             {{ locale.code }}

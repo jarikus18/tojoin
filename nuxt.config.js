@@ -2,6 +2,7 @@ import prismic from '@prismicio/client'
 import LOCALES from './i18n.config'
 const DEFAULT_LOCALE = 'ru'
 const API_URL = process.env.NUXT_ENV_API_URL
+const FRONT_URL = process.env.NUXT_ENV_FRONT
 
 // TODO The pageSize option defines the maximum number of documents that the API will return for your query. Default is 20, max is 100.
 
@@ -98,6 +99,13 @@ export default {
     ['nuxt-sm'],
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: FRONT_URL,
+    },
+  },
+
   build: {
     extend(config, ctx) {},
   },

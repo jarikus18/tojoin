@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="container">
+    <div class="container container-wrapper">
       <div class="col">
         <h1 class="h1 m-0">{{ $prismic.asText(data.title) }}</h1>
         <p class="subtitle">
@@ -112,28 +112,19 @@ export default {
     }
   },
   methods: {
-    async onSubmit(e) {
-      // eslint-disable-next-line no-console
-      console.log(this.formData)
-      if (this.name && this.email) {
-        return true
+    async onSubmit() {
+      try {
+        if (this.name && this.email) {
+          return true
+        }
+        await this.$axios.$post('/.netlify/functions/send', {
+          ...this.formData,
+        })
+
+        this.errors = []
+      } catch (error) {
+        return null
       }
-      const res = await this.$axios.$post('/.netlify/functions/send', {
-        ...this.formData,
-      })
-      console.log('res', res)
-      // fetch('/', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      //   body: this.encode({
-      //     'form-name': e.target.getAttribute('name'),
-      //     ...this.formData,
-      //   }),
-      // })
-      //   .then((res) => console.log('sended', res))
-      //   .catch((error) => alert(error))
-      this.errors = []
-      e.preventDefault()
     },
     handleChange(e) {
       const { name, value } = e.target
@@ -144,8 +135,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .page {
-  padding-top: 200px;
-  margin-bottom: 400px;
+  padding: 200px 0;
   background: linear-gradient(
     180deg,
     #e5efff 9.72%,
@@ -154,8 +144,10 @@ export default {
   );
 }
 .container {
-  display: flex;
-  padding: 0 12%;
+  &-wrapper {
+    display: flex;
+    padding: 0 12%;
+  }
   & .col {
     flex: 0 0 50%;
   }
@@ -165,6 +157,7 @@ export default {
   margin: 40px 0;
 }
 .form {
+  display: block;
   & .btn-group {
     margin-top: 40px;
     text-align: right;
