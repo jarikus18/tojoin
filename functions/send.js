@@ -37,12 +37,13 @@ exports.handler = (event, context, callback) => {
 
   try {
     request.then()
-
+    console.log('succsess')
     return {
       statusCode: 200,
       body: 'Message sent',
     }
   } catch (err) {
+    console.log('err', err)
     return {
       statusCode: err.code,
       body: err.message,

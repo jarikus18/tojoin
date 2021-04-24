@@ -3,6 +3,7 @@ import LOCALES from './i18n.config'
 const DEFAULT_LOCALE = 'ru'
 const API_URL = process.env.NUXT_ENV_API_URL
 const FRONT_URL = process.env.NUXT_ENV_FRONT
+const dev = process.env.NODE_ENV !== 'production'
 
 // TODO The pageSize option defines the maximum number of documents that the API will return for your query. Default is 20, max is 100.
 
@@ -99,10 +100,17 @@ export default {
     ['nuxt-sm'],
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
+  axios: {
+    proxy: true,
+    https: true,
+  },
+  proxy: {
+    '/.netlify': FRONT_URL,
+  },
 
   publicRuntimeConfig: {
     axios: {
-      browserBaseURL: FRONT_URL,
+      browserBaseURL: dev ? 'http://localhost:3000' : FRONT_URL,
     },
   },
 

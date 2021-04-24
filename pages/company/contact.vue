@@ -24,6 +24,9 @@
           <img src="~@/assets/images/blog/picture.svg" alt="" />
         </div>
         <form class="form" @submit.prevent="onSubmit">
+          <div v-if="isLoading" class="isLoading">
+            <Loader />
+          </div>
           <TextInput
             :value="formData.name"
             name="name"
@@ -56,10 +59,11 @@
 <script>
 import SocialLinks from '@/components/SocialLinks'
 import TextInput from '@/components/form/TextInput'
+import Loader from '@/components/Loader'
 
 export default {
   name: 'ContactPage',
-  components: { SocialLinks, TextInput },
+  components: { SocialLinks, TextInput, Loader },
   async asyncData({ $prismic, i18n }) {
     const { data } = await $prismic.api.getSingle('contact_page', {
       lang: i18n.localeProperties.iso,
@@ -77,6 +81,7 @@ export default {
         email: '',
         message: '',
       },
+      isLoading: false,
     }
   },
   head() {
@@ -117,13 +122,22 @@ export default {
         if (this.name && this.email) {
           return true
         }
-        await this.$axios.$post('/.netlify/functions/send', {
+        this.isLoading = true
+        const res = await this.$axios.$post('/.netlify/functions/send', {
           ...this.formData,
         })
+        console.log('res', res)
+        this.formData = {
+          name: '',
+          email: '',
+          message: '',
+        }
 
         this.errors = []
       } catch (error) {
         return null
+      } finally {
+        this.isLoading = false
       }
     },
     handleChange(e) {
@@ -158,9 +172,23 @@ export default {
 }
 .form {
   display: block;
+  position: relative;
   & .btn-group {
     margin-top: 40px;
     text-align: right;
+  }
+  & .isLoading {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -100px;
+    & ~ * {
+      filter: blur(5px);
+    }
   }
 }
 </style>
