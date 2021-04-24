@@ -1,0 +1,12 @@
+.circle-bg-before {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(225.91deg, #8fb8fd -46.01%, #fafbfe 85.99%);
+    transform: rotate(-165.73deg);
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+  }
+}

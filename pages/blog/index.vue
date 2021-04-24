@@ -4,6 +4,7 @@
 
 <script>
 import Blog from '@/containers/Blog'
+import meta from '@/components/meta'
 
 export default {
   name: 'BlogPage',
@@ -29,36 +30,7 @@ export default {
     }
   },
   head() {
-    return {
-      title: this.data.meta_title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.data.meta_description,
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: this.data.meta_keywords,
-        },
-        {
-          property: 'og:title',
-          content: this.data.meta_title,
-          vmid: 'og:title',
-        },
-        {
-          property: 'og:description',
-          content: this.data.meta_description,
-          vmid: 'og:description',
-        },
-        {
-          property: 'og:image',
-          content: this.data.meta_image.url,
-          vmid: 'og:image',
-        },
-      ],
-    }
+    return meta(this.data)
   },
 }
 </script>

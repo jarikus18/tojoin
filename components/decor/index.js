@@ -1,0 +1,6 @@
+export { default as Bitmap } from './Bitmap'
+export { default as Picture } from './Picture'
+export { default as Plus } from './Plus'
+export { default as Star } from './Star'
+export { default as Tag } from './Tag'
+export { default as ThreeDots } from './ThreeDots'

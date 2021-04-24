@@ -19,4 +19,6 @@ const LOCALES = [
   },
 ]
 
+export const DEFAULT_LOCALE = 'ru'
+
 export default LOCALES

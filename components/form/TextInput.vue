@@ -7,6 +7,7 @@
         :value="value"
         :name="name"
         :type="type"
+        :required="required"
         :placeholder="placeholder"
         class="text-input"
         autocomplete="off"
@@ -51,6 +52,10 @@ export default {
       type: String,
       default: 'text',
     },
+    required: {
+      type: Boolean,
+      default: true,
+    },
     placeholder: {
       type: String,
       default: '',
@@ -84,6 +89,17 @@ export default {
     padding: 16px 25px;
     font-size: 24px;
     line-height: 32px;
+  }
+  @media (max-width: 767px) {
+    & .label {
+      font-size: 24px;
+      line-height: 40px;
+    }
+    & .text-input,
+    & .textarea {
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 }
 </style>

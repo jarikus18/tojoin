@@ -4,6 +4,7 @@
 
 <script>
 import Article from '@/containers/Article'
+import meta from '@/components/meta'
 
 export default {
   name: 'ArticlePage',
@@ -29,6 +30,13 @@ export default {
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
+  },
+  head() {
+    return meta({
+      meta_title: this.$prismic.asText(this.post.title),
+      meta_description: this.$prismic.asText(this.post.short_description),
+      meta_image: this.post.image,
+    })
   },
 }
 </script>

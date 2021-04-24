@@ -4,11 +4,12 @@
 
 <script>
 import Article from '@/containers/Article'
+import meta from '@/components/meta'
 
 export default {
   name: 'ArticlePage',
   components: { Article },
-  async asyncData({ $prismic, params, error, i18n, ...rest }) {
+  async asyncData({ $prismic, params, error, i18n }) {
     try {
       const post = await $prismic.api.getByUID('posts', params.uid, {
         lang: i18n.localeProperties.iso,
@@ -29,6 +30,13 @@ export default {
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
+  },
+  head() {
+    return meta({
+      meta_title: this.$prismic.asText(this.post.title),
+      meta_description: this.$prismic.asText(this.post.short_description),
+      meta_image: this.post.image,
+    })
   },
 }
 </script>

@@ -1,9 +1,10 @@
 import prismic from '@prismicio/client'
-import LOCALES from './i18n.config'
-const DEFAULT_LOCALE = 'ru'
+import LOCALES, { DEFAULT_LOCALE } from './i18n.config'
+
 const API_URL = process.env.NUXT_ENV_API_URL
 const FRONT_URL = process.env.NUXT_ENV_FRONT
 const dev = process.env.NODE_ENV !== 'production'
+const DEV_HOST = 'http://localhost:3000'
 
 // TODO The pageSize option defines the maximum number of documents that the API will return for your query. Default is 20, max is 100.
 
@@ -11,13 +12,23 @@ const dynamicRoutes = async () => {
   try {
     const api = await prismic.getApi(API_URL)
 
-    const data = await api.query(
+    const posts = await api.query(
       prismic.predicates.at('document.type', 'posts'),
       { pageSize: 100 }
     )
 
-    return data.results.reduce((acc, item) => {
-      const route = `/blog/${item.uid}`
+    const stories = await api.query(
+      prismic.predicates.at('document.type', 'story'),
+      { pageSize: 100 }
+    )
+
+    const type = {
+      posts: 'blog',
+      story: 'examples',
+    }
+
+    return [...posts.results, ...stories.results].reduce((acc, item) => {
+      const route = `/${type[item.type]}/${item.uid}`
       const temp = LOCALES.map((lang) =>
         lang.code === DEFAULT_LOCALE ? route : `/${lang.code}${route}`
       )
@@ -95,9 +106,9 @@ export default {
       '@nuxtjs/prismic',
       {
         endpoint: API_URL,
+        linkResolver: '@/plugins/link-resolver',
       },
     ],
-    ['nuxt-sm'],
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   axios: {
@@ -110,7 +121,7 @@ export default {
 
   publicRuntimeConfig: {
     axios: {
-      browserBaseURL: dev ? 'http://localhost:3000' : FRONT_URL,
+      browserBaseURL: dev ? DEV_HOST : FRONT_URL,
     },
   },
 

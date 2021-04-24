@@ -155,6 +155,11 @@ li {
   &:hover {
     box-shadow: 2px 8px 23px -5px rgba(232, 97, 49, 0.69);
   }
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 40px 13px;
+  }
 }
 .container {
   @media (min-width: 1921px) {

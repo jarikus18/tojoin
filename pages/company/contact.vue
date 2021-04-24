@@ -2,26 +2,44 @@
   <div class="page">
     <div class="container container-wrapper">
       <div class="col">
-        <h1 class="h1 m-0">{{ $prismic.asText(data.title) }}</h1>
+        <h1 class="h1 m-0 title">{{ $prismic.asText(data.title) }}</h1>
         <p class="subtitle">
           {{ data.subtitle }}
         </p>
         <ul class="contacts">
           <li class="contacts-item">
-            <a :href="`tel:${data.phone}`">{{ data.phone }}</a>
+            <img src="~@/assets/icons/phone.svg" alt="" />
+            <a class="contacts-link" :href="`tel:${data.phone}`">{{
+              data.phone
+            }}</a>
           </li>
           <li class="contacts-item">
-            <a :href="`mailto:${data.email}`">{{ data.email }}</a>
+            <img src="~@/assets/icons/mail.svg" alt="" />
+            <a class="contacts-link" :href="`mailto:${data.email}`">{{
+              data.email
+            }}</a>
           </li>
         </ul>
-        <div class="image-wrapper">
-          <img src="~@/assets/images/pages/contacts.svg" alt="contacts" />
+        <div class="call circle-bg-before">
+          <img
+            class="call-image"
+            src="~@/assets/images/pages/contacts.svg"
+            alt="contacts"
+          />
+          <Plus classname="plus" />
+          <Tag classname="tag" />
+          <ThreeDots classname="dots" />
         </div>
-        <SocialLinks />
+        <div class="social">
+          <SocialLinks />
+        </div>
       </div>
       <div class="col">
+        <Star classname="star" />
+        <Plus classname="plus-head" />
+        <Bitmap class="bitmap" />
         <div class="picture">
-          <img src="~@/assets/images/blog/picture.svg" alt="" />
+          <Picture />
         </div>
         <form class="form" @submit.prevent="onSubmit">
           <div v-if="isLoading" class="isLoading">
@@ -43,6 +61,7 @@
           <TextInput
             :value="formData.message"
             name="message"
+            :required="false"
             :label="data.message"
             template="textarea"
             @handleChange="handleChange($event)"
@@ -60,10 +79,22 @@
 import SocialLinks from '@/components/SocialLinks'
 import TextInput from '@/components/form/TextInput'
 import Loader from '@/components/Loader'
+import meta from '@/components/meta'
+import { Picture, Bitmap, Tag, ThreeDots, Plus, Star } from '@/components/decor'
 
 export default {
   name: 'ContactPage',
-  components: { SocialLinks, TextInput, Loader },
+  components: {
+    SocialLinks,
+    TextInput,
+    Loader,
+    Picture,
+    Bitmap,
+    Tag,
+    ThreeDots,
+    Plus,
+    Star,
+  },
   async asyncData({ $prismic, i18n }) {
     const { data } = await $prismic.api.getSingle('contact_page', {
       lang: i18n.localeProperties.iso,
@@ -82,39 +113,14 @@ export default {
         message: '',
       },
       isLoading: false,
+      sent: {
+        success: 'Ваше сообщение успешно утправлено',
+        error: 'Простите, возникла ошибка',
+      },
     }
   },
   head() {
-    return {
-      title: this.data.meta_title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.data.meta_description,
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: this.data.meta_keywords,
-        },
-        {
-          property: 'og:title',
-          content: this.data.meta_title,
-          vmid: 'og:title',
-        },
-        {
-          property: 'og:description',
-          content: this.data.meta_description,
-          vmid: 'og:description',
-        },
-        {
-          property: 'og:image',
-          content: this.data.meta_image.url,
-          vmid: 'og:image',
-        },
-      ],
-    }
+    return meta(this.data)
   },
   methods: {
     async onSubmit() {
@@ -123,10 +129,10 @@ export default {
           return true
         }
         this.isLoading = true
-        const res = await this.$axios.$post('/.netlify/functions/send', {
+        await this.$axios.$post('/.netlify/functions/send', {
           ...this.formData,
         })
-        console.log('res', res)
+
         this.formData = {
           name: '',
           email: '',
@@ -156,23 +162,180 @@ export default {
     #fafbfe 92.03%,
     #fafbfe 145.03%
   );
+  @media (max-width: 767px) {
+    padding: 100px 0;
+  }
 }
 .container {
   &-wrapper {
     display: flex;
     padding: 0 12%;
+    color: #342e56;
   }
   & .col {
     flex: 0 0 50%;
+    position: relative;
+  }
+  @media (max-width: 767px) {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    & .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
+.title {
+  margin-bottom: 20px;
+  @media (max-width: 767px) {
+    order: 2;
+    line-height: 52px;
+  }
+}
+.subtitle {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: 0.396px;
+  margin-bottom: 50px;
+  @media (max-width: 767px) {
+    order: 2;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+.contacts {
+  margin-bottom: 50px;
+  &-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    & img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  &-link {
+    color: #342e56;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: 0.396px;
+    padding-left: 20px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 767px) {
+    order: 2;
+    &-item {
+      margin-bottom: 5px;
+      & img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &-link {
+      font-size: 18px;
+      line-height: 40px;
+      padding-left: 10px;
+    }
+  }
+}
+.call {
+  &-image {
+    margin-bottom: 50px;
+  }
+  &.circle-bg-before::before {
+    top: 30%;
+    left: -400px;
+  }
+  & .tag {
+    position: absolute;
+    right: 25%;
+    bottom: 15%;
+  }
+  & .dots {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  & .plus {
+    position: absolute;
+    right: 35%;
+    bottom: 35%;
+  }
+  @media (max-width: 767px) {
+    order: 0;
+    &-image {
+      max-width: 80%;
+      margin-bottom: 20px;
+    }
+    & .plus,
+    & .tag,
+    & .dots {
+      display: none;
+    }
+
+    &.circle-bg-before::before {
+      top: 30%;
+      left: auto;
+      right: -180px;
+      width: 232px;
+      height: 232px;
+    }
+  }
+}
+.social {
+  @media (max-width: 767px) {
+    order: 3;
+  }
+}
+.bitmap {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  left: -200px;
+  top: 100px;
+  @media (max-width: 767px) {
+    left: auto;
+    top: 0;
+    width: 310px;
+    height: 310px;
+    right: -200px;
+  }
+}
+.star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+.plus-head {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
 .picture {
   text-align: right;
   margin: 40px 0;
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 .form {
   display: block;
   position: relative;
+  padding-left: 10%;
   & .btn-group {
     margin-top: 40px;
     text-align: right;
@@ -189,6 +352,10 @@ export default {
     & ~ * {
       filter: blur(5px);
     }
+  }
+  @media (max-width: 767px) {
+    margin-top: 80px;
+    padding-left: 0;
   }
 }
 </style>
