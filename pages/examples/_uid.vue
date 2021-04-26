@@ -9,6 +9,7 @@ import meta from '@/components/meta'
 export default {
   name: 'ArticlePage',
   components: { Article },
+  layout: 'custom',
   async asyncData({ $prismic, params, error, i18n }) {
     try {
       const post = await $prismic.api.getByUID('story', params.uid, {

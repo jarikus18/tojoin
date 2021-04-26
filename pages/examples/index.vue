@@ -14,6 +14,7 @@ import meta from '@/components/meta'
 export default {
   name: 'BlogPage',
   components: { Blog },
+  layout: 'custom',
   async asyncData({ $prismic, i18n }) {
     // TODO change for blog page
     const { data } = await $prismic.api.getSingle('home_page', {

@@ -9,6 +9,7 @@ import meta from '@/components/meta'
 export default {
   name: 'AboutPage',
   components: { HowItWorks },
+  layout: 'custom',
   head() {
     return meta(this.data)
   },

@@ -95,6 +95,7 @@ export default {
     Plus,
     Star,
   },
+  layout: 'custom',
   async asyncData({ $prismic, i18n }) {
     const { data } = await $prismic.api.getSingle('contact_page', {
       lang: i18n.localeProperties.iso,
