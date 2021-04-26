@@ -10,3 +10,65 @@
     border-radius: 50%;
   }
 }
+
+.dots-bg-greed {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    background-image: url('~/assets/images/decor/pink-dots.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  &__green {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      background-image: url('~/assets/images/decor/green-dots.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  &__red {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      background-image: url('~/assets/images/stories/dots-red.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.circle-before {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    border: 5px solid #ffba49;
+    border-radius: 50%;
+  }
+}
+
+.circle-after {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    border: 5px solid #ffba49;
+    border-radius: 50%;
+  }
+}
+
+.circle-before-blue {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(218.81deg, #8fb8fd -103.96%, #fafbfe 87.93%);
+    transform: rotate(8.3deg);
+    border-radius: 50%;
+  }
+}

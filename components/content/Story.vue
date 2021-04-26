@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div :class="['body', classname]">
     <div class="body-content">
       <slot />
     </div>
@@ -11,6 +11,12 @@
 <script>
 export default {
   name: 'Story',
+  props: {
+    classname: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 
@@ -52,6 +58,23 @@ export default {
     height: 35px;
     position: relative;
     z-index: 1;
+  }
+  &.product-story {
+    .body-content {
+      padding: 50px 90px;
+      background-size: 330px;
+      background-position: right 50px top 20px;
+      & .h5 {
+        margin-bottom: 30px;
+      }
+    }
+    .body-line1 {
+      margin: 0 auto 0;
+      height: 40px;
+    }
+    .body-line2 {
+      margin: -10px auto 0;
+    }
   }
 }
 </style>
