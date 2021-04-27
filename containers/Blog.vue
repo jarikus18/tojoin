@@ -163,7 +163,7 @@ export default {
   }
   &-item {
     flex: 0 50%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
   }
 
   @media (max-width: 767px) {

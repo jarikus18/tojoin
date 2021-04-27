@@ -22,12 +22,29 @@ const dynamicRoutes = async () => {
       { pageSize: 100 }
     )
 
+    const pages = await api.query(
+      prismic.predicates.at('document.type', 'simple_page'),
+      { pageSize: 100 }
+    )
+
+    const products = await api.query(
+      prismic.predicates.at('document.type', 'products'),
+      { pageSize: 100 }
+    )
+
     const type = {
       posts: 'blog',
       story: 'examples',
+      simple_page: 'company',
+      products: 'products',
     }
 
-    return [...posts.results, ...stories.results].reduce((acc, item) => {
+    return [
+      ...posts.results,
+      ...stories.results,
+      ...pages.results,
+      ...products.results,
+    ].reduce((acc, item) => {
       const route = `/${type[item.type]}/${item.uid}`
       const temp = LOCALES.map((lang) =>
         lang.code === DEFAULT_LOCALE ? route : `/${lang.code}${route}`
