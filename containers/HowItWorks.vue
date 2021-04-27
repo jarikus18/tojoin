@@ -31,14 +31,16 @@
           </Modal>
         </div>
         <div class="col">
-          <div class="picture">
-            <Picture />
-          </div>
-          <div class="tag">
-            <Tag />
-          </div>
-          <div class="dots">
-            <ThreeDots />
+          <div class="decor-wraper">
+            <div class="tag">
+              <Tag />
+            </div>
+            <div class="dots-block">
+              <ThreeDots />
+            </div>
+            <div class="picture">
+              <Picture />
+            </div>
           </div>
           <h1 class="h1 m-0 title">{{ $prismic.asText(data.title) }}</h1>
           <div class="link">
@@ -47,7 +49,10 @@
           <div class="plus">
             <Plus />
           </div>
-          <div class="star">
+          <div class="star star-1">
+            <Star />
+          </div>
+          <div class="star star-2">
             <Star />
           </div>
         </div>
@@ -65,12 +70,20 @@
             :key="index"
             class="work-item"
           >
-            <div class="step">{{ index + 1 }}</div>
+            <Step
+              :data="{
+                number: index + 1,
+                image: work.step_image.url,
+                title: work.step_title,
+                description: work.step_description,
+              }"
+            />
+            <!-- <div class="step">{{ index + 1 }}</div>
             <div class="image">
               <img :src="work.step_image.url" alt="" />
             </div>
             <div class="title">{{ work.step_title }}</div>
-            <div class="description">{{ work.step_description }}</div>
+            <div class="description">{{ work.step_description }}</div> -->
           </li>
         </ul>
       </div>
@@ -98,6 +111,7 @@ import SocialLinks from '@/components/SocialLinks'
 import { Picture, Tag, ThreeDots, Plus, Star } from '@/components/decor'
 import LinkTryFree from '@/components/content/LinkTryFree'
 import Modal from '@/components/content/Modal'
+import Step from '@/components/content/Step'
 import meta from '@/components/meta'
 
 export default {
@@ -110,6 +124,7 @@ export default {
     Star,
     SocialLinks,
     LinkTryFree,
+    Step,
   },
   props: {
     data: {
@@ -145,7 +160,9 @@ export default {
 .page {
   margin-bottom: 300px;
   &-head {
-    padding: 200px 0;
+    padding: 200px 0 0;
+    margin-bottom: 150px;
+    position: relative;
     background: linear-gradient(
       180deg,
       #e5efff 9.72%,
@@ -157,14 +174,48 @@ export default {
     }
     & .col {
       flex: 0 0 50%;
+      padding: 0 2%;
     }
     & .social-link {
       display: none;
+    }
+    & .tag {
+      padding-bottom: 30px;
+      margin-right: 50px;
+    }
+    & .dots-block {
+      flex: 1;
+    }
+    & .decor-wraper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+    & .link {
+      margin-top: 6%;
+    }
+    & .plus {
+      position: absolute;
+      bottom: -15%;
+      left: 70%;
+    }
+    & .star {
+      position: absolute;
+      right: 5%;
+      bottom: 5%;
+      &-2 {
+        right: 20%;
+        bottom: 0;
+        width: 25px;
+        height: 25px;
+      }
     }
   }
   & .head-image {
     position: relative;
     max-width: 650px;
+    margin-left: auto;
     &::before {
       content: '';
       position: absolute;
