@@ -119,6 +119,7 @@ export default {
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n',
     'vue-scrollto/nuxt',
+    'portal-vue/nuxt',
     [
       '@nuxtjs/prismic',
       {

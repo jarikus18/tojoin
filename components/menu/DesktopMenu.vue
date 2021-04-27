@@ -42,11 +42,9 @@
               >
                 <NavLink
                   classname="color-dark"
-                  :href="
-                    item.submenu_linked === 'products'
-                      ? `/${item.submenu_linked}/${$prismic.asText(el.link)}`
-                      : `/${$prismic.asText(el.link)}`
-                  "
+                  :href="`${
+                    submenu_links[item.submenu_linked]
+                  }/${$prismic.asText(el.link)}`"
                 >
                   {{ $prismic.asText(el.title) }}
                 </NavLink>
@@ -79,6 +77,10 @@ export default {
       submenu: {
         products: false,
         resource: false,
+      },
+      submenu_links: {
+        resource: '',
+        products: '/products',
       },
     }
   },

@@ -33,7 +33,9 @@
             >
               <NavLink
                 classname="footer-text-regular"
-                :href="`/${item.submenu_linked}/${$prismic.asText(el.link)}`"
+                :href="`${submenu[item.submenu_linked]}/${$prismic.asText(
+                  el.link
+                )}`"
               >
                 {{ $prismic.asText(el.title) }}
               </NavLink>
@@ -57,6 +59,15 @@ export default {
     NavLink,
     ScrollTop,
     SocialLinks,
+  },
+  data() {
+    return {
+      submenu: {
+        resource: '',
+        company: '/company',
+        products: '/products',
+      },
+    }
   },
   computed: mapState(['menu', 'settings']),
 }

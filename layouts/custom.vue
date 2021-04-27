@@ -1,11 +1,16 @@
 <template>
-  <div
-    :class="['page-layout', showContent && 'd-block']"
-    :style="currentScale < 1 && `transform: scale(${currentScale})`"
-  >
-    <Header />
-    <main class="main"><Nuxt /></main>
-    <Footer />
+  <div class="page-wrapper">
+    <div
+      :class="['page-layout', showContent && 'd-block']"
+      :style="currentScale < 1 && `transform: scale(${currentScale})`"
+    >
+      <Header />
+      <main class="main"><Nuxt /></main>
+      <Footer />
+    </div>
+    <client-only>
+      <portal-target name="modal" />
+    </client-only>
   </div>
 </template>
 
