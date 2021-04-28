@@ -20,6 +20,16 @@
     background-repeat: no-repeat;
     background-size: contain;
   }
+  &__after {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('~/assets/images/decor/pink-dots.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
   &__green {
     position: relative;
     &::before {

@@ -76,6 +76,10 @@ export default {
   cursor: pointer;
 }
 
+.modal-body {
+  height: 100%;
+}
+
 .modal-enter {
   opacity: 0;
 }
