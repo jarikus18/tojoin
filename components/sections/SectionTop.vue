@@ -9,7 +9,7 @@
         <ul class="bitmap-list">
           <li v-for="(img, index) in images" :key="index" class="bitmap-item">
             <div
-              v-if="mode === 'article'"
+              v-if="mode === 'about'"
               class="circle"
               :style="`width: ${img.size - 10}px; height: ${img.size - 10}px`"
             />
@@ -122,7 +122,7 @@ export default {
   },
   computed: {
     images() {
-      if (this.mode === 'article') {
+      if (this.mode === 'about') {
         return this.articleImages
       }
       return this.bitmapImages
@@ -154,6 +154,9 @@ export default {
       & .container {
         min-height: 600px;
       }
+      &.about .container {
+        min-height: 400px;
+      }
       & img {
         max-width: 100%;
       }
@@ -171,6 +174,10 @@ export default {
       font-size: 41px;
       line-height: 48px;
       letter-spacing: 0.396px;
+      .about & {
+        text-align: center;
+        position: relative;
+      }
     }
   }
 }
@@ -277,7 +284,7 @@ export default {
       display: none;
     }
   }
-  .article &-item {
+  .about &-item {
     .circle {
       box-shadow: 0 20px 30px -9px rgba(84, 48, 209, 0.3);
       background: #fff;
@@ -286,7 +293,7 @@ export default {
     }
   }
 
-  .article &-image {
+  .about &-image {
     border-radius: unset;
     box-shadow: none;
   }
@@ -298,6 +305,9 @@ export default {
     width: 218px;
     height: 218px;
     margin: 0 auto;
+    .about & {
+      position: absolute;
+    }
     &-list {
       width: 218px;
       height: 218px;
@@ -317,6 +327,13 @@ export default {
         display: none;
       }
     }
+    .about &-bg {
+      top: 0;
+      left: -20px;
+    }
+    .about &-item {
+      display: none;
+    }
   }
 }
 .picture {
@@ -332,7 +349,8 @@ export default {
     top: auto;
     left: 50%;
     bottom: 10%;
-    &.has-description {
+    &.has-description,
+    .about & {
       display: none;
     }
   }
@@ -392,13 +410,14 @@ export default {
     border-radius: 50%;
     margin: 0 5px;
   }
-  .article & {
-    top: 58%;
-    left: 72%;
-  }
 
   @media (max-width: 767px) {
     display: none;
+    .about & {
+      display: flex;
+      left: 54%;
+      top: 55%;
+    }
   }
 }
 .tag {
@@ -412,6 +431,11 @@ export default {
 
   @media (max-width: 767px) {
     display: none;
+    .about & {
+      display: block;
+      top: auto;
+      bottom: 20%;
+    }
   }
 }
 .dot {
