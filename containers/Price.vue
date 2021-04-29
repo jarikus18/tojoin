@@ -200,6 +200,9 @@ export default {
     position: relative;
     max-width: 1480px;
     margin: 0 auto 20px;
+    &.mobile {
+      display: none;
+    }
   }
   &-story {
     box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
@@ -208,9 +211,6 @@ export default {
     overflow: hidden;
     background: #fff;
     z-index: 3;
-    &.mobile {
-      display: none;
-    }
     &::before {
       content: '';
       position: absolute;
