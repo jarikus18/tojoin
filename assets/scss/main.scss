@@ -173,6 +173,9 @@ h4 {
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s linear;
+  &.green-bg {
+    background: #5dcd5d;
+  }
   &:hover {
     box-shadow: 2px 8px 23px -5px rgba(232, 97, 49, 0.69);
   }

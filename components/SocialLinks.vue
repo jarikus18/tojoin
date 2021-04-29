@@ -29,7 +29,7 @@ export default {
 }
 .social-link {
   background: #fff;
-  box-shadow: 0.1px 1px 1px rgba(17, 19, 35, 0.01);
+  box-shadow: 0 1px 1px rgba(17, 19, 35, 0.01);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -39,7 +39,7 @@ export default {
   transition: all 0.3s linear;
 }
 .social-link:hover {
-  box-shadow: 0.1px 13px 18px rgba(17, 19, 35, 0.08);
+  box-shadow: 0 13px 18px rgba(17, 19, 35, 0.08);
 }
 .social-image {
   width: 24px;
@@ -60,6 +60,10 @@ export default {
   .social-link {
     width: 36px;
     height: 36px;
+    box-shadow: 0 13px 18px rgba(17, 19, 35, 0.08);
+  }
+  .social-link:hover {
+    box-shadow: none;
   }
   .social-image {
     width: 20px;

@@ -1,8 +1,8 @@
 <template>
   <div :class="['section-wrapper', mode]">
     <div class="container">
-      <div class="circle-big" />
-      <div class="circle-medium" />
+      <div :class="['circle-big', description && 'has-description']" />
+      <div :class="['circle-medium', description && 'has-description']" />
       <div class="circle-small" />
       <div class="bitmap">
         <div class="bitmap-bg" />
@@ -36,7 +36,7 @@
       <div class="plus-big">
         <img src="~@/assets/images/blog/plus-big.svg" alt="" />
       </div>
-      <div class="picture">
+      <div :class="['picture', description && 'has-description']">
         <img src="~@/assets/images/blog/picture.svg" alt="" />
       </div>
       <div class="star one">
@@ -51,10 +51,16 @@
         <div />
       </div>
       <div class="tag"><img src="~@/assets/images/blog/tag.svg" alt="" /></div>
-      <div class="dot-orange" />
+      <div :class="['dot-orange', description && 'has-description']" />
       <div class="dot-blue" />
       <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
-      <div class="social-list-wrapper">
+
+      <div v-if="description" class="description">
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div class="description-content" v-html="description" />
+        <div class="description-btn"><LinkTryFree /></div>
+      </div>
+      <div :class="['social-list-wrapper', description && 'has-description']">
         <SocialLinks />
       </div>
     </div>
@@ -62,12 +68,17 @@
 </template>
 <script>
 import SocialLinks from '@/components/SocialLinks'
+import LinkTryFree from '@/components/content/LinkTryFree'
 
 export default {
   name: 'SectionTop',
-  components: { SocialLinks },
+  components: { SocialLinks, LinkTryFree },
   props: {
     title: {
+      type: String,
+      default: '',
+    },
+    description: {
       type: String,
       default: '',
     },
@@ -178,6 +189,12 @@ export default {
     right: -166px;
     top: 75%;
     left: auto;
+    &.has-description {
+      width: 82px;
+      height: 82px;
+      top: 95%;
+      right: -26px;
+    }
   }
 }
 .circle-medium {
@@ -198,6 +215,9 @@ export default {
     height: 91px;
     left: -50px;
     top: 75%;
+    &.has-description {
+      top: 100%;
+    }
   }
 }
 .circle-small {
@@ -312,6 +332,9 @@ export default {
     top: auto;
     left: 50%;
     bottom: 10%;
+    &.has-description {
+      display: none;
+    }
   }
 }
 .star {
@@ -407,6 +430,9 @@ export default {
     @media (max-width: 767px) {
       top: 87%;
       left: 34%;
+      &.has-description {
+        display: none;
+      }
     }
   }
   &-blue {
@@ -419,6 +445,19 @@ export default {
     left: 45%;
   }
 }
+.description {
+  display: none;
+  font-size: 18px;
+  line-height: 25px;
+  &-btn {
+    margin-top: 30px;
+  }
+  @media (max-width: 767px) {
+    display: block;
+    padding: 0 15px;
+    margin: 20px 0 0;
+  }
+}
 .social-list-wrapper {
   display: none;
   position: absolute;
@@ -426,6 +465,11 @@ export default {
   left: 15px;
   @media (max-width: 767px) {
     display: block;
+    &.has-description {
+      margin-top: 40px;
+      padding-left: 15px;
+      position: static;
+    }
   }
 }
 </style>
