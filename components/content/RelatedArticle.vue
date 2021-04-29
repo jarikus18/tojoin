@@ -5,10 +5,7 @@
         <ImageWithBlur :image="article.data.image.url" :height="470" />
       </div>
       <div class="related-article-button">
-        <NavLink
-          :href="`/${article.type === 'posts' ? 'blog' : 'examples'}/${
-            article.uid
-          }`"
+        <NavLink :href="`/${links[article.type]}/${article.uid}`"
           ><h5 class="related-article-title m-0">
             {{ $prismic.asText(article.data.title) }}
           </h5></NavLink
@@ -30,6 +27,14 @@ export default {
         return {}
       },
     },
+  },
+  data() {
+    return {
+      links: {
+        posts: 'blog',
+        story: 'examples',
+      },
+    }
   },
 }
 </script>

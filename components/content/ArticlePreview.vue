@@ -14,8 +14,9 @@
           <NavLink
             classname="simple-btn big-btn-text"
             :href="`/${vendor}/${article.uid}`"
-            >подробнее</NavLink
           >
+            {{ settings.read_more }}
+          </NavLink>
         </div>
       </div>
 
@@ -35,8 +36,9 @@
         <NavLink
           classname="simple-btn big-btn-text"
           :href="`/${vendor}/${article.uid}`"
-          >подробнее</NavLink
         >
+          {{ settings.read_more }}
+        </NavLink>
       </div>
     </div>
   </article>
@@ -45,6 +47,7 @@
 <script>
 import Story from '@/components/content/Story'
 import ImageWithBlur from '@/components/content/ImageWithBlur'
+import { mapState } from 'vuex'
 
 export default {
   components: { ImageWithBlur, Story },
@@ -59,6 +62,9 @@ export default {
       type: String,
       default: 'blog',
     },
+  },
+  computed: {
+    ...mapState(['settings']),
   },
 }
 </script>

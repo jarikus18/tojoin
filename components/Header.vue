@@ -18,7 +18,7 @@
     <div class="right">
       <LangSwitcher />
       <div class="ml-1 btn-connect">
-        <NavLink href="/" classname="btn"> Присоединиться </NavLink>
+        <NavLink href="/" classname="btn"> {{ settings.join }} </NavLink>
       </div>
       <div :class="['hamburger', showMenu && 'active']" @click="toggleMenu">
         <span />

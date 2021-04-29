@@ -1,5 +1,10 @@
 <template>
-  <Blog :data="data" :posts="posts" title="Наш Блог" vendor="blog" />
+  <Blog
+    :data="data"
+    :posts="posts"
+    :title="$prismic.asText(data.title)"
+    vendor="blog"
+  />
 </template>
 
 <script>
@@ -13,7 +18,7 @@ export default {
   async asyncData({ $prismic, i18n, error }) {
     try {
       // TODO change for blog page
-      const { data } = await $prismic.api.getSingle('home_page', {
+      const { data } = await $prismic.api.getSingle('blog_page', {
         lang: i18n.localeProperties.iso,
       })
 

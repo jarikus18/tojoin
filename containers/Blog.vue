@@ -23,7 +23,7 @@
       />
     </div>
     <div v-if="currentList.length !== total" class="show-more">
-      <button @click="getMoreItems">Ещё примеры</button>
+      <button @click="getMoreItems">{{ data.get_more_items }}</button>
     </div>
   </div>
 </template>
@@ -49,6 +49,12 @@ export default {
     vendor: {
       type: String,
       default: '',
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
     },
   },
   data() {

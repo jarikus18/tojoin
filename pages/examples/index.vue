@@ -2,7 +2,7 @@
   <Blog
     :data="data"
     :posts="posts"
-    title="Примеры использования"
+    :title="$prismic.asText(data.title)"
     vendor="examples"
   />
 </template>
@@ -12,13 +12,13 @@ import Blog from '@/containers/Blog'
 import meta from '@/components/meta'
 
 export default {
-  name: 'BlogPage',
+  name: 'StoriesPage',
   components: { Blog },
   layout: 'custom',
   async asyncData({ $prismic, i18n, error }) {
     try {
       // TODO change for blog page
-      const { data } = await $prismic.api.getSingle('home_page', {
+      const { data } = await $prismic.api.getSingle('stories_page', {
         lang: i18n.localeProperties.iso,
       })
 
