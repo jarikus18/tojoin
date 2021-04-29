@@ -176,6 +176,18 @@ h4 {
   &.green-bg {
     background: #5dcd5d;
   }
+  &.orange-bg {
+    background: linear-gradient(
+      106.8deg,
+      #fdc700 -52.6%,
+      #f9b80e -39.87%,
+      #f4a123 -16.42%,
+      #f19430 5.9%,
+      #f08f34 25.75%,
+      #e86031 70.05%
+    );
+    box-shadow: -2px 20px 53px -8px rgba(232, 97, 49, 0.86);
+  }
   &:hover {
     box-shadow: 2px 8px 23px -5px rgba(232, 97, 49, 0.69);
   }

@@ -72,9 +72,20 @@
   }
 }
 
-.circle-before-blue {
+.circle-after-blue {
   position: relative;
   &::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(218.81deg, #8fb8fd -103.96%, #fafbfe 87.93%);
+    transform: rotate(8.3deg);
+    border-radius: 50%;
+  }
+}
+
+.circle-before-blue {
+  position: relative;
+  &::before {
     content: '';
     position: absolute;
     background: linear-gradient(218.81deg, #8fb8fd -103.96%, #fafbfe 87.93%);

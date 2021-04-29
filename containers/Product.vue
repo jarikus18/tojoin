@@ -9,7 +9,7 @@
             alt=""
           />
         </div>
-        <div class="col circle-before-blue">
+        <div class="col circle-after-blue">
           <div class="product-head-content dots-bg-greed__red circle-after">
             <h1 class="h1">{{ $prismic.asText(product.title) }}</h1>
             <!-- eslint-disable vue/no-v-html -->
@@ -61,7 +61,7 @@
               v-for="(func, index) in product.functional"
               :key="index"
               :class="[
-                'product-functional-item circle-before-blue dots-bg-greed',
+                'product-functional-item circle-after-blue dots-bg-greed',
                 `product-functional-item-${index}`,
                 (index + 1) % 2 === 0 && 'even',
               ]"
@@ -153,7 +153,7 @@ export default {
         flex: 0 0 50%;
         padding: 0 1%;
         position: relative;
-        &.circle-before-blue::after {
+        &.circle-after-blue::after {
           transform: rotate(94.28deg);
           height: 166px;
           width: 166px;
@@ -318,7 +318,7 @@ export default {
         left: 3%;
         bottom: 0;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         width: 230px;
         height: 230px;
         right: 15%;
@@ -341,7 +341,7 @@ export default {
         right: 3%;
         top: -15%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         width: 230px;
         height: 230px;
         left: 15%;
@@ -364,7 +364,7 @@ export default {
         left: 1%;
         top: -20%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         content: none;
       }
       & .product-functional-item-image {
@@ -386,7 +386,7 @@ export default {
         right: 16%;
         top: -25%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         width: 190px;
         height: 190px;
         left: 12%;
@@ -413,7 +413,7 @@ export default {
         left: 1%;
         top: -20%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         content: none;
       }
       & .product-functional-item-image {
@@ -435,7 +435,7 @@ export default {
         right: 16%;
         top: -25%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         width: 190px;
         height: 190px;
         left: 12%;
@@ -461,7 +461,7 @@ export default {
         left: 1%;
         top: -20%;
       }
-      &.circle-before-blue::after {
+      &.circle-after-blue::after {
         content: none;
       }
       & .product-functional-item-image {
@@ -626,7 +626,7 @@ export default {
         &-image {
           max-width: 50%;
         }
-        &.circle-before-blue::after {
+        &.circle-after-blue::after {
           content: none;
         }
         &-content {
