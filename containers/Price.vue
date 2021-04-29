@@ -320,7 +320,7 @@ export default {
   & .line {
     width: 46px;
     margin: auto;
-    border: 2px solid #929292;
+    border-bottom: 2px solid #929292;
     margin-bottom: 12px;
   }
   @media (max-width: 767px) {

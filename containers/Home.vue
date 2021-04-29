@@ -95,7 +95,7 @@
                 <NavLink
                   classname="simple-btn big-btn-text"
                   :href="`/${product.link}`"
-                  >подробнее</NavLink
+                  >{{ settings.read_more }}</NavLink
                 >
               </div>
             </div>
@@ -149,6 +149,7 @@ import NavLink from '@/components/NavLink'
 import ProductImage from '@/components/products/ProductImage'
 import Carousel from '@/components/carousel/Carousel'
 import SocialLinks from '@/components/SocialLinks'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -167,6 +168,9 @@ export default {
         return {}
       },
     },
+  },
+  computed: {
+    ...mapState(['settings']),
   },
 }
 </script>

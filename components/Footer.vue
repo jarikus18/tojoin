@@ -2,13 +2,11 @@
   <footer class="footer">
     <div class="subscribe">
       <div class="text">
-        <p class="title">Протестируйте бесплатно!</p>
-        <p class="subtitle">И сделай свой бизнес “смарт”.</p>
+        <p class="title">{{ settings.test_it_for_free }}</p>
+        <p class="subtitle">{{ settings.make_your_business_smart }}</p>
       </div>
       <div class="button">
-        <NavLink href="/" classname="btn-orange-gradient big-btn-text">
-          Попробовать бесплатно
-        </NavLink>
+        <LinkTryFree />
       </div>
     </div>
     <div class="footer-bottom footer-text-regular gray">
@@ -16,9 +14,9 @@
         <div class="footer-logo">
           <Logo />
         </div>
-        <div class="slogan">TutSvoi - приложение для автоматизации бизнеса</div>
+        <div class="slogan">{{ settings.description }}</div>
         <div class="social-list-wrapper"><SocialLinks /></div>
-        <div class="copyright">® 2021 TutSvoi</div>
+        <div class="copyright">® {{ settings.copyright }}</div>
       </div>
       <template v-for="(item, index) in menu.menu_list">
         <div v-if="item.has_submenu" :key="index" class="footer-menu">
@@ -52,6 +50,7 @@
 import NavLink from '@/components/NavLink'
 import ScrollTop from '@/components/ScrollTop'
 import SocialLinks from '@/components/SocialLinks'
+import LinkTryFree from '@/components/content/LinkTryFree'
 import { mapState } from 'vuex'
 
 export default {
@@ -59,6 +58,7 @@ export default {
     NavLink,
     ScrollTop,
     SocialLinks,
+    LinkTryFree,
   },
   data() {
     return {

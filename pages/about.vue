@@ -10,12 +10,16 @@ export default {
   name: 'AboutPage',
   components: { HowItWorks },
   layout: 'custom',
-  async asyncData({ $prismic, i18n }) {
-    const { data } = await $prismic.api.getSingle('how_it_works', {
-      lang: i18n.localeProperties.iso,
-    })
-    return {
-      data,
+  async asyncData({ $prismic, i18n, error }) {
+    try {
+      const { data } = await $prismic.api.getSingle('how_it_works', {
+        lang: i18n.localeProperties.iso,
+      })
+      return {
+        data,
+      }
+    } catch (e) {
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
   head() {

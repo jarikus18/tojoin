@@ -44,7 +44,7 @@ export default {
 .image {
   position: relative;
   border-radius: 20px;
-  margin-bottom: -2px;
+  margin-bottom: -5px;
   max-width: 100%;
   width: 100%;
   height: 100%;
