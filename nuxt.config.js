@@ -105,6 +105,7 @@ export default {
       src: '@/plugins/vue-awesome-swiper.js',
       mode: 'client',
     },
+    { src: '@/plugins/vue-gtag', mode: 'client' },
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -114,6 +115,7 @@ export default {
     '@nuxtjs/eslint-module', // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     '@nuxtjs/axios',
+    // '@nuxtjs/google-analytics',
   ],
   modules: [
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
@@ -168,6 +170,9 @@ export default {
   router: {
     trailingSlash: true,
   },
+  // googleAnalytics: {
+  //   id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
+  // },
   // server: {
   //   host: '192.168.0.101',
   // },
