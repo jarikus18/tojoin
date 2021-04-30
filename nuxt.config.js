@@ -129,6 +129,8 @@ export default {
         linkResolver: '@/plugins/link-resolver',
       },
     ],
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   axios: {
@@ -137,6 +139,16 @@ export default {
   },
   proxy: {
     '/.netlify': FRONT_URL,
+  },
+
+  sitemap: {
+    hostname: FRONT_URL,
+    gzip: true,
+  },
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '/',
   },
 
   publicRuntimeConfig: {
