@@ -28,6 +28,7 @@
               v-for="(el, ind) in menu[item.submenu_linked]"
               :key="ind"
               class="menu-item"
+              :style="{ display: el.show ? 'block' : 'none' }"
             >
               <NavLink
                 classname="footer-text-regular"

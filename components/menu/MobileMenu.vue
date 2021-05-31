@@ -29,7 +29,10 @@
                 v-for="(el, ind) in menu[item.submenu_linked]"
                 :key="ind"
                 class="submenu-item"
-                :style="{ backgroundImage: `url(${el.image.url})` }"
+                :style="{
+                  backgroundImage: `url(${el.image.url})`,
+                  display: el.show ? 'flex' : 'none',
+                }"
               >
                 <NavLink
                   classname="color-dark"

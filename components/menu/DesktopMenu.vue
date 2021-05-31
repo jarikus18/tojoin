@@ -38,6 +38,7 @@
                 class="submenu-item"
                 :style="{
                   backgroundImage: `url(${el.image.url})`,
+                  display: el.show ? 'flex' : 'none',
                 }"
               >
                 <NavLink
