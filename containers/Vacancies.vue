@@ -147,6 +147,8 @@ export default {
     &-container {
       display: flex;
       justify-content: center;
+      z-index: 1;
+      position: relative;
     }
     &.circle-after-blue:after {
       bottom: 0;
@@ -154,6 +156,7 @@ export default {
       height: 340px;
       width: 340px;
       transform: rotate(-165.73deg);
+      z-index: 0;
     }
   }
   @media (max-width: 767px) {
