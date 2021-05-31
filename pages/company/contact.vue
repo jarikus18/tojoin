@@ -41,7 +41,14 @@
         <div class="picture">
           <Picture />
         </div>
-        <form class="form" @submit.prevent="onSubmit">
+        <div v-if="sent.progress === 'success'" class="isSended h4 text-center">
+          <Confirmation :message="sent[sent.progress]" :click="onClose" />
+        </div>
+        <form
+          v-if="sent.progress !== 'success' && sent.progress !== 'error'"
+          class="form"
+          @submit.prevent="onSubmit"
+        >
           <div v-if="isLoading" class="isLoading">
             <Loader />
           </div>
@@ -81,6 +88,7 @@ import TextInput from '@/components/form/TextInput'
 import Loader from '@/components/Loader'
 import meta from '@/components/meta'
 import { Picture, Bitmap, Tag, ThreeDots, Plus, Star } from '@/components/decor'
+import Confirmation from '@/components/content/Confirmation'
 
 export default {
   name: 'ContactPage',
@@ -94,6 +102,7 @@ export default {
     ThreeDots,
     Plus,
     Star,
+    Confirmation,
   },
   layout: 'custom',
   async asyncData({ $prismic, i18n }) {
@@ -115,7 +124,8 @@ export default {
       },
       isLoading: false,
       sent: {
-        success: 'Ваше сообщение успешно утправлено',
+        progress: 'idle',
+        success: 'Сообщение \nотправленно',
         error: 'Простите, возникла ошибка',
       },
     }
@@ -130,6 +140,7 @@ export default {
           return true
         }
         this.isLoading = true
+        this.sent.progress = 'loading'
         await this.$axios.$post('/.netlify/functions/send', {
           ...this.formData,
         })
@@ -139,9 +150,10 @@ export default {
           email: '',
           message: '',
         }
-
+        this.sent.progress = 'success'
         this.errors = []
       } catch (error) {
+        this.sent.progress = 'error'
         return null
       } finally {
         this.isLoading = false
@@ -150,6 +162,9 @@ export default {
     handleChange(e) {
       const { name, value } = e.target
       this.formData[name] = value
+    },
+    onClose() {
+      this.sent.progress = 'idle'
     },
   },
 }

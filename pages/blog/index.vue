@@ -3,6 +3,7 @@
     :data="data"
     :posts="posts"
     :title="$prismic.asText(data.title)"
+    :description="$prismic.asText(data.description)"
     vendor="blog"
   />
 </template>

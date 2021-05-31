@@ -2,11 +2,10 @@
   <div :class="['section-wrapper', mode]">
     <div class="container">
       <div :class="['circle-big', description && 'has-description']" />
-      <div :class="['circle-medium', description && 'has-description']" />
       <div class="circle-small" />
       <div class="bitmap">
         <div class="bitmap-bg" />
-        <ul class="bitmap-list">
+        <ul v-if="mode !== 'price'" class="bitmap-list">
           <li v-for="(img, index) in images" :key="index" class="bitmap-item">
             <div
               v-if="mode === 'about'"
@@ -29,6 +28,7 @@
             />
           </li>
         </ul>
+        <div v-if="mode === 'price'"><PriceTop :data="data" /></div>
       </div>
       <div class="plus">
         <img src="~@/assets/images/blog/plus.svg" alt="" />
@@ -39,9 +39,7 @@
       <div :class="['picture', description && 'has-description']">
         <img src="~@/assets/images/blog/picture.svg" alt="" />
       </div>
-      <div class="star one">
-        <img src="~@/assets/images/blog/star.svg" alt="" />
-      </div>
+
       <div class="star two">
         <img src="~@/assets/images/blog/star.svg" alt="" />
       </div>
@@ -52,13 +50,20 @@
       </div>
       <div class="tag"><img src="~@/assets/images/blog/tag.svg" alt="" /></div>
       <div :class="['dot-orange', description && 'has-description']" />
-      <div class="dot-blue" />
-      <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
 
-      <div v-if="description" class="description">
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <div class="description-content" v-html="description" />
-        <div class="description-btn"><LinkTryFree /></div>
+      <div class="section-text">
+        <div class="circle-medium" />
+        <div class="star one">
+          <img src="~@/assets/images/blog/star.svg" alt="" />
+        </div>
+        <div class="dot-blue" />
+        <h1 v-if="title" class="h1 section-title">{{ title }}</h1>
+
+        <div v-if="description" class="description">
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div class="description-content" v-html="description" />
+          <div class="description-btn"><LinkTryFree /></div>
+        </div>
       </div>
       <div :class="['social-list-wrapper', description && 'has-description']">
         <SocialLinks />
@@ -69,10 +74,11 @@
 <script>
 import SocialLinks from '@/components/SocialLinks'
 import LinkTryFree from '@/components/content/LinkTryFree'
+import PriceTop from './PriceTop'
 
 export default {
   name: 'SectionTop',
-  components: { SocialLinks, LinkTryFree },
+  components: { SocialLinks, LinkTryFree, PriceTop },
   props: {
     title: {
       type: String,
@@ -81,6 +87,12 @@ export default {
     description: {
       type: String,
       default: '',
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
     },
     mode: {
       type: String,
@@ -162,11 +174,41 @@ export default {
       }
     }
   }
-  &-title {
+  &-text {
+    position: relative;
     margin: 0 auto 0 50%;
-    padding-top: 340px;
     padding-left: 40px;
+    padding-top: 340px;
+    .description {
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 40px;
+      position: relative;
+      max-width: 700px;
+      &-btn {
+        margin-top: 30px;
+        display: none;
+      }
+      @media (max-width: 767px) {
+        font-size: 18px;
+        line-height: 25px;
+        display: block;
+        padding: 0 15px;
+        margin: 20px 0 0;
+        &-btn {
+          display: block;
+        }
+      }
+    }
+    @media (max-width: 767px) {
+      margin: 0;
+      padding-left: 0;
+      padding-top: 0;
+    }
+  }
+  &-title {
     max-width: 500px;
+    position: relative;
     @media (max-width: 767px) {
       margin: auto;
       padding: 80px 15px 0;
@@ -210,8 +252,8 @@ export default {
   height: 172px;
   border-radius: 50%;
   position: absolute;
-  top: 55%;
-  left: 52%;
+  bottom: -10%;
+  left: -2%;
   .article & {
     top: 70%;
     left: auto;
@@ -358,8 +400,8 @@ export default {
 .star {
   position: absolute;
   &.one {
-    top: 53%;
-    left: 65%;
+    top: 110%;
+    left: 30%;
     .article & {
       left: 85%;
     }
@@ -400,7 +442,7 @@ export default {
 }
 .dots {
   position: absolute;
-  top: 52%;
+  bottom: 20%;
   left: 74%;
   display: flex;
   div {
@@ -467,19 +509,9 @@ export default {
     border-radius: 50%;
     top: 27%;
     left: 45%;
-  }
-}
-.description {
-  display: none;
-  font-size: 18px;
-  line-height: 25px;
-  &-btn {
-    margin-top: 30px;
-  }
-  @media (max-width: 767px) {
-    display: block;
-    padding: 0 15px;
-    margin: 20px 0 0;
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 }
 .social-list-wrapper {

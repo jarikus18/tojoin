@@ -4,6 +4,8 @@
       <SectionTop
         :title="$prismic.asText(data.title)"
         :description="$prismic.asHtml(data.subtitle)"
+        mode="price"
+        :data="data"
       />
     </div>
     <div class="prices">

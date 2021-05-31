@@ -1,7 +1,11 @@
 <template>
   <div class="page">
     <div class="head">
-      <SectionTop :title="$prismic.asText(data.title)" mode="about" />
+      <SectionTop
+        :title="$prismic.asText(data.title)"
+        :description="$prismic.asText(data.subtitle)"
+        mode="about"
+      />
     </div>
     <section class="mission circle-before-blue circle-after-blue">
       <h3 class="h3 text-center">{{ data.our_mission }}</h3>

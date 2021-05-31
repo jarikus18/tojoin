@@ -3,6 +3,7 @@
     :data="data"
     :posts="posts"
     :title="$prismic.asText(data.title)"
+    :description="$prismic.asText(data.description)"
     vendor="examples"
   />
 </template>
@@ -17,7 +18,6 @@ export default {
   layout: 'custom',
   async asyncData({ $prismic, i18n, error }) {
     try {
-      // TODO change for blog page
       const { data } = await $prismic.api.getSingle('stories_page', {
         lang: i18n.localeProperties.iso,
       })

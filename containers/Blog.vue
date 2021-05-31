@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="head">
-      <SectionTop :title="title" />
+      <SectionTop :title="title" :description="description" />
     </div>
 
     <div class="article-wrapper">
@@ -43,6 +43,10 @@ export default {
       },
     },
     title: {
+      type: String,
+      default: '',
+    },
+    description: {
       type: String,
       default: '',
     },

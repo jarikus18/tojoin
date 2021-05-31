@@ -28,13 +28,9 @@
           <div class="description" v-html="$prismic.asHtml(data.subtitle)" />
 
           <div class="button">
-            <NavLink
-              classname="btn-common orange-bg"
-              :href="data.become_a_partner_link.url"
-              :type="data.become_a_partner_link.link_type"
-            >
+            <a class="btn-common orange-bg" href="#form">
               {{ data.become_a_partner }}
-            </NavLink>
+            </a>
           </div>
           <div class="decor decor-bottom">
             <div class="star star-1"><Star /></div>
@@ -66,7 +62,18 @@
           </li>
         </ul>
         <div class="partnership circle-before-blue">
-          <form class="partnership-form" @submit.prevent="onSubmit">
+          <div
+            v-if="sent.progress === 'success'"
+            class="isSended h4 text-center"
+          >
+            <Confirmation :message="sent[sent.progress]" :click="onClose" />
+          </div>
+          <form
+            v-if="sent.progress !== 'success' && sent.progress !== 'error'"
+            id="form"
+            class="partnership-form"
+            @submit.prevent="onSubmit"
+          >
             <div class="tag">
               <div class="plus">
                 <Plus />
@@ -101,15 +108,14 @@
 
 <script>
 import Step from '@/components/content/Step'
-import NavLink from '@/components/NavLink'
 import { Picture, Tag, ThreeDots, Plus, Star } from '@/components/decor'
 import TextInput from '@/components/form/TextInput'
 import Loader from '@/components/Loader'
+import Confirmation from '@/components/content/Confirmation'
 
 export default {
   components: {
     Step,
-    NavLink,
     Picture,
     Tag,
     ThreeDots,
@@ -117,6 +123,7 @@ export default {
     Star,
     TextInput,
     Loader,
+    Confirmation,
   },
   props: {
     data: {
@@ -133,41 +140,48 @@ export default {
       formData: {
         name: '',
         email: '',
+        title: `${this.name} - ${this.email}, хочет зарегистрироватся как партнер`,
       },
       isLoading: false,
       sent: {
-        success: 'Ваше сообщение успешно утправлено',
+        progress: 'idle',
+        success: 'Заявка оправлена.\nМы с вами свяжемся',
         error: 'Простите, возникла ошибка',
       },
-      methods: {
-        async onSubmit() {
-          try {
-            if (this.name && this.email) {
-              return true
-            }
-            this.isLoading = true
-            await this.$axios.$post('/.netlify/functions/send', {
-              ...this.formData,
-            })
-
-            this.formData = {
-              name: '',
-              email: '',
-            }
-
-            this.errors = []
-          } catch (error) {
-            return null
-          } finally {
-            this.isLoading = false
-          }
-        },
-        handleChange(e) {
-          const { name, value } = e.target
-          this.formData[name] = value
-        },
-      },
     }
+  },
+  methods: {
+    async onSubmit() {
+      try {
+        if (this.name && this.email) {
+          return true
+        }
+        this.isLoading = true
+        this.sent.progress = 'loading'
+        await this.$axios.$post('/.netlify/functions/send', {
+          ...this.formData,
+        })
+
+        this.formData = {
+          name: '',
+          email: '',
+        }
+        this.sent.progress = 'success'
+        this.errors = []
+      } catch (error) {
+        this.sent.progress = 'error'
+        return null
+      } finally {
+        this.isLoading = false
+      }
+    },
+    handleChange(e) {
+      const { name, value } = e.target
+      this.formData[name] = value
+    },
+    onClose() {
+      this.sent.progress = 'idle'
+    },
   },
 }
 </script>
@@ -405,5 +419,9 @@ export default {
       margin-top: 80px;
     }
   }
+}
+.isSended {
+  margin: auto;
+  max-width: 830px;
 }
 </style>
